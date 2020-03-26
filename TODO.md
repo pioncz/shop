@@ -17,4 +17,6 @@ Dodatkowo:
 
 Encje:
 - promowane: (id, przedmioty, grafika, header, opis)
-- 
+- kategorie
+- produkty
+- uzytkownicy
