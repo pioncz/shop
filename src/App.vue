@@ -1,23 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Hello App!2</h1>
+    <p>
+      <router-link to="/">Go to Foo</router-link>
+      <router-link to="/product">Go to Bar</router-link>
+    </p>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-
 export default {
   name: 'App',
   components: {
-    HelloWorld,
   },
 };
 </script>
 
 <style lang="scss">
-$test = 'red';
+$test: red;
+
+body {
+  margin: 0;
+}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -27,5 +32,9 @@ $test = 'red';
   color: #2c3e50;
   margin-top: 60px;
   background: $test;
+}
+
+.router-link-exact-active {
+  border-bottom: 2px solid #fff;
 }
 </style>
