@@ -5,6 +5,7 @@ Front
 - kontakt
 - rejestracja / logowanie
 - koszyk
+- 404
 
 Admin
 - logowanie 
