@@ -6,6 +6,7 @@ Front
 - rejestracja / logowanie
 - koszyk
 - 404
+- footer
 
 Admin
 - logowanie 
@@ -15,6 +16,9 @@ Admin
 Dodatkowo:
 - internacjonalizacja
 - popup newsletterowy
+- globalny interceptor do bledow
+- walidacja formularza
+- production ready (minifikacja, babel, webpack config?)
 
 Encje:
 - promowane: (id, przedmioty, grafika, header, opis)
