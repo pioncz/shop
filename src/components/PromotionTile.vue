@@ -13,7 +13,9 @@ export default {
   ],
   computed: {
     containerStyle: function containerStyle() {
-      const { image, colorFrom, colorTo } = this.promotion;
+      const {
+        image, colorFrom, colorTo, color,
+      } = this.promotion;
       let imageUrl;
 
       try {
@@ -22,7 +24,7 @@ export default {
       const overlay = `linear-gradient(to bottom, ${colorFrom}, ${colorTo})`;
 
       return {
-        background: `${overlay}, url(${imageUrl})`,
+        background: `${overlay}, url(${imageUrl}), ${color}`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       };

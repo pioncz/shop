@@ -1,11 +1,15 @@
 <template>
   <div class="home">
-    <PromotionTile
+    <router-link
+      v-bind:to="`/promotion/${promotion.id}`"
       v-for="promotion in promotions"
       v-bind:key="promotion.id"
-      v-bind:promotion="promotion"
       class="promotion"
-    />
+    >
+      <PromotionTile
+        v-bind:promotion="promotion"
+      />
+    </router-link>
     <button v-on:click="dd">Hi</button>
   </div>
 </template>
@@ -22,24 +26,27 @@ export default {
   data: () => ({
     promotions: [
       {
+        id: 1,
         header: 'Summer sale!',
         description: 'Only now 40% discount on summer products',
         image: 'promo1.jpg',
         colorFrom: 'rgba(245, 246, 252, 0.52)',
-        colorTo: 'rgba(117, 19, 93, 0.73)'
+        colorTo: 'rgba(117, 19, 93, 0.73)',
+        color: '#a5cadf',
       },
       {
+        id: 2,
         header: 'Hot promotion!',
         description: 'Save 20% on premium items',
         image: 'promo2.jpg',
         colorFrom: 'rgba(245, 246, 252, 0.52)',
-        colorTo: 'rgba(19, 118, 95, 0.73)'
+        colorTo: 'rgba(19, 118, 95, 0.73)',
+        color: '#9abcc4',
       },
     ],
   }),
   methods: {
     dd() {
-      console.log('x');
       store.commit('increment');
     },
   },
@@ -56,5 +63,7 @@ export default {
 
 .promotion {
   margin: $margin1;
+  text-decoration: none;
+  display: block;
 }
 </style>

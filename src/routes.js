@@ -7,12 +7,17 @@ import Contact from './pages/Contact.vue';
 import Login from './pages/Login.vue';
 import Register from './pages/Register.vue';
 import Search from './pages/Search.vue';
+import Promotion from './pages/Promotion.vue';
 
 // Routes
 const routes = [
   {
     path: '/',
     component: Home,
+  },
+  {
+    path: '/promotion/:id',
+    component: Promotion,
   },
   {
     path: '/product',

@@ -19,6 +19,7 @@ Dodatkowo:
 - globalny interceptor do bledow
 - walidacja formularza
 - production ready (minifikacja, babel, webpack config?)
+- onboarding?
 
 Encje:
 - promowane: (id, przedmioty, grafika, header, opis)

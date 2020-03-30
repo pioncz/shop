@@ -1,6 +1,7 @@
 <template>
   <div class="header">
     <router-link to="/">Home</router-link>
+    <router-link to="/promotion/1">Promotion 1</router-link>
     <router-link to="/product">Product</router-link>
     <router-link to="/cart">cart</router-link>
     <router-link to="/category">category</router-link>
