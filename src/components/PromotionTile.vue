@@ -12,7 +12,7 @@ export default {
     'promotion',
   ],
   computed: {
-    containerStyle: function containerStyle() {
+    containerStyle() {
       const {
         image, colorFrom, colorTo, color,
       } = this.promotion;

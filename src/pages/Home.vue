@@ -1,54 +1,51 @@
 <template>
   <div class="home">
-    <router-link
-      v-bind:to="`/promotion/${promotion.id}`"
-      v-for="promotion in promotions"
-      v-bind:key="promotion.id"
-      class="promotion"
-    >
-      <PromotionTile
-        v-bind:promotion="promotion"
-      />
-    </router-link>
-    <button v-on:click="dd">Hi</button>
+    <div v-show="loading" class="loader-container">
+      <Loader />
+    </div>
+    <div v-show="!loading">
+      <router-link
+        v-bind:to="`/promotion/${promotion.id}`"
+        v-for="promotion in promotions"
+        v-bind:key="promotion.id"
+        class="promotion"
+      >
+        <PromotionTile
+          v-bind:promotion="promotion"
+        />
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script>
 import PromotionTile from '@/components/PromotionTile.vue';
-import store from '../store';
+import store from '@/store/store';
+import Loader from '@/components/Loader.vue';
 
 export default {
   name: 'Home',
   components: {
     PromotionTile,
+    Loader,
   },
-  data: () => ({
-    promotions: [
-      {
-        id: 1,
-        header: 'Summer sale!',
-        description: 'Only now 40% discount on summer products',
-        image: 'promo1.jpg',
-        colorFrom: 'rgba(245, 246, 252, 0.52)',
-        colorTo: 'rgba(117, 19, 93, 0.73)',
-        color: '#a5cadf',
-      },
-      {
-        id: 2,
-        header: 'Hot promotion!',
-        description: 'Save 20% on premium items',
-        image: 'promo2.jpg',
-        colorFrom: 'rgba(245, 246, 252, 0.52)',
-        colorTo: 'rgba(19, 118, 95, 0.73)',
-        color: '#9abcc4',
-      },
-    ],
-  }),
+  computed: {
+    promotions() {
+      return store.state.Promotions.items;
+      // return [];
+    },
+    loading() {
+      return store.state.Promotions.loading;
+      // return true;
+    },
+  },
   methods: {
     dd() {
       store.commit('increment');
     },
+  },
+  beforeCreate() {
+    this.$store.dispatch('getPromotions');
   },
 };
 </script>
@@ -59,11 +56,20 @@ export default {
 .home {
   max-width: $maxWidth;
   margin: 0 auto;
+  height: calc(100% - 61px);
 }
 
 .promotion {
-  margin: $margin1;
+  margin: $margin4;
   text-decoration: none;
   display: block;
+}
+
+.loader-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

@@ -9,6 +9,7 @@
     <router-link to="/login">login</router-link>
     <router-link to="/register">register</router-link>
     <router-link to="/search">search</router-link>
+    <router-link to="/admin">admin</router-link>
     <router-link to="/ddd">Not found</router-link>
 
     <div>Login / register</div>

@@ -8,6 +8,7 @@ import Login from './pages/Login.vue';
 import Register from './pages/Register.vue';
 import Search from './pages/Search.vue';
 import Promotion from './pages/Promotion.vue';
+import Admin from './pages/Admin.vue';
 
 // Routes
 const routes = [
@@ -46,6 +47,10 @@ const routes = [
   {
     path: '/search',
     component: Search,
+  },
+  {
+    path: '/admin',
+    component: Admin,
   },
   {
     path: '*',

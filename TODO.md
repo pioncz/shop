@@ -14,11 +14,15 @@ Admin
 - edycja encji
 
 Dodatkowo:
+- poczytac o nazwach komponentow i nazwach w vuex
+- sprawdzanie typow
 - internacjonalizacja
+- do opisow jakis rich text editor
 - popup newsletterowy
 - globalny interceptor do bledow
 - walidacja formularza
 - production ready (minifikacja, babel, webpack config?)
+- internacjonalizacja
 - onboarding?
 
 Encje:
