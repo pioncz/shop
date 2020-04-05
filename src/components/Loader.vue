@@ -26,7 +26,10 @@ export default {
   $offset6: 32;
 
 .loader {
-  transform: rotate(-90deg);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
   width: 120px;
   height: 120px;
 

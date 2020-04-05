@@ -4,27 +4,168 @@
       "id":1,
       "header":"Summer sale!",
       "description":"Only now 40% discount on summer products",
+      "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "image":"promo1.jpg",
       "colorFrom":"rgba(245, 246, 252, 0.52)",
       "colorTo":"rgba(117, 19, 93, 0.73)",
-      "color":"#a5cadf"
+      "color":"#a5cadf",
+      "finishCondition": "while stocks last",
+      "items": [1, 2, 3]
     },
     {
       "id":2,
       "header":"Hot promotion!",
       "description":"Save 20% on premium items",
+      "longDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "image":"promo2.jpg",
       "colorFrom":"rgba(245, 246, 252, 0.52)",
       "colorTo":"rgba(19, 118, 95, 0.73)",
-      "color":"#9abcc4"
+      "color":"#9abcc4",
+      "finishDate": 1591187930429,
+      "items": [4, 5]
     }
   ],
 
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
-  ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
-  ],
-  "profile": { "name": "typicode" }
+  "products": [
+    {
+      "id":1,
+      "name":"Phone 3000",
+      "image":"phone1.jpg",
+      "price":"123$",
+      "rate":1.1,
+      "ratesNumber":100,
+      "shortDescription":"Super phone",
+      "description":"This phone is the best phone you can get for that price.",
+      "specification":{
+         "size":"123",
+         "power":"9000"
+      }
+   },
+   {
+      "id":2,
+      "name":"Smarter phone",
+      "image":"phone2.jpg",
+      "price":"623$",
+      "rate":4.1,
+      "ratesNumber":11,
+      "shortDescription":"Super phone",
+      "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+      "specification":{
+         "size":"123",
+         "power":"9000"
+      }
+   },
+   {
+      "id":3,
+      "name":"Thin Tablet",
+      "image":"tablet1.jpg",
+      "price":"101$",
+      "rate":2.1,
+      "ratesNumber":8,
+      "shortDescription":"Super phone",
+      "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+      "specification":{
+         "size":"123",
+         "power":"9000"
+      }
+   },
+   {
+      "id":4,
+      "name":"Tablet",
+      "image":"tablet2.jpg",
+      "price":"227$",
+      "rate":2.9,
+      "ratesNumber":21,
+      "shortDescription":"Super phone",
+      "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+      "specification":{
+         "size":"123",
+         "power":"9000"
+      }
+   },
+   {
+      "id":5,
+      "name":"Big Screen",
+      "image":"tablet3.jpg",
+      "price":"303$",
+      "rate":3.1,
+      "ratesNumber":1,
+      "shortDescription":"Super phone",
+      "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+      "specification":{
+         "size":"123",
+         "power":"9000"
+      }
+   },
+   {
+      "id":6,
+      "name":"Yogi 472",
+      "image":"laptop1.jpg",
+      "price":"200$",
+      "rate":4.1,
+      "ratesNumber":41,
+      "shortDescription":"Super phone",
+      "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+      "specification":{
+         "size":"123",
+         "power":"9000"
+      }
+   },
+   {
+      "id":7,
+      "name":"Yunior",
+      "image":"laptop2.jpg",
+      "price":"350$",
+      "rate":3.4,
+      "ratesNumber":37,
+      "shortDescription":"Super phone",
+      "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+      "specification":{
+         "size":"123",
+         "power":"9000"
+      }
+   },
+   {
+      "id":8,
+      "name":"Ace",
+      "image":"laptop3.jpg",
+      "price":"399$",
+      "rate":4.1,
+      "ratesNumber":24,
+      "shortDescription":"Super phone",
+      "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+      "specification":{
+         "size":"123",
+         "power":"9000"
+      }
+   },
+   {
+      "id":9,
+      "name":"Gamers Choice",
+      "image":"desktop1.jpg",
+      "price":"150$",
+      "rate":4.1,
+      "ratesNumber":10,
+      "shortDescription":"Super phone",
+      "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+      "specification":{
+         "size":"123",
+         "power":"9000"
+      }
+   },
+   {
+      "id":10,
+      "name":"Steel and plastic",
+      "image":"desktop2.jpg",
+      "price":"900$",
+      "rate":4.1,
+      "ratesNumber":11,
+      "shortDescription":"Super phone",
+      "description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+      "specification":{
+         "size":"123",
+         "power":"9000"
+      }
+   }
+  ]
 }

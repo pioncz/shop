@@ -1,11 +1,10 @@
 <template>
   <div class="product">
     <div class="product__image" v-bind:style="imageStyle"></div>
-    <h4>{{product.name}}</h4>
-    <Rating class="test" :score="product.rate" />
-    <div>(3 opinie)</div>
-    <div>{{product.price}}</div>
-    <div>{{product.rate}} ({{product.ratesNumber}})</div>
+    <h4 class="product__title">{{product.name}}</h4>
+    <Rating class="product__rating" :rate="product.rate" :ratesNumber="product.ratesNumber" />
+    <div class="product__price">{{product.price}}</div>
+    <button class="product__buy" v-if="onBuy" v-on:click="onBuy">Kup teraz</button>
   </div>
 </template>
 
@@ -14,7 +13,10 @@ import Rating from '@/components/Rating.vue';
 
 export default {
   name: 'ProductTile',
-  props: ['product'],
+  props: {
+    product: Object,
+    onBuy: Function,
+  },
   components: {
     Rating,
   },
@@ -32,15 +34,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/consts.scss';
+
 .product {
   max-width: 200px;
   border: 1px solid #f3f3f3;
-  border-radius: 2px;
-  transition: 0.4s all ease-in-out;
+  border-radius: $borderRadius;
+  transition: $transition;
   box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+  padding: $margin2;
 
   &:hover {
     box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.15);
+  }
+
+  &__title {
+    margin: $margin1 0;
+    font-size: $font2;
+    text-align: left;
   }
 
   &__image {
@@ -48,8 +59,37 @@ export default {
     height: 120px;
   }
 
-  .test {
-    height: 30px;
+  &__rating {
+
+  }
+
+  &__rating-number {
+    margin-left: $margin1;
+    font-size: $font0;
+    font-weight: bold;
+  }
+
+  &__price {
+    text-align: right;
+    font-size: $font2;
+    margin-top: $margin1;
+  }
+
+  &__buy {
+    background: $color1;
+    border: none;
+    color: $color;
+    padding: $margin1 $margin2;
+    border-radius: $borderRadius;
+    width: 100%;
+    margin-top: $margin1;
+    font-size: $font1;
+    transition: $transition;
+    cursor: pointer;
+
+    &:hover {
+      background: $color2;
+    }
   }
 }
 </style>

@@ -5,7 +5,9 @@
       name="fade"
       mode="out-in"
     >
-      <router-view></router-view>
+      <div class="page">
+        <router-view></router-view>
+      </div>
     </transition>
   </div>
 </template>
@@ -23,4 +25,14 @@ export default {
 
 <style lang="scss">
 @import 'styles/main.scss';
+@import '@/styles/consts.scss';
+
+.page {
+  max-width: $maxWidth;
+  margin: 0 auto;
+  padding-top: 60px;
+  min-height: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 0 5px 5px rgba(0,0,0,0.05);
+}
 </style>

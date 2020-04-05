@@ -1,16 +1,16 @@
 <template>
-<div v-bind:style="containerStyle">
+  <div v-bind:style="containerStyle">
     <h3>{{ promotion.header }}</h3>
     <p>{{ promotion.description }}</p>
-</div>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'PromotionTile',
-  props: [
-    'promotion',
-  ],
+  props: {
+    promotion: Object,
+  },
   computed: {
     containerStyle() {
       const {
@@ -24,9 +24,7 @@ export default {
       const overlay = `linear-gradient(to bottom, ${colorFrom}, ${colorTo})`;
 
       return {
-        background: `${overlay}, url(${imageUrl}), ${color}`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        background: `${overlay}, url(${imageUrl}) center center / cover, ${color}`,
       };
     },
   },

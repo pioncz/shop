@@ -6,11 +6,9 @@ const get = (url) => new Promise((resolve, reject) => {
   setTimeout(() => {
     axios.get(url)
       .then((response) => {
-      // handle success
         resolve(response.data);
       })
       .catch((error) => {
-      // handle error
         reject(error);
       });
   }, Math.random() * MAX_DELAY);
@@ -18,10 +16,12 @@ const get = (url) => new Promise((resolve, reject) => {
 
 const getPromotions = () => get('/promotions');
 
+const getPromotion = (promotionId) => get(`/promotions/${promotionId}`);
 
-const getProduct = () => [];
+const getProduct = (productId) => get(`/products/${productId}`);
 
 export {
   getPromotions,
+  getPromotion,
   getProduct,
 };

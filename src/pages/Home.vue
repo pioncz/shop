@@ -1,17 +1,15 @@
 <template>
   <div class="home">
-    <div v-show="loading" class="loader-container">
-      <Loader />
-    </div>
+    <Loader v-show="loading" />
     <div v-show="!loading">
       <router-link
-        v-bind:to="`/promotion/${promotion.id}`"
+        :to="`/promotion/${promotion.id}`"
         v-for="promotion in promotions"
-        v-bind:key="promotion.id"
+        :key="promotion.id"
         class="promotion"
       >
         <PromotionTile
-          v-bind:promotion="promotion"
+          :promotion="promotion"
         />
       </router-link>
     </div>
@@ -32,11 +30,9 @@ export default {
   computed: {
     promotions() {
       return store.state.Promotions.items;
-      // return [];
     },
     loading() {
       return store.state.Promotions.loading;
-      // return true;
     },
   },
   methods: {
@@ -54,22 +50,12 @@ export default {
 @import '@/styles/consts.scss';
 
 .home {
-  max-width: $maxWidth;
-  margin: 0 auto;
-  height: calc(100% - 61px);
+  height: 100%;
 }
 
 .promotion {
   margin: $margin4;
   text-decoration: none;
   display: block;
-}
-
-.loader-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 </style>

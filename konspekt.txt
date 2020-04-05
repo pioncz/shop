@@ -1,0 +1,66 @@
+Rozumiem, że przykładową lekcję, którą teraz nagrywam będę mógł nagrać jeszcze raz. Nie mam teraz dobrej kamery i myślę, że kod z tej lekcji może się delikatnie zmienić.
+
+Myślałem, żeby do kursu dołączyć edytor podstron taki jak np w wix.com gdzie użytkownik widzi stronę docelową, może ją edytować 
+i na żywo widzieć jak strona się zmienia. Zakres tego kursu jest dość spory, dlatego jeszcze nie wiem czy taką lekcję dodawać do kursu.
+
+
+
+Tytuł: 
+Vue - produkcyjna aplikacja na przykładzie sklepu internetowego.
+
+1. Opis kursu
+ Kurs ten stanowi praktyczne wykorzystanie Vue do tworzenia dużych aplikacji webowych, które się skalują.
+ W trakcie kursu użytkownik stworzy sklep internetowy, ale to tylko przykład wykorzystania zdobytej wiedzy.
+ Użytkownik zdobędzie wiedzę praktyczną jak tworzyć podstrony, zagnieżdżone komponenty, formularze z walidacją
+ i obsługą błędów oraz panel admina.
+
+2. Podstawowe informacje
+ 1. Do kogo kurs jest adresowany?
+  Kurs jest skierowany do frontendowców, którzy chcą tworzyć produkcyjne aplikacje w Vue z zastosowaniem dobrych praktyk,
+  ale jeszcze nie pisali w Vue dużych aplikacji lub nie znają dobrze Vue.
+ 2. Jaką wiedzą powinien dysponować potencjalny klient przystępujący do
+zakupu (jeśli jakąś już powinien mieć)?
+  Podstawy Vue lub programowali więcej w podobnych technologiach takich jak React lub Angular.
+
+ 3. Z jaką wiedzą klient wychodzi po ukończeniu kursu?
+  Po kursie klient potrafi
+  - stworzyć dobrą strukturę projektu, która się skaluje
+  - posługiwać się Vuex z zachowaniem dobrych praktyk
+  - tworzyć zaawansowane komponenty Vue
+  - tworzyć skomplikowane formularze z obsługą błędów i walidacją
+  - stworzyć produkcyjnego builda
+
+3. Konspekt kursu
+
+1. Wstęp
+ 1. O kursie
+ 2. Wykorzystywane narzędzia: vscode, npm / yarn, przeglądarka
+ 3. Omówienie stacka technologicznego: vue, vuex, sass, json-server
+ 4. Omówienie architektury aplikacji (katalogi, struktura komponentów, podział na cssy)
+
+2. Programowanie widoków
+ 1. Szkielet projektu (vue create), ustawienie eslinta
+ 2. Routing aplikacji i komponent Header, Footer i Loader
+ 3. Strona kontakt, 404
+ 4. Komponent Produktu
+ 5. Strona home i promocji
+ 6. Strona wyszukiwarki produktów: kategorie, search, filtrowanie i sortowanie
+ 7. Strona produktu
+ 8. Strona rejestracji i logowania
+ 9. Komponent koszyku i podstrona koszyki
+ 10. Strona z procesem zakupu przedmiotów z koszyka.
+ 11. Panel admina: logowanie
+ 12. Panel admina: strona statystyk zakupów
+ 13. Panel admina: listing zleconych zakupów i ich przetwarzanie
+ 14. Panel admina: strona zasobów statycznych
+ 15. Panel admina: edycja treści widocznych na stronie
+
+3. Wykańczanie aplikacji (krótsze lekcje)
+ 1. Build produkcyjny (minifikacja, babel, eslint w githooku)
+ 2. Internacjonalizacja
+ 3. Migracja do Typescriptu
+ 4. Omówienie panelu admina: ryzyko posiadania go w aplikacji i alternatywne rozwiązanie (druga aplikacja) 
+ 5. Opisanie komponentów dostarczania treści: headless cms
+ 6. Globalna obsługa błędów.
+ 7. Alternatywne ładowanie treści
+ 8. Gdzie wydać aplikację: serwery http: (home / nazwa / github pages), 

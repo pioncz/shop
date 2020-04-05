@@ -1,25 +1,26 @@
-import { getPromotions } from '@/utils/api';
+import { getProduct } from '@/utils/api';
 
-const Promotions = {
+const Product = {
   state: {
-    items: [],
+    data: {},
     loading: false,
   },
   mutations: {
-    setItems(state, items) {
-      state.items = items;
+    setData(state, data) {
+      state.data = data;
     },
     setLoading(state, isLoading) {
       state.loading = isLoading;
     },
   },
   actions: {
-    getPromotions({ commit }) {
+    getPromotion({ commit }, promotionId) {
       commit('setLoading', true);
-      getPromotions()
+      commit('setData', {});
+      getProduct(promotionId)
         .then((data) => {
           commit('setLoading', false);
-          commit('setItems', data);
+          commit('setData', data);
         })
         .catch(() => {
           commit('setLoading', false);
@@ -28,4 +29,4 @@ const Promotions = {
   },
 };
 
-export default Promotions;
+export default Product;
