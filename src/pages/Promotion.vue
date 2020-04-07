@@ -33,10 +33,10 @@ export default {
   },
   computed: {
     promotion() {
-      return store.state.Promotion.data;
+      return store.getters.data;
     },
     loading() {
-      return store.state.Promotion.loading;
+      return store.getters.loading;
     },
     finish() {
       return this.promotion.finishCondition || moment(this.promotion.finishDate).format('Do MMMM YYYY');

@@ -13,6 +13,10 @@ const Promotion = {
       state.loading = isLoading;
     },
   },
+  getters: {
+    data: (state) => state.data,
+    loading: (state) => state.isLoading,
+  },
   actions: {
     getPromotion({ commit, dispatch }, promotionId) {
       commit('setLoading', true);
