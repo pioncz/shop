@@ -1,5 +1,3 @@
-404 - nromalne tlo, dopisac zachete do przejscia do glownej
-
 Strona rejestracji
 
 Strona logowania

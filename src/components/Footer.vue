@@ -29,8 +29,7 @@ export default {
   .container {
     display: flex;
     padding: 20px;
-    align-items: flex-end;
-    justify-content: center;
+    justify-content: flex-end;
   }
 
   a {

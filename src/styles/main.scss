@@ -96,3 +96,11 @@ button {
     cursor: default;
   }
 }
+
+a {
+  color: $color2;
+
+  &:hover {
+    color: $color1;
+  }
+}

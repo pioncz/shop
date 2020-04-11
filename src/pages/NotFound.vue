@@ -1,6 +1,7 @@
 <template>
   <div class="page">
-    <h1>Not Found</h1>
+    <h1>Page not found</h1>
+    <p>Check out our current <router-link to="/" exact>promotions</router-link></p>
   </div>
 </template>
 
@@ -10,6 +11,5 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 </style>
