@@ -1,3 +1,5 @@
+@import 'styles/consts.scss'; 
+
 html, body {
   width: 100%;
   height: 100%;
@@ -5,6 +7,10 @@ html, body {
 
 body {
   margin: 0;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 #app {
@@ -26,4 +32,67 @@ body {
 .fade-enter,
 .fade-leave-active {
   opacity: 0
+}
+
+.page {
+  padding: 60px 0;
+}
+
+.container {
+  margin: auto;
+  max-width: $maxWidth;
+}
+
+.modal {
+  background: #fff;
+  padding: $margin2 * 2 $margin2 * 3;
+  width: 380px;
+  max-width: 90%;
+  border-radius: $borderRadius;
+
+  &__title {
+    margin-top: 0;
+  }
+
+  &__error {
+    background: $color4;
+    border: 1px solid $color5;
+    border-radius: $borderRadius;
+    padding: $margin1 $margin2;
+    margin: $margin0 0;
+    font-size: $font0;
+    font-weight: bold;
+    text-align: left;
+    color: $color6;
+    transition: $transition2;
+  }
+}
+
+input {
+  padding: $margin1 $margin2;
+  margin: $margin0 0;
+  border-radius: $borderRadius;
+  border: 1px solid $color3;
+}
+
+button {
+  background: $color1;
+  border: none;
+  color: $color;
+  padding: $margin1 $margin2;
+  border-radius: $borderRadius;
+  margin-top: $margin1;
+  font-size: $font1;
+  transition: $transition2;
+  cursor: pointer;
+  
+  &:hover {
+    background: $color2;
+  }
+
+  &:disabled {
+    background: $background-light;
+    color: $background;
+    cursor: default;
+  }
 }

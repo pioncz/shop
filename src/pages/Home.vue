@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="page home-page">
     <Loader v-show="loading" />
     <div v-show="!loading">
       <router-link
@@ -29,19 +29,14 @@ export default {
   },
   computed: {
     promotions() {
-      return store.state.Promotions.items;
+      return store.getters['promotions/promotions'];
     },
     loading() {
-      return store.state.Promotions.loading;
-    },
-  },
-  methods: {
-    dd() {
-      store.commit('increment');
+      return store.state.promotions.loading;
     },
   },
   beforeCreate() {
-    this.$store.dispatch('getPromotions');
+    store.dispatch('promotions/getPromotions');
   },
 };
 </script>
@@ -49,7 +44,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/consts.scss';
 
-.home {
+.home-page {
   height: 100%;
 }
 

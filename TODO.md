@@ -1,8 +1,31 @@
-- przerobic computed z promotion na gettery i sprawdzi buga:
-  czasem po zaladowaniu jsona pokazuje sie finish, a reszta strony dopiero za chwile
+404 - nromalne tlo, dopisac zachete do przejscia do glownej
+
+Strona rejestracji
+
+Strona logowania
+
+Search:
+Wybór kategorii (kategorie z serwera)
+Zmiana urla podczas edycji searcha
+Paginacja
+Sortowanie: oceny, cena, nazwa
+Zmiana na widok listy
+Ile kafli w 1 wierszu? teraz dla maxwidth zostaje miejsce z prawej
+Po kliknieciu w kafel przejscie do podstrony produktu
+
+Product page:
+- Informacje takie jak na kaflu produktu
+- Mozliwosc oceny produktu
+
+Koszyk:
+- Dodawanie produktu do koszyka na kazdym widoku
+- Widok listy koszyka w navbarze
+- Podstrona koszyka -> mozliwosc przejscia dalej
+- Formularz adresowy
+- Platnosc (zamockowana)
 
 Dodatkowo:
-- poczytac o nazwach komponentow i nazwach w vuex
+- cos innego do zmiany title, description?
 - sprawdzanie typow
 - do opisow jakis rich text editor
 - popup newsletterowy
@@ -11,9 +34,12 @@ Dodatkowo:
 - walidacja formularza
 - przyklad wykorzystania gettera w vuex
 - pokazac drugi rodzaj loadera (ladujacy sie szkielet tresci https://github.com/zalog/placeholder-loading)
-- onboarding?
+- vue cli
 
 Wstawki opisowe:
 - w idealnym swiecie serwer wystawi dobre api, ale czesto trzeba robic dodatkowe rzeczy
 - w zaleznosci od potrzeb nie trzeba za kazdym razem czyscic danych ktore juz pobralismy raz od serwera
 - info do eslinta: w pewnym momencie zacznie nam przeszkadzac w trakcie developmentu i lepiej go dodac do np jako githook i wykonywac lintera np przed commitem lub mergem do developa
+- vuex strict mode - do obserwowania niepozadanych zmian store'a
+- inne stylowanie: bootstrap, material
+- 

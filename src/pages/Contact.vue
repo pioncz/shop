@@ -1,5 +1,5 @@
 <template>
-  <div class="contact-page">
+  <div class="page contact-page">
     <h1>Contact</h1>
     <div class="contact-card">
       <div class="contact-card__left">

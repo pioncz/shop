@@ -1,17 +1,18 @@
 <template>
-  <div>
+  <div class="page">
     <Loader v-show="loading" />
     <div v-show="!loading">
       <PromotionTile class="promotion" :promotion="promotion" />
-      <p class="description">{{promotion.longDescription}}</p>
-      <div class="finish">Promotion ends: {{finish}}</div>
-      <div class="products">
-        <ProductTile
-          v-for="product in promotion.items"
-          :key="product.id"
-          :product="product"
-          :onBuy="test"
-        />
+      <div class="container">
+        <p class="description">{{promotion.longDescription}}</p>
+        <div class="finish">Promotion ends: {{finish}}</div>
+        <div class="products">
+          <ProductTile
+            v-for="product in promotion.items"
+            :key="product.id"
+            :product="product"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -33,22 +34,17 @@ export default {
   },
   computed: {
     promotion() {
-      return store.getters.data;
+      return store.getters['promotion/getPromotion'](this.$route.params.id) || {};
     },
     loading() {
-      return store.getters.loading;
+      return store.getters['promotion/loading'];
     },
     finish() {
-      return this.promotion.finishCondition || moment(this.promotion.finishDate).format('Do MMMM YYYY');
-    },
-  },
-  methods: {
-    test() {
-      console.log('x ');
+      return this.promotion && (this.promotion.finishCondition || moment(this.promotion.finishDate).format('Do MMMM YYYY'));
     },
   },
   beforeCreate() {
-    this.$store.dispatch('getPromotion', this.$route.params.id);
+    this.$store.dispatch('promotion/getPromotion', this.$route.params.id);
   },
 };
 </script>

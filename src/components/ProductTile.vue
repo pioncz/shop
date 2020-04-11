@@ -76,20 +76,7 @@ export default {
   }
 
   &__buy {
-    background: $color1;
-    border: none;
-    color: $color;
-    padding: $margin1 $margin2;
-    border-radius: $borderRadius;
     width: 100%;
-    margin-top: $margin1;
-    font-size: $font1;
-    transition: $transition;
-    cursor: pointer;
-
-    &:hover {
-      background: $color2;
-    }
   }
 }
 </style>

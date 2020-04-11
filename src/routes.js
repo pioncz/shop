@@ -15,46 +15,89 @@ const routes = [
   {
     path: '/',
     component: Home,
+    meta: {
+      title: 'Shop - Home',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'The home page of our example app.',
+        },
+        {
+          property: 'og:description',
+          content: 'The home page of our example app.',
+        },
+      ],
+    },
   },
   {
     path: '/promotion/:id',
     component: Promotion,
+    meta: {
+      title: 'Shop - Promotion',
+    },
   },
   {
     path: '/product',
     component: Product,
+    meta: {
+      title: 'Shop - Product',
+    },
   },
   {
     path: '/cart',
     component: Cart,
+    meta: {
+      title: 'Shop - Cart',
+    },
   },
   {
     path: '/category',
     component: Category,
+    meta: {
+      title: 'Shop - Category',
+    },
   },
   {
     path: '/contact',
     component: Contact,
+    meta: {
+      title: 'Shop - Contact',
+    },
   },
   {
     path: '/login',
     component: Login,
+    meta: {
+      title: 'Shop - Login',
+    },
   },
   {
     path: '/register',
     component: Register,
+    meta: {
+      title: 'Shop - Register',
+    },
   },
   {
     path: '/search',
     component: Search,
+    meta: {
+      title: 'Shop - Search',
+    },
   },
   {
     path: '/admin',
     component: Admin,
+    meta: {
+      title: 'Shop - Admin page',
+    },
   },
   {
     path: '*',
     component: NotFound,
+    meta: {
+      title: 'Shop - Not found',
+    },
   },
 ];
 

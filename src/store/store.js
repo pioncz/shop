@@ -1,17 +1,18 @@
 import Vuex from 'vuex';
 import Vue from 'vue';
-import Promotions from './promotions';
-import Promotion from './promotion';
-import Product from './product';
+import promotions from './promotions';
+import promotion from './promotion';
+import products from './products';
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   modules: {
-    Promotions,
-    Promotion,
-    Product,
+    promotions,
+    promotion,
+    products,
   },
+  strict: process.env.NODE_ENV !== 'production',
 });
 
 export default store;

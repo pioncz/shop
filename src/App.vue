@@ -5,34 +5,25 @@
       name="fade"
       mode="out-in"
     >
-      <div class="page">
-        <router-view></router-view>
-      </div>
+      <router-view></router-view>
     </transition>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
 
 export default {
   name: 'App',
   components: {
     Header,
+    Footer,
   },
 };
 </script>
 
 <style lang="scss">
 @import 'styles/main.scss';
-@import '@/styles/consts.scss';
-
-.page {
-  max-width: $maxWidth;
-  margin: 0 auto;
-  padding-top: 60px;
-  min-height: 100%;
-  box-sizing: border-box;
-  box-shadow: 0 0 5px 5px rgba(0,0,0,0.05);
-}
 </style>

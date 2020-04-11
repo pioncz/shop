@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <h1>Admin page</h1>
       <editor-menu-bar :editor="editor" v-slot="{ isActive }">
       <div class="menubar">

@@ -1,33 +1,40 @@
 import { getPromotion, getProduct } from '@/utils/api';
 
-const Promotion = {
+const promotion = {
+  namespaced: true,
   state: {
-    data: {},
+    promotion: null,
     loading: false,
   },
   mutations: {
-    setData(state, data) {
-      state.data = data;
+    setPromotion(state, newPromotion) {
+      state.promotion = newPromotion;
     },
     setLoading(state, isLoading) {
       state.loading = isLoading;
     },
   },
   getters: {
-    data: (state) => state.data,
-    loading: (state) => state.isLoading,
+    loading: (state) => state.loading,
+    getPromotion: (state) => (promotionId) => {
+      if (state.promotion && state.promotion.id === promotionId) {
+        return state.promotion;
+      }
+    },
   },
   actions: {
-    getPromotion({ commit, dispatch }, promotionId) {
+    getPromotion({ state, commit }, promotionId) {
+      if (state.promotion && state.promotion.id === promotionId) return;
+
       commit('setLoading', true);
-      commit('setData', {});
+      commit('setPromotion', {});
       getPromotion(promotionId)
         .then((data) => {
           const getPromises = data.items.map((productId) => getProduct(productId));
           Promise.all(getPromises).then((values) => {
             const returnData = { ...data, items: values };
 
-            commit('setData', returnData);
+            commit('setPromotion', returnData);
             commit('setLoading', false);
           });
         })
@@ -38,4 +45,4 @@ const Promotion = {
   },
 };
 
-export default Promotion;
+export default promotion;

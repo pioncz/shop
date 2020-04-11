@@ -1,19 +1,22 @@
 <template>
-  <div class="header">
-    <router-link to="/" exact>Home</router-link>
-    <router-link to="/product">Product</router-link>
-    <router-link to="/cart">cart</router-link>
-    <router-link to="/category">category</router-link>
-    <router-link to="/contact">contact</router-link>
-    <router-link to="/login">login</router-link>
-    <router-link to="/register">register</router-link>
-    <router-link to="/search">search</router-link>
-    <router-link to="/admin">admin</router-link>
-    <router-link to="/ddd">Not found</router-link>
-
-    <div>Login / register</div>
-    <div>0 items</div>
-  </div>
+  <nav class="header">
+    <div class="container">
+      <router-link to="/" exact>Home</router-link>
+      <router-link to="/product">Product</router-link>
+      <router-link to="/cart">cart</router-link>
+      <router-link to="/category">category</router-link>
+      <router-link to="/contact">contact</router-link>
+      <router-link to="/login">login</router-link>
+      <router-link to="/register">register</router-link>
+      <router-link to="/search">search</router-link>
+      <router-link to="/admin">admin</router-link>
+      <router-link to="/ddd">Not found</router-link>
+      <div>
+        <div>Login / register</div>
+        <div>0 items</div>
+      </div>
+    </div>
+  </nav>
 </template>
 
 <script>
@@ -26,8 +29,6 @@ export default {
 @import '@/styles/consts.scss';
 
 .header {
-  display: flex;
-  padding: 20px;
   background: $background;
   color: $color;
   position: fixed;
@@ -38,14 +39,26 @@ export default {
   height: 60px;
   box-sizing: border-box;
 
-  a {
-    color: $color;
-    margin: 0 10px;
-    text-decoration: none;
-  }
+  .container {
+    height: 60px;
+    display: flex;
+    align-items: center;
 
-  .router-link-active {
-    border-bottom: 2px solid #fff;
+    a {
+      padding: 5px;
+      color: $color;
+      line-height: 22px;
+      text-decoration: none;
+    }
+
+    .router-link-active {
+      border-bottom: 2px solid #fff;
+    }
+
+    & > div:last-child {
+      flex: 1 1;
+      text-align: right;
+    }
   }
 }
 </style>
