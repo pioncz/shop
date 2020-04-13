@@ -1,6 +1,6 @@
 <template>
   <div class="page login-page">
-    <Loader background v-show="loading" />
+    <AppLoader background v-show="loading" />
     <div class="modal">
       <form @submit.prevent="handleSubmit">
         <h1 class="modal__title">Log in</h1>
@@ -26,12 +26,12 @@
 </template>
 
 <script>
-import Loader from '@/components/Loader.vue';
+import AppLoader from '@/components/AppLoader.vue';
 
 export default {
   name: 'Login',
   components: {
-    Loader,
+    AppLoader,
   },
   data() {
     return {

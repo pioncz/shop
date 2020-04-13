@@ -1,6 +1,6 @@
 <template>
   <div class="page register-page">
-    <Loader background v-show="loading" />
+    <AppLoader background v-show="loading" />
     <div class="modal">
       <div v-show="registered">
         <h1>Thank you</h1>
@@ -36,12 +36,12 @@
 
 <script>
 import { postUser } from '@/utils/api';
-import Loader from '@/components/Loader';
+import AppLoader from '@/components/AppLoader';
 
 export default {
   name: 'Register',
   components: {
-    Loader,
+    AppLoader,
   },
   data() {
     return {

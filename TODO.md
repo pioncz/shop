@@ -1,3 +1,10 @@
+jak rozwiazac problem fetchowania itemow + promocji?
+- 2 akcje osobno: getPromotions -> for of getProduct -> Promise.all()
+- wylogowac caly proces - czy po tej akcji na pewno mamy wszystko i dzialo sie to w dobrej kolejnosci?
+async / await
+
+zapytac Rafala czy trzymamy wszystkie actionTypes, getterTypes, mutationTypes w 1 pliku i czy wszystkie 3 typy
+
 Przejrzec nazewnistwo store'a user. Dodac status: loading, error, success.
 
 Dodać mechanizm securedPage: dla widoku jak cart / checkout bedzie przenosic na strone logowania
@@ -32,9 +39,10 @@ Dodatkowo:
 - walidacja formularza
 - przyklad wykorzystania gettera w vuex
 - pokazac drugi rodzaj loadera (ladujacy sie szkielet tresci https://github.com/zalog/placeholder-loading)
-- vue cli
+- vue cli (jak ulatwic sobie zycie?)
 
 Wstawki opisowe:
+- AppComponent, TheComponent, SuperComponent
 - w idealnym swiecie serwer wystawi dobre api, ale czesto trzeba robic dodatkowe rzeczy
 - w zaleznosci od potrzeb nie trzeba za kazdym razem czyscic danych ktore juz pobralismy raz od serwera
 - info do eslinta: w pewnym momencie zacznie nam przeszkadzac w trakcie developmentu i lepiej go dodac do np jako githook i wykonywac lintera np przed commitem lub mergem do developa
