@@ -1,5 +1,5 @@
-<template>
-<div class="loader">
+w<template>
+<div :class="{loader: true, background }">
   <svg viewBox="0 0 60 60">
     <circle cx="30" cy="30" r="20" stroke-width="2" fill="none" />
     <circle cx="30" cy="30" r="17" stroke-width="2" fill="none" />
@@ -14,6 +14,9 @@
 <script>
 export default {
   name: 'Loader',
+  props: {
+    background: Boolean,
+  },
 };
 </script>
 
@@ -32,6 +35,11 @@ export default {
   transform: translate(-50%, -50%) rotate(-90deg);
   width: 120px;
   height: 120px;
+
+  &.background {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+  }
 
   svg {
     width: 100%;

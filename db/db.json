@@ -167,5 +167,9 @@
          "power":"9000"
       }
    }
-  ]
+  ],
+
+  "currentUser": {
+     "name": "Peter"
+  }
 }

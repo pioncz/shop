@@ -21,6 +21,9 @@ export default {
     Header,
     Footer,
   },
+  beforeCreate() {
+    this.$store.dispatch('user/validateUser');
+  },
 };
 </script>
 

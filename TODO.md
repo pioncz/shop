@@ -1,6 +1,6 @@
-Strona rejestracji
+Przejrzec nazewnistwo store'a user. Dodac status: loading, error, success.
 
-Strona logowania
+Dodać mechanizm securedPage: dla widoku jak cart / checkout bedzie przenosic na strone logowania
 
 Search:
 Wybór kategorii (kategorie z serwera)

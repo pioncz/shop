@@ -22,10 +22,21 @@ const getProducts = () => get('/products');
 
 const getProduct = (productId) => get(`/products/${productId}`);
 
+const getCurrentUser = () => get('/currentUser');
+
+// fake calls
+const postUser = () => get('/products');
+
+const login = () => get('/currentUser');
+
+const logout = () => get('/products');
 
 export {
+  getCurrentUser,
   getPromotions,
   getPromotion,
   getProducts,
   getProduct,
+  postUser,
+  login,
 };
