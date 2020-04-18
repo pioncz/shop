@@ -27,6 +27,7 @@
 
 <script>
 import AppLoader from '@/components/AppLoader.vue';
+import * as actionTypes from '@/store/action-types';
 
 export default {
   name: 'Login',
@@ -55,7 +56,7 @@ export default {
       } else {
         this.loading = true;
         this.error = null;
-        this.$store.dispatch('user/login', { email: this.email, password: this.password })
+        this.$store.dispatch(actionTypes.POST_LOGIN, { email: this.email, password: this.password })
           .then(() => {
             this.$router.push('/');
           })

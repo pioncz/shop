@@ -1,7 +1,8 @@
 <template>
   <div class="page">
+    <ServerError v-show="errorVisible" @onRefresh="fetchPromotion" />
     <AppLoader v-show="loading" />
-    <div v-show="!loading">
+    <div v-show="promotionVisible">
       <PromotionTile class="promotion" :promotion="promotion" />
       <div class="container">
         <p class="description">{{promotion.longDescription}}</p>
@@ -21,9 +22,10 @@
 <script>
 import PromotionTile from '@/components/PromotionTile.vue';
 import ProductTile from '@/components/ProductTile.vue';
-import store from '@/store/store';
 import AppLoader from '@/components/AppLoader.vue';
+import ServerError from '@/components/ServerError.vue';
 import moment from 'moment';
+import { mapGetters } from 'vuex';
 import * as getterTypes from '@/store/getter-types';
 import * as actionTypes from '@/store/action-types';
 
@@ -33,20 +35,31 @@ export default {
     PromotionTile,
     ProductTile,
     AppLoader,
+    ServerError,
   },
   computed: {
-    promotion() {
-      return store.getters[getterTypes.GET_PROMOTION_DATA];
-    },
-    loading() {
-      return store.getters[getterTypes.GET_PROMOTION_LOADING];
-    },
+    ...mapGetters({
+      promotion: getterTypes.GET_PROMOTION_DATA,
+      loading: getterTypes.GET_PROMOTION_LOADING,
+      error: getterTypes.GET_PROMOTION_ERROR,
+    }),
     finish() {
       return this.promotion.id && (this.promotion.finishCondition || moment(this.promotion.finishDate).format('Do MMMM YYYY'));
     },
+    promotionVisible() {
+      return !this.error && !this.loading;
+    },
+    errorVisible() {
+      return this.error && !this.loading;
+    },
   },
-  beforeCreate() {
-    this.$store.dispatch(actionTypes.FETCH_PROMOTION, this.$route.params.id);
+  created() {
+    this.fetchPromotion();
+  },
+  methods: {
+    fetchPromotion() {
+      this.$store.dispatch(actionTypes.FETCH_PROMOTION, this.$route.params.id);
+    },
   },
 };
 </script>

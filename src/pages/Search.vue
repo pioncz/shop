@@ -32,7 +32,7 @@
 
 <script>
 import ProductTile from '@/components/ProductTile.vue';
-import store from '@/store/store';
+import { mapGetters } from 'vuex';
 import * as getterTypes from '@/store/getter-types';
 import * as actionTypes from '@/store/action-types';
 
@@ -42,12 +42,10 @@ export default {
     ProductTile,
   },
   computed: {
-    products() {
-      return store.getters[getterTypes.GET_PRODUCTS_LIST];
-    },
-    loading() {
-      return store.getters[getterTypes.GET_PRODUCTS_LOADING];
-    },
+    ...mapGetters({
+      products: getterTypes.GET_PRODUCTS_LIST,
+      loading: getterTypes.GET_PRODUCTS_LOADING,
+    }),
   },
   beforeCreate() {
     this.$store.dispatch(actionTypes.FETCH_PRODUCTS);

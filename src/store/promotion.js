@@ -45,6 +45,12 @@ const promotion = {
 
       const promotionFromStore = getters[getterTypes.GET_PROMOTIONS_BY_ID](promotionId);
 
+      const handleError = () => {
+        commit(mutationTypes.SET_PROMOTION_ERROR, 'Server error');
+        commit(mutationTypes.SET_PROMOTION_LOADING, false);
+        commit(mutationTypes.SET_PROMOTION_ID, null);
+      };
+
       const handlePromotion = (promotionData) => {
         const fetchPromises = promotionData.items.map((productId) => getProduct(productId));
         Promise.all(fetchPromises).then((values) => {
@@ -52,7 +58,8 @@ const promotion = {
 
           commit(mutationTypes.SET_PROMOTION_DATA, returnData);
           commit(mutationTypes.SET_PROMOTION_LOADING, false);
-        });
+        })
+          .catch(handleError);
       };
 
       if (promotionFromStore) {
@@ -62,10 +69,7 @@ const promotion = {
           .then((data) => {
             handlePromotion(data);
           })
-          .catch(() => {
-            commit(mutationTypes.SET_PROMOTION_ERROR, 'Server error');
-            commit(mutationTypes.SET_PROMOTION_LOADING, false);
-          });
+          .catch(handleError);
       }
     },
   },
