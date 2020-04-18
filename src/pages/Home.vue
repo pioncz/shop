@@ -20,6 +20,8 @@
 import PromotionTile from '@/components/PromotionTile.vue';
 import store from '@/store/store';
 import Loader from '@/components/Loader.vue';
+import * as getterTypes from '@/store/getter-types';
+import * as actionTypes from '@/store/action-types';
 
 export default {
   name: 'Home',
@@ -29,14 +31,14 @@ export default {
   },
   computed: {
     promotions() {
-      return store.getters['promotions/promotions'];
+      return store.getters[getterTypes.GET_PROMOTIONS_LIST];
     },
     loading() {
-      return store.state.promotions.loading;
+      return store.getters[getterTypes.GET_PROMOTIONS_LOADING];
     },
   },
   beforeCreate() {
-    store.dispatch('promotions/getPromotions');
+    store.dispatch(actionTypes.FETCH_PROMOTIONS);
   },
 };
 </script>

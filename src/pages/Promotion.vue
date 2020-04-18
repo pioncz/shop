@@ -24,6 +24,8 @@ import ProductTile from '@/components/ProductTile.vue';
 import store from '@/store/store';
 import Loader from '@/components/Loader.vue';
 import moment from 'moment';
+import * as getterTypes from '@/store/getter-types';
+import * as actionTypes from '@/store/action-types';
 
 export default {
   name: 'Promotion',
@@ -34,17 +36,17 @@ export default {
   },
   computed: {
     promotion() {
-      return store.getters['promotion/getPromotion'](this.$route.params.id) || {};
+      return store.getters[getterTypes.GET_PROMOTION_DATA];
     },
     loading() {
-      return store.getters['promotion/loading'];
+      return store.getters[getterTypes.GET_PROMOTION_LOADING];
     },
     finish() {
-      return this.promotion && (this.promotion.finishCondition || moment(this.promotion.finishDate).format('Do MMMM YYYY'));
+      return this.promotion.id && (this.promotion.finishCondition || moment(this.promotion.finishDate).format('Do MMMM YYYY'));
     },
   },
   beforeCreate() {
-    this.$store.dispatch('promotion/getPromotion', this.$route.params.id);
+    this.$store.dispatch(actionTypes.FETCH_PROMOTION, this.$route.params.id);
   },
 };
 </script>

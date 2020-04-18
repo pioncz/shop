@@ -1,30 +1,32 @@
 import { login, logout, getCurrentUser } from '@/utils/api';
+import * as actionTypes from './action-types';
+import * as mutationTypes from './mutation-types';
+import * as getterTypes from './getter-types';
 
 const user = {
-  namespaced: true,
   state: {
-    isAuthenticated: false,
     userData: null,
   },
   mutations: {
-    setCurrentUser(state, userData) {
+    [mutationTypes.SET_CURRENT_USER](state, userData) {
       state.userData = userData;
-      state.isAuthenticated = true;
     },
   },
   getters: {
-    getCurrentUser: (state) => state.userData,
+    [getterTypes.GET_CURRENT_USER](state) {
+      return state.userData;
+    },
   },
   actions: {
-    login({ commit }, { email, password }) {
+    [actionTypes.POST_LOGIN]({ commit }, { email, password }) {
       login({ email, password })
         .then((userData) => {
-          commit('setCurrentUser', userData);
+          commit(mutationTypes.SET_CURRENT_USER, userData);
         });
     },
-    validateUser({ commit }) {
+    [actionTypes.FETCH_CURRENT_USER]({ commit }) {
       getCurrentUser().then((userData) => {
-        commit('setCurrentUser', userData);
+        commit(mutationTypes.SET_CURRENT_USER, userData);
       });
     },
   },

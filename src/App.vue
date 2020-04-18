@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import * as actionTypes from '@/store/action-types';
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
 
@@ -22,7 +23,7 @@ export default {
     Footer,
   },
   beforeCreate() {
-    this.$store.dispatch('user/validateUser');
+    this.$store.dispatch(actionTypes.FETCH_CURRENT_USER);
   },
 };
 </script>

@@ -1,6 +1,9 @@
-Przejrzec nazewnistwo store'a user. Dodac status: loading, error, success.
+Dodać obsługę błędów do wszystkich storów i widoków
+
+Store promotion: produkty pobierane i wrzucane do stora produktow
 
 Dodać mechanizm securedPage: dla widoku jak cart / checkout bedzie przenosic na strone logowania
+Wylogowywanie
 
 Search:
 Wybór kategorii (kategorie z serwera)

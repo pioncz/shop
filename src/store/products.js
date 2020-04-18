@@ -1,40 +1,51 @@
 import { getProducts } from '@/utils/api';
+import * as actionTypes from './action-types';
+import * as mutationTypes from './mutation-types';
+import * as getterTypes from './getter-types';
 
 const products = {
-  namespaced: true,
   state: {
-    products: [],
-    loading: false,
+    productsList: [],
+    productsLoading: false,
+    productsError: null,
   },
   mutations: {
-    setProducts(state, items) {
-      state.products = items;
+    [mutationTypes.SET_PRODUCTS_LIST](state, newList) {
+      state.productsList = newList;
     },
-    setLoading(state, isLoading) {
-      state.loading = isLoading;
+    [mutationTypes.SET_PRODUCTS_LOADING](state, isLoading) {
+      state.productsLoading = isLoading;
+    },
+    [mutationTypes.SET_PRODUCTS_ERROR](state, error) {
+      state.productsError = error;
     },
   },
   getters: {
-    products(state) {
-      return state.products;
+    [getterTypes.GET_PRODUCTS_LIST](state) {
+      return state.productsList;
     },
-    loading(state) {
-      return state.loading;
+    [getterTypes.GET_PRODUCTS_LOADING](state) {
+      return state.productsLoading;
+    },
+    [getterTypes.GET_PRODUCTS_ERROR](state) {
+      return state.productsError;
     },
   },
   actions: {
-    getProducts({ state, commit }) {
-      if (state.loading || state.products.length) return;
+    [actionTypes.FETCH_PRODUCTS]({ state, commit }) {
+      if (state.productsLoading || state.productsList.length) return;
 
-      commit('setLoading', true);
+      commit(mutationTypes.SET_PRODUCTS_LOADING, true);
 
       getProducts()
         .then((data) => {
-          commit('setLoading', false);
-          commit('setProducts', data);
+          commit(mutationTypes.SET_PRODUCTS_LIST, data);
         })
         .catch(() => {
-          commit('setLoading', false);
+          commit(mutationTypes.SET_PRODUCTS_ERROR, 'Server error');
+        })
+        .finally(() => {
+          commit(mutationTypes.SET_PRODUCTS_LOADING, true);
         });
     },
   },

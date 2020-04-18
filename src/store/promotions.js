@@ -1,39 +1,51 @@
 import { getPromotions } from '@/utils/api';
+import * as actionTypes from './action-types';
+import * as mutationTypes from './mutation-types';
+import * as getterTypes from './getter-types';
 
 const promotions = {
-  namespaced: true,
   state: {
-    promotions: [],
-    loading: false,
+    promotionsList: [],
+    promotionsLoading: false,
+    promotionsError: null,
   },
   mutations: {
-    setPromotions(state, newPromotions) {
-      state.promotions = newPromotions;
+    [mutationTypes.SET_PROMOTIONS_LIST](state, newPromotions) {
+      state.promotionsList = newPromotions;
     },
-    setLoading(state, isLoading) {
-      state.loading = isLoading;
+    [mutationTypes.SET_PROMOTIONS_LOADING](state, isLoading) {
+      state.promotionsLoading = isLoading;
+    },
+    [mutationTypes.SET_PROMOTIONS_ERROR](state, error) {
+      state.promotionsError = error;
     },
   },
   getters: {
-    promotions(state) {
-      return state.promotions;
+    [getterTypes.GET_PROMOTIONS_LIST](state) {
+      return state.promotionsList;
     },
-    loading(state) {
-      return state.loading;
+    [getterTypes.GET_PROMOTIONS_BY_ID]: (state) => (promotionId) => state.promotionsList.find((promotion) => promotion.id === promotionId),
+    [getterTypes.GET_PROMOTIONS_LOADING](state) {
+      return state.promotionsLoading;
+    },
+    [getterTypes.GET_PROMOTIONS_ERROR](state) {
+      return state.promotionsError;
     },
   },
   actions: {
-    getPromotions({ state, commit }) {
-      if (state.loading || state.promotions.length) return;
+    [actionTypes.FETCH_PROMOTIONS]({ state, commit }) {
+      if (state.promotionsLoading || state.promotionsList.length) return;
 
-      commit('setLoading', true);
+      commit(mutationTypes.SET_PROMOTIONS_LOADING, true);
       getPromotions()
         .then((data) => {
-          commit('setLoading', false);
-          commit('setPromotions', data);
+          commit(mutationTypes.SET_PROMOTIONS_LIST, data);
         })
         .catch(() => {
-          commit('setLoading', false);
+          commit(mutationTypes.SET_PROMOTIONS_ERROR, 'Server error');
+        })
+        .finally(() => {
+          commit(mutationTypes.SET_PROMOTIONS_LOADING, false);
         });
     },
   },

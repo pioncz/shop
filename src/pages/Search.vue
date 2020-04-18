@@ -33,6 +33,8 @@
 <script>
 import ProductTile from '@/components/ProductTile.vue';
 import store from '@/store/store';
+import * as getterTypes from '@/store/getter-types';
+import * as actionTypes from '@/store/action-types';
 
 export default {
   name: 'Search',
@@ -41,14 +43,14 @@ export default {
   },
   computed: {
     products() {
-      return store.getters['products/products'];
+      return store.getters[getterTypes.GET_PRODUCTS_LIST];
     },
     loading() {
-      return store.getters['products/loading'];
+      return store.getters[getterTypes.GET_PRODUCTS_LOADING];
     },
   },
   beforeCreate() {
-    this.$store.dispatch('products/getProducts');
+    this.$store.dispatch(actionTypes.FETCH_PRODUCTS);
   },
 };
 </script>
