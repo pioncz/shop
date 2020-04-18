@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const MAX_DELAY = 500;
+const MAX_DELAY = 2500;
 
 const get = (url) => new Promise((resolve, reject) => {
   setTimeout(() => {

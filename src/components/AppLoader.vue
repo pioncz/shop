@@ -1,4 +1,4 @@
-w<template>
+<template>
 <div :class="{loader: true, background }">
   <svg viewBox="0 0 60 60">
     <circle cx="30" cy="30" r="20" stroke-width="2" fill="none" />
@@ -13,7 +13,7 @@ w<template>
 
 <script>
 export default {
-  name: 'Loader',
+  name: 'AppLoader',
   props: {
     background: Boolean,
   },

@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <Loader v-show="loading" />
+    <AppLoader v-show="loading" />
     <div v-show="!loading">
       <PromotionTile class="promotion" :promotion="promotion" />
       <div class="container">
@@ -22,7 +22,7 @@
 import PromotionTile from '@/components/PromotionTile.vue';
 import ProductTile from '@/components/ProductTile.vue';
 import store from '@/store/store';
-import Loader from '@/components/Loader.vue';
+import AppLoader from '@/components/AppLoader.vue';
 import moment from 'moment';
 import * as getterTypes from '@/store/getter-types';
 import * as actionTypes from '@/store/action-types';
@@ -32,7 +32,7 @@ export default {
   components: {
     PromotionTile,
     ProductTile,
-    Loader,
+    AppLoader,
   },
   computed: {
     promotion() {

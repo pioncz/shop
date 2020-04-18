@@ -1,7 +1,8 @@
 <template>
   <div class="page home-page">
-    <Loader v-show="loading" />
-    <div v-show="!loading">
+    <ServerError v-show="errorVisible" @onRefresh="fetchPromotions" />
+    <AppLoader v-show="loading" />
+    <div v-show="listVisible">
       <router-link
         :to="`/promotion/${promotion.id}`"
         v-for="promotion in promotions"
@@ -18,27 +19,39 @@
 
 <script>
 import PromotionTile from '@/components/PromotionTile.vue';
-import store from '@/store/store';
-import Loader from '@/components/Loader.vue';
-import * as getterTypes from '@/store/getter-types';
+import AppLoader from '@/components/AppLoader.vue';
+import ServerError from '@/components/ServerError.vue';
+import { mapGetters } from 'vuex';
 import * as actionTypes from '@/store/action-types';
+import * as getterTypes from '@/store/getter-types';
 
 export default {
   name: 'Home',
   components: {
     PromotionTile,
-    Loader,
+    AppLoader,
+    ServerError,
   },
   computed: {
-    promotions() {
-      return store.getters[getterTypes.GET_PROMOTIONS_LIST];
+    ...mapGetters({
+      promotions: getterTypes.GET_PROMOTIONS_LIST,
+      loading: getterTypes.GET_PROMOTIONS_LOADING,
+      error: getterTypes.GET_PROMOTIONS_ERROR,
+    }),
+    listVisible() {
+      return !this.loading && !this.error;
     },
-    loading() {
-      return store.getters[getterTypes.GET_PROMOTIONS_LOADING];
+    errorVisible() {
+      return !this.loading && this.error;
     },
   },
-  beforeCreate() {
-    store.dispatch(actionTypes.FETCH_PROMOTIONS);
+  created() {
+    this.fetchPromotions();
+  },
+  methods: {
+    fetchPromotions() {
+      this.$store.dispatch(actionTypes.FETCH_PROMOTIONS);
+    },
   },
 };
 </script>
