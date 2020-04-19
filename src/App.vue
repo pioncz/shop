@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import * as actionTypes from '@/store/action-types';
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
 
@@ -20,6 +21,9 @@ export default {
   components: {
     Header,
     Footer,
+  },
+  beforeCreate() {
+    this.$store.dispatch(actionTypes.FETCH_CURRENT_USER);
   },
 };
 </script>

@@ -56,7 +56,7 @@ export default {
       } else {
         this.loading = true;
         this.error = null;
-        this.$store.dispatch(actionTypes.POST_LOGIN, { email: this.email, password: this.password })
+        this.$store.dispatch(actionTypes.LOGIN, { email: this.email, password: this.password })
           .then(() => {
             const nextUrl = this.$route.params.nextUrl || '/';
 

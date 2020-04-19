@@ -12,16 +12,36 @@
       <router-link to="/admin">admin</router-link>
       <router-link to="/ddd">Not found</router-link>
       <div>
-        <div>Login / register</div>
-        <div>0 items</div>
+        <div v-show="loading">Loading</div>
+        <div v-show="!user && !loading">Login / register</div>
+        <div v-show="user && !loading">0 items</div>
+        <button v-show="user && !loading" @click="logout">Logout</button>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
+import * as actionTypes from '@/store/action-types';
+import * as getterTypes from '@/store/getter-types';
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Header',
+  computed: {
+    ...mapGetters({
+      user: getterTypes.GET_CURRENT_USER,
+      loading: getterTypes.GET_CURRENT_USER_LOADING,
+    }),
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch(actionTypes.LOGOUT)
+        .then(() => {
+          this.$router.push('/login');
+        });
+    },
+  },
 };
 </script>
 

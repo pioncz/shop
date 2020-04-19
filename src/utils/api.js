@@ -25,11 +25,11 @@ const getProduct = (productId) => get(`/products/${productId}`);
 const getCurrentUser = () => get('/currentUser');
 
 // fake calls
-const postUser = () => get('/products');
+const postUser = () => get('/currentUser');
 
 const login = () => get('/currentUser');
 
-const logout = () => get('/products');
+const logout = () => get('/currentUser');
 
 export {
   getCurrentUser,
@@ -39,4 +39,5 @@ export {
   getProduct,
   postUser,
   login,
+  logout,
 };
