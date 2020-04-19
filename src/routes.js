@@ -13,6 +13,7 @@ import Admin from './pages/Admin.vue';
 // Routes
 const routes = [
   {
+    name: 'home',
     path: '/',
     component: Home,
     meta: {
@@ -30,6 +31,7 @@ const routes = [
     },
   },
   {
+    name: 'promotion',
     path: '/promotion/:id',
     component: Promotion,
     meta: {
@@ -37,6 +39,7 @@ const routes = [
     },
   },
   {
+    name: 'product',
     path: '/product',
     component: Product,
     meta: {
@@ -44,6 +47,7 @@ const routes = [
     },
   },
   {
+    name: 'cart',
     path: '/cart',
     component: Cart,
     meta: {
@@ -52,6 +56,7 @@ const routes = [
     },
   },
   {
+    name: 'category',
     path: '/category',
     component: Category,
     meta: {
@@ -59,6 +64,7 @@ const routes = [
     },
   },
   {
+    name: 'contact',
     path: '/contact',
     component: Contact,
     meta: {
@@ -74,6 +80,7 @@ const routes = [
     },
   },
   {
+    name: 'register',
     path: '/register',
     component: Register,
     meta: {
@@ -81,6 +88,7 @@ const routes = [
     },
   },
   {
+    name: 'search',
     path: '/search',
     component: Search,
     meta: {
@@ -88,6 +96,7 @@ const routes = [
     },
   },
   {
+    name: 'admin',
     path: '/admin',
     component: Admin,
     meta: {

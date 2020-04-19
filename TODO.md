@@ -1,8 +1,17 @@
-Wylogowywanie
+Product page:
+- Informacje takie jak na kaflu produktu
+- Mozliwosc oceny produktu (dodac info w db.json produktu)
+
+Koszyk:
+- Dodawanie produktu do koszyka na kazdym widoku
+- Widok listy koszyka w navbarze
+- Podstrona koszyka -> mozliwosc przejscia dalej
+- Formularz adresowy
+- Platnosc (zamockowana)
 
 Search:
-Wybór kategorii (kategorie z serwera)
 Zmiana urla podczas edycji searcha
+Wybór kategorii (kategorie z serwera)
 Paginacja
 Sortowanie: oceny, cena, nazwa
 Zmiana na widok listy
@@ -11,16 +20,7 @@ Po kliknieciu w kafel przejscie do podstrony produktu
 
 Store promotion: produkty pobierane i wrzucane do stora produktow. Test czy zadziala jak produkty beda w storze
 
-Product page:
-- Informacje takie jak na kaflu produktu
-- Mozliwosc oceny produktu
-
-Koszyk:
-- Dodawanie produktu do koszyka na kazdym widoku
-- Widok listy koszyka w navbarze
-- Podstrona koszyka -> mozliwosc przejscia dalej
-- Formularz adresowy
-- Platnosc (zamockowana)
+Admin panel
 
 Dodatkowo:
 - deployment https://vuejs.org/v2/guide/deployment.html

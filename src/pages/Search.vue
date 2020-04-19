@@ -1,23 +1,27 @@
 <template>
   <div class="page">
     <h1>Search</h1>
-    <input placeholder="search" />
-    <button>Search</button>
-    <select>
-      <option>All</option>
-      <option>Phone</option>
-      <option>Laptop</option>
-      <option>Tablet</option>
-      <option>Desktop pc</option>
-    </select>
-    <div>
-      Sort by:
+    <form @submit.prevent="handleSubmit">
+      <input placeholder="Search by name" v-model="name" />
+      <button type="submit">Search</button>
       <select>
-        <option>Name</option>
-        <option>Price</option>
-        <option>Rate</option>
+        <option>All</option>
+        <option>Phone</option>
+        <option>Laptop</option>
+        <option>Tablet</option>
+        <option>Desktop pc</option>
       </select>
-    </div>
+      <div>
+        Sort by:
+        <select>
+          <option>Name</option>
+          <option>Price</option>
+          <option>Rate</option>
+        </select>
+      </div>
+    </form>
+
+
     <p>{{loading}}</p>
     <p>{{products}}</p>
     <div class="products">
@@ -38,6 +42,11 @@ import * as actionTypes from '@/store/action-types';
 
 export default {
   name: 'Search',
+  data() {
+    return {
+      name: this.$route.query.name || '',
+    };
+  },
   components: {
     ProductTile,
   },
@@ -49,6 +58,18 @@ export default {
   },
   beforeCreate() {
     this.$store.dispatch(actionTypes.FETCH_PRODUCTS);
+  },
+  methods: {
+    handleSubmit() {
+      console.log('submit');
+
+      this.$router.push({
+        name: 'search',
+        query: {
+          name: this.name,
+        },
+      });
+    },
   },
 };
 </script>
