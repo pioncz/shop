@@ -58,7 +58,9 @@ export default {
         this.error = null;
         this.$store.dispatch(actionTypes.POST_LOGIN, { email: this.email, password: this.password })
           .then(() => {
-            this.$router.push('/');
+            const nextUrl = this.$route.params.nextUrl || '/';
+
+            this.$router.push(nextUrl);
           })
           .catch(() => {
             this.error = 'Email or password is incorrect';
@@ -71,7 +73,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$blur: 10px;
+$blur: 5px;
 $from: rgba(235,237,243,0.8) 0%;
 $to: rgba(121,133,148,0.9) 60%;
 

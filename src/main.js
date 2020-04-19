@@ -4,8 +4,10 @@ import App from './App.vue';
 import routes from './routes';
 import store from './store/store';
 import * as getterTypes from './store/getter-types';
+import * as actionTypes from './store/action-types';
 
 Vue.use(VueRouter);
+Vue.config.productionTip = false;
 
 // Routing logic
 const router = new VueRouter({
@@ -14,70 +16,48 @@ const router = new VueRouter({
   mode: 'history',
 });
 
-router.beforeEach((to, from, next) => {
-  const currentUser = store.getters[getterTypes.GET_CURRENT_USER];
+router.beforeEach(async (to, from, next) => {
   // Authentications:
-  // if (to.matched.some((record) => record.meta.requiresAuth)) {
-  //   if (localStorage.getItem('jwt') == null) {
-  //     next({
-  //       path: '/login',
-  //       params: { nextUrl: to.fullPath },
-  //     });
-  //   } else {
-  //     const user = JSON.parse(localStorage.getItem('user'));
-  //     if (to.matched.some((record) => record.meta.is_admin)) {
-  //       if (user.is_admin == 1) {
-  //         next();
-  //       } else {
-  //         next({ name: 'userboard' });
-  //       }
-  //     } else {
-  //       next();
-  //     }
-  //   }
-  // } else if (to.matched.some((record) => record.meta.guest)) {
-  //   if (localStorage.getItem('jwt') == null) {
-  //     next();
-  //   } else {
-  //     next({ name: 'userboard' });
-  //   }
-  // } else {
-  //   next();
-  // }
+  if (to.matched.some((record) => record.meta.secured)) {
+    await store.dispatch(actionTypes.FETCH_CURRENT_USER).catch(() => {});
+    const currentUser = store.getters[getterTypes.GET_CURRENT_USER];
+
+    if (!currentUser) {
+      return next({
+        name: 'login',
+        params: { nextUrl: to.fullPath },
+      });
+    }
+  }
 
   // Page metadata:
+  const matchedRoutes = to.matched.slice().reverse();
+  const nearestWithTitle = matchedRoutes.find((r) => r.meta && r.meta.title);
+  const nearestWithMeta = matchedRoutes.find((r) => r.meta && r.meta.metaTags);
 
-  // This goes through the matched routes from last to first, finding the closest route with a title.
-  // eg. if we have /some/deep/nested/route and /some, /deep, and /nested have titles, nested's will be chosen.
-  const nearestWithTitle = to.matched.slice().reverse().find((r) => r.meta && r.meta.title);
+  if (nearestWithTitle) {
+    document.title = nearestWithTitle.meta.title;
+  }
 
-  // Find the nearest route element with meta tags.
-  const nearestWithMeta = to.matched.slice().reverse().find((r) => r.meta && r.meta.metaTags);
+  // remove old metatags
+  [...document.querySelectorAll('[data-metatag]')]
+    .map((el) => el.parentNode.removeChild(el));
 
-  // If a route with a title was found, set the document (page) title to that value.
-  if (nearestWithTitle) document.title = nearestWithTitle.meta.title;
+  if (!nearestWithMeta) {
+    return next();
+  }
 
-  // Remove any stale meta tags from the document using the key attribute we set below.
-  Array.from(document.querySelectorAll('[data-vue-router-controlled]')).map((el) => el.parentNode.removeChild(el));
-
-  // Skip rendering meta tags if there are none.
-  if (!nearestWithMeta) return next();
-
-  // Turn the meta tag definitions into actual elements in the head.
-  nearestWithMeta.meta.metaTags.map((tagDef) => {
+  nearestWithMeta.meta.metaTags.forEach((tagDef) => {
     const tag = document.createElement('meta');
 
-    Object.keys(tagDef).forEach((key) => {
-      tag.setAttribute(key, tagDef[key]);
+    Object.entries(tagDef).forEach(([tagName, tagContent]) => {
+      tag.setAttribute(tagName, tagContent);
     });
 
-    // We use this to track which meta tags we create, so we don't interfere with other ones.
-    tag.setAttribute('data-vue-router-controlled', '');
+    tag.setAttribute('data-metatag', '');
 
-    return tag;
-  })
-  // Add the meta tags to the document head.
-    .forEach((tag) => document.head.appendChild(tag));
+    document.head.appendChild(tag);
+  });
 
   next();
 });

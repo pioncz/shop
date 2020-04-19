@@ -88,7 +88,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$blur: 10px;
+$blur: 5px;
 $from: rgba(235,237,243,0.8) 0%;
 $to: rgba(121,133,148,0.9) 60%;
 

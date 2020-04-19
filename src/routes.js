@@ -48,6 +48,7 @@ const routes = [
     component: Cart,
     meta: {
       title: 'Shop - Cart',
+      secured: true,
     },
   },
   {
@@ -65,6 +66,7 @@ const routes = [
     },
   },
   {
+    name: 'login',
     path: '/login',
     component: Login,
     meta: {

@@ -53,6 +53,7 @@ const promotion = {
 
       const handlePromotion = (promotionData) => {
         const fetchPromises = promotionData.items.map((productId) => getProduct(productId));
+
         Promise.all(fetchPromises).then((values) => {
           const returnData = { ...promotionData, items: values };
 

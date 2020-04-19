@@ -1,8 +1,3 @@
-Dodać obsługę błędów do wszystkich storów i widoków
-
-Store promotion: produkty pobierane i wrzucane do stora produktow
-
-Dodać mechanizm securedPage: dla widoku jak cart / checkout bedzie przenosic na strone logowania
 Wylogowywanie
 
 Search:
@@ -13,6 +8,8 @@ Sortowanie: oceny, cena, nazwa
 Zmiana na widok listy
 Ile kafli w 1 wierszu? teraz dla maxwidth zostaje miejsce z prawej
 Po kliknieciu w kafel przejscie do podstrony produktu
+
+Store promotion: produkty pobierane i wrzucane do stora produktow. Test czy zadziala jak produkty beda w storze
 
 Product page:
 - Informacje takie jak na kaflu produktu
@@ -26,7 +23,7 @@ Koszyk:
 - Platnosc (zamockowana)
 
 Dodatkowo:
-- cos innego do zmiany title, description?
+- deployment https://vuejs.org/v2/guide/deployment.html
 - sprawdzanie typow
 - do opisow jakis rich text editor
 - popup newsletterowy

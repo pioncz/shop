@@ -24,8 +24,11 @@ const user = {
           commit(mutationTypes.SET_CURRENT_USER, userData);
         });
     },
-    [actionTypes.FETCH_CURRENT_USER]({ commit }) {
-      getCurrentUser().then((userData) => {
+    [actionTypes.FETCH_CURRENT_USER]: ({ commit, getters }) => {
+      if (getters.GET_CURRENT_USER) {
+        return Promise.resolve();
+      }
+      return getCurrentUser().then((userData) => {
         commit(mutationTypes.SET_CURRENT_USER, userData);
       });
     },
