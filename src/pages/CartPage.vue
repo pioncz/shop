@@ -1,16 +1,14 @@
 <template>
   <div class="page">
-    <h1>Product</h1>
+    <h1>Cart</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Product',
+  name: 'CartPage',
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 </style>

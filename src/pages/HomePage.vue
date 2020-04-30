@@ -26,7 +26,7 @@ import * as actionTypes from '@/store/action-types';
 import * as getterTypes from '@/store/getter-types';
 
 export default {
-  name: 'Home',
+  name: 'HomePage',
   components: {
     PromotionTile,
     AppLoader,

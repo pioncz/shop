@@ -1,7 +1,8 @@
-import { getProducts } from '@/utils/api';
+import { getProducts, getProduct } from '@/utils/api';
 import * as actionTypes from './action-types';
 import * as mutationTypes from './mutation-types';
 import * as getterTypes from './getter-types';
+
 
 const products = {
   state: {
@@ -30,8 +31,16 @@ const products = {
     [getterTypes.GET_PRODUCTS_ERROR](state) {
       return state.productsError;
     },
+    [getterTypes.GET_PRODUCTS_BY_ID]: (state) => (productId) => state.productsList.find((product) => product.id === productId),
   },
   actions: {
+    [actionTypes.FETCH_PRODUCT]({ state, commit, getters }, productId) {
+      if (getters.GET_PRODUCTS_BY_ID(productId)) return;
+
+      getProduct(productId).then((newProduct) => {
+        commit(mutationTypes.SET_PRODUCTS_LIST, [...state.productsList, newProduct]);
+      });
+    },
     [actionTypes.FETCH_PRODUCTS]({ state, commit }) {
       if (state.productsLoading || state.productsList.length) return;
 

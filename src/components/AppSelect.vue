@@ -1,14 +1,15 @@
 <template>
-  <div class="page">
-    <h1>Category</h1>
+  <div>
+    select
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Category',
+  name: 'AppSelect',
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div v-bind:style="containerStyle">
+  <div :style="containerStyle">
     <h3>{{ promotion.header }}</h3>
     <p>{{ promotion.description }}</p>
   </div>

@@ -1,8 +1,8 @@
 <template>
   <nav class="header">
-    <div class="container">
+    <div class="header__items container">
       <router-link to="/" exact>Home</router-link>
-      <router-link to="/product">Product</router-link>
+      <router-link to="/product/5ea086044623f65e83a0fecc">Product</router-link>
       <router-link to="/cart">cart</router-link>
       <router-link to="/category">category</router-link>
       <router-link to="/contact">contact</router-link>
@@ -11,10 +11,17 @@
       <router-link to="/search">search</router-link>
       <router-link to="/admin">admin</router-link>
       <router-link to="/ddd">Not found</router-link>
-      <div>
+      <div class="header__actions">
         <div v-show="loading">Loading</div>
         <div v-show="!user && !loading">Login / register</div>
-        <div v-show="user && !loading">0 items</div>
+        <div v-show="user && !loading">{{user && user.name}}</div>
+        <div v-if="user && !loading" class="header__action">
+          <a href="#" @click="toggle">0 items</a>
+          <div v-click-outside="hide" v-show="opened" class="header__action-dropdown">
+            <p>Pierwszy item</p>
+            <button>Checkout</button>
+          </div>
+        </div>
         <button v-show="user && !loading" @click="logout">Logout</button>
       </div>
     </div>
@@ -22,12 +29,18 @@
 </template>
 
 <script>
+import ClickOutside from 'vue-click-outside';
 import * as actionTypes from '@/store/action-types';
 import * as getterTypes from '@/store/getter-types';
 import { mapGetters } from 'vuex';
 
 export default {
-  name: 'Header',
+  name: 'TheHeader',
+  data() {
+    return {
+      opened: false,
+    };
+  },
   computed: {
     ...mapGetters({
       user: getterTypes.GET_CURRENT_USER,
@@ -41,6 +54,19 @@ export default {
           this.$router.push('/login');
         });
     },
+    toggle() {
+      this.opened = true;
+    },
+
+    hide() {
+      this.opened = false;
+    },
+  },
+  mounted() {
+    this.popupItem = this.$el;
+  },
+  directives: {
+    ClickOutside,
   },
 };
 </script>
@@ -59,7 +85,7 @@ export default {
   height: 60px;
   box-sizing: border-box;
 
-  .container {
+  &__items {
     height: 60px;
     display: flex;
     align-items: center;
@@ -74,10 +100,46 @@ export default {
     .router-link-active {
       border-bottom: 2px solid #fff;
     }
+  }
 
-    & > div:last-child {
-      flex: 1 1;
-      text-align: right;
+  &__actions {
+    flex: 1 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    > div {
+      margin: 0 $margin2;
+    }
+
+    button {
+      margin: 0;
+    }
+  }
+
+  &__action {
+    position: relative;
+  }
+
+  &__action-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0px;
+    margin-top: 40px;
+    background: $background;
+    box-shadow: 0px 4px 12px 3px rgba(0, 0, 0, 0.25);
+    min-width: 200px;
+    padding: $margin2;
+    border-radius: $borderRadius;
+
+    &::after {
+      content: '';
+      position: absolute;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid $background;
+      top:-10px;
+      right: 20px;
     }
   }
 }

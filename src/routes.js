@@ -1,21 +1,21 @@
-import Home from './pages/Home.vue';
-import Product from './pages/Product.vue';
-import NotFound from './pages/NotFound.vue';
-import Cart from './pages/Cart.vue';
-import Category from './pages/Category.vue';
-import Contact from './pages/Contact.vue';
-import Login from './pages/Login.vue';
-import Register from './pages/Register.vue';
-import Search from './pages/Search.vue';
-import Promotion from './pages/Promotion.vue';
-import Admin from './pages/Admin.vue';
+import HomePage from './pages/HomePage.vue';
+import ProductPage from './pages/ProductPage.vue';
+import NotFoundPage from './pages/NotFoundPage.vue';
+import CartPage from './pages/CartPage.vue';
+import CategoryPage from './pages/CategoryPage.vue';
+import ContactPage from './pages/ContactPage.vue';
+import LoginPage from './pages/LoginPage.vue';
+import RegisterPage from './pages/RegisterPage.vue';
+import SearchPage from './pages/SearchPage.vue';
+import PromotionPage from './pages/PromotionPage.vue';
+import AdminPage from './pages/AdminPage.vue';
 
 // Routes
 const routes = [
   {
     name: 'home',
     path: '/',
-    component: Home,
+    component: HomePage,
     meta: {
       title: 'Shop - Home',
       metaTags: [
@@ -33,15 +33,15 @@ const routes = [
   {
     name: 'promotion',
     path: '/promotion/:id',
-    component: Promotion,
+    component: PromotionPage,
     meta: {
       title: 'Shop - Promotion',
     },
   },
   {
     name: 'product',
-    path: '/product',
-    component: Product,
+    path: '/product/:id',
+    component: ProductPage,
     meta: {
       title: 'Shop - Product',
     },
@@ -49,7 +49,7 @@ const routes = [
   {
     name: 'cart',
     path: '/cart',
-    component: Cart,
+    component: CartPage,
     meta: {
       title: 'Shop - Cart',
       secured: true,
@@ -58,7 +58,7 @@ const routes = [
   {
     name: 'category',
     path: '/category',
-    component: Category,
+    component: CategoryPage,
     meta: {
       title: 'Shop - Category',
     },
@@ -66,7 +66,7 @@ const routes = [
   {
     name: 'contact',
     path: '/contact',
-    component: Contact,
+    component: ContactPage,
     meta: {
       title: 'Shop - Contact',
     },
@@ -74,7 +74,7 @@ const routes = [
   {
     name: 'login',
     path: '/login',
-    component: Login,
+    component: LoginPage,
     meta: {
       title: 'Shop - Login',
     },
@@ -82,7 +82,7 @@ const routes = [
   {
     name: 'register',
     path: '/register',
-    component: Register,
+    component: RegisterPage,
     meta: {
       title: 'Shop - Register',
     },
@@ -90,7 +90,7 @@ const routes = [
   {
     name: 'search',
     path: '/search',
-    component: Search,
+    component: SearchPage,
     meta: {
       title: 'Shop - Search',
     },
@@ -98,14 +98,14 @@ const routes = [
   {
     name: 'admin',
     path: '/admin',
-    component: Admin,
+    component: AdminPage,
     meta: {
       title: 'Shop - Admin page',
     },
   },
   {
     path: '*',
-    component: NotFound,
+    component: NotFoundPage,
     meta: {
       title: 'Shop - Not found',
     },

@@ -1,13 +1,9 @@
 <template>
-  <div class="page register-page">
+  <div class="page login-page">
     <AppLoader background v-show="loading" />
     <div class="modal">
-      <div v-show="registered">
-        <h1>Thank you</h1>
-        <p>Comfirmation email has been send. Please confirm email with provided link</p>
-      </div>
-      <form @submit.prevent="handleSubmit" v-show="!registered">
-        <h1 class="modal__title">Register</h1>
+      <form @submit.prevent="handleSubmit">
+        <h1 class="modal__title">Log in</h1>
         <div
           class="modal__error"
           v-show="!!error"
@@ -23,11 +19,6 @@
           type="password"
           v-model="password"
         />
-        <input
-          placeholder="Repeat password"
-          type="password"
-          v-model="repeatPassword"
-        />
         <button :disabled="disabled" type="submit">Send</button>
       </form>
     </div>
@@ -35,11 +26,11 @@
 </template>
 
 <script>
-import { postUser } from '@/utils/api';
-import AppLoader from '@/components/AppLoader';
+import AppLoader from '@/components/AppLoader.vue';
+import * as actionTypes from '@/store/action-types';
 
 export default {
-  name: 'Register',
+  name: 'LoginPage',
   components: {
     AppLoader,
   },
@@ -49,36 +40,30 @@ export default {
       error: null,
       email: '',
       password: '',
-      repeatPassword: '',
-      registered: false,
     };
   },
   computed: {
     disabled() {
-      return this.loading
-        || !this.email.length
-        || !this.password.length
-        || !this.repeatPassword.length;
+      return this.loading || !this.email.length || !this.password.length;
     },
   },
   methods: {
     handleSubmit() {
-      if (this.password !== this.repeatPassword) {
-        this.error = 'Password are not the same';
-      } else if (this.email.length < 6) {
+      if (this.email.length < 6) {
         this.error = 'Email must have at least 6 characters';
       } else if (this.password.length < 6) {
         this.error = 'Password must have at least 6 characters';
       } else {
         this.loading = true;
         this.error = null;
-        postUser({ email: this.email, password: this.password })
+        this.$store.dispatch(actionTypes.LOGIN, { email: this.email, password: this.password })
           .then(() => {
-            this.registered = true;
+            const nextUrl = this.$route.params.nextUrl || '/';
+
+            this.$router.push(nextUrl);
           })
-          .catch((error) => {
-            // handle custom error or:
-            this.error = 'Could not register user';
+          .catch(() => {
+            this.error = 'Email or password is incorrect';
             this.loading = false;
           });
       }
@@ -92,7 +77,7 @@ $blur: 5px;
 $from: rgba(235,237,243,0.8) 0%;
 $to: rgba(121,133,148,0.9) 60%;
 
-.register-page {
+.login-page {
   height: 100%;
   width: 100%;
   overflow: hidden;

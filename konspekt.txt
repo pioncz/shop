@@ -3,8 +3,6 @@ Rozumiem, że przykładową lekcję, którą teraz nagrywam będę mógł nagra�
 Myślałem, żeby do kursu dołączyć edytor podstron taki jak np w wix.com gdzie użytkownik widzi stronę docelową, może ją edytować 
 i na żywo widzieć jak strona się zmienia. Zakres tego kursu jest dość spory, dlatego jeszcze nie wiem czy taką lekcję dodawać do kursu.
 
-
-
 Tytuł: 
 Vue - produkcyjna aplikacja na przykładzie sklepu internetowego.
 
@@ -26,15 +24,15 @@ zakupu (jeśli jakąś już powinien mieć)?
   Po kursie klient potrafi
   - stworzyć dobrą strukturę projektu, która się skaluje
   - posługiwać się Vuex z zachowaniem dobrych praktyk
-  - tworzyć zaawansowane komponenty Vue
-  - tworzyć skomplikowane formularze z obsługą błędów i walidacją
+  - stworzyć zaawansowane komponenty Vue
+  - stworzyć skomplikowane formularze z obsługą błędów i walidacją
   - stworzyć produkcyjnego builda
 
 3. Konspekt kursu
 
 1. Wstęp
  1. O kursie
- 2. Wykorzystywane narzędzia: vscode, npm / yarn, przeglądarka
+ 2. Wykorzystywane narzędzia: vscode (vue snippets), npm / yarn, przeglądarka (wtyczka)
  3. Omówienie stacka technologicznego: vue, vuex, sass, json-server
  4. Omówienie architektury aplikacji (katalogi, struktura komponentów, podział na cssy)
 
@@ -47,7 +45,7 @@ zakupu (jeśli jakąś już powinien mieć)?
  6. Strona wyszukiwarki produktów: kategorie, search, filtrowanie i sortowanie
  7. Strona produktu
  8. Strona rejestracji i logowania
- 9. Komponent koszyku i podstrona koszyki
+ 9. Koszyk: komponent koszyka, podstrona koszyka, dodawanie produktu do koszyka
  10. Strona z procesem zakupu przedmiotów z koszyka.
  11. Panel admina: logowanie
  12. Panel admina: strona statystyk zakupów

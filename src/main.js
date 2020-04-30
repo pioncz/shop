@@ -17,7 +17,6 @@ const router = new VueRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-  console.log('route changed');
   // Authentications:
   if (to.matched.some((record) => record.meta.secured)) {
     await store.dispatch(actionTypes.FETCH_CURRENT_USER).catch(() => {});

@@ -2,6 +2,8 @@ Product page:
 - Informacje takie jak na kaflu produktu
 - Mozliwosc oceny produktu (dodac info w db.json produktu)
 
+Search: appselect.vue
+
 Koszyk:
 - Dodawanie produktu do koszyka na kazdym widoku
 - Widok listy koszyka w navbarze
@@ -21,6 +23,10 @@ Po kliknieciu w kafel przejscie do podstrony produktu
 Store promotion: produkty pobierane i wrzucane do stora produktow. Test czy zadziala jak produkty beda w storze
 
 Admin panel
+
+Styles: mobile first
+
+###
 
 Dodatkowo:
 - deployment https://vuejs.org/v2/guide/deployment.html

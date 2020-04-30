@@ -1,10 +1,10 @@
 <template>
-  <div class="product">
-    <div class="product__image" v-bind:style="imageStyle"></div>
-    <h4 class="product__title">{{product.name}}</h4>
-    <Rating class="product__rating" :rate="product.rate" :ratesNumber="product.ratesNumber" />
-    <div class="product__price">{{product.price}}</div>
-    <button class="product__buy" v-if="onBuy" v-on:click="onBuy">Kup teraz</button>
+  <div class="product-tile card">
+    <div class="product-tile__image" v-bind:style="imageStyle"></div>
+    <h4 class="product-tile__title">{{product.name}}</h4>
+    <Rating class="product-tile__rating" :rate="product.rate" :ratesNumber="product.ratesNumber" />
+    <div class="product-tile__price">{{product.price}}</div>
+    <button class="product-tile__buy" v-if="onBuy" v-on:click="onBuy">Kup teraz</button>
   </div>
 </template>
 
@@ -36,16 +36,13 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/consts.scss';
 
-.product {
+.product-tile {
   max-width: 200px;
-  border: 1px solid #f3f3f3;
-  border-radius: $borderRadius;
   transition: $transition;
-  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
-  padding: $margin2;
+  box-shadow: 0px 2px 0px 0px rgba(0,0,0,0);
 
   &:hover {
-    box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 4px 6px 3px rgba(0, 0, 0, 0.15);
   }
 
   &__title {

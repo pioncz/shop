@@ -1,26 +1,26 @@
 <template>
   <div id="app">
-    <Header />
+    <TheHeader />
     <transition
       name="fade"
       mode="out-in"
     >
       <router-view></router-view>
     </transition>
-    <Footer />
+    <TheFooter />
   </div>
 </template>
 
 <script>
 import * as actionTypes from '@/store/action-types';
-import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
+import TheHeader from './components/TheHeader.vue';
+import TheFooter from './components/TheFooter.vue';
 
 export default {
   name: 'App',
   components: {
-    Header,
-    Footer,
+    TheHeader,
+    TheFooter,
   },
   beforeCreate() {
     this.$store.dispatch(actionTypes.FETCH_CURRENT_USER);

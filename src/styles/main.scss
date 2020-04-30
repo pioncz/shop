@@ -68,6 +68,16 @@ body {
   }
 }
 
+.card {
+  border: 1px solid #f3f3f3;
+  border-radius: $borderRadius;
+  padding: $margin2;
+}
+
+h1 { font-size: $font5; }
+h2 { font-size: $font4; }
+h3 { font-size: $font3; }
+
 input {
   padding: $margin1 $margin2;
   margin: $margin0 0;

@@ -139,7 +139,7 @@
 import { Editor, EditorContent, EditorMenuBar } from 'tiptap';
 
 export default {
-  name: 'Admin',
+  name: 'AdminPage',
   components: {
     EditorContent,
     EditorMenuBar,

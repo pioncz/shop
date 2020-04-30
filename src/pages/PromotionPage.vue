@@ -30,7 +30,7 @@ import * as getterTypes from '@/store/getter-types';
 import * as actionTypes from '@/store/action-types';
 
 export default {
-  name: 'Promotion',
+  name: 'PromotionPage',
   components: {
     PromotionTile,
     ProductTile,
