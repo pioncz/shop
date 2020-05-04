@@ -34,7 +34,15 @@
       </template>
       <section class="similar-products container card">
         <h3>You may also like:</h3>
-        <AppLoader />
+        <AppLoader v-if="similarProductsLoading" />
+        <p v-if="similarProductsError">Error while loading similar products</p>
+        <div class="similar-products__list" v-if="similarProducts.length">
+          <ProductTile
+            v-for="product in similarProducts"
+            :key="product.id"
+            :product="product"
+          />
+        </div>
       </section>
       <section class="new-comment container card" v-if="product.ratingOption">
         <template v-if="!newCommentSend">
@@ -70,14 +78,17 @@
 <script>
 import Rating from '@/components/Rating.vue';
 import AppLoader from '@/components/AppLoader.vue';
+import ProductTile from '@/components/ProductTile.vue';
 import * as actionTypes from '@/store/action-types';
 import * as getterTypes from '@/store/getter-types';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'ProductPage',
   components: {
     Rating,
     AppLoader,
+    ProductTile,
   },
   data() {
     return {
@@ -90,8 +101,14 @@ export default {
   },
   beforeCreate() {
     this.$store.dispatch(actionTypes.FETCH_PRODUCT, this.$route.params.id);
+    this.$store.dispatch(actionTypes.FETCH_SIMILAR_PRODUCTS, this.$route.params.id);
   },
   computed: {
+    ...mapGetters({
+      similarProducts: getterTypes.GET_SIMILAR_PRODUCTS_LIST,
+      similarProductsLoading: getterTypes.GET_SIMILAR_PRODUCTS_LOADING,
+      similarProductsError: getterTypes.GET_SIMILAR_PRODUCTS_ERROR,
+    }),
     product() {
       return this.$store.getters[getterTypes.GET_PRODUCTS_BY_ID](this.$route.params.id) || {};
     },
@@ -191,6 +208,16 @@ export default {
       position: static;
       transform: none;
       margin: $margin1 auto;
+    }
+
+    &__list {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+
+      > div {
+        flex: 1 0;
+      }
     }
   }
 

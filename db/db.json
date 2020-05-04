@@ -1994,5 +1994,111 @@
 
   "currentUser": {
      "name": "Peter"
-  }
+  },
+
+  "similarProducts": [
+    {
+      "id": "5ea08604c5254c8643359963",
+      "category": "DESKTOP",
+      "name": "Diginetic",
+      "image": "desktop1.jpg",
+      "price": "$652",
+      "rate": 1.8,
+      "ratesNumber": 101,
+      "ratingOption": true,
+      "shortDescription": "Labore exercitation pariatur dolore laboris do elit eu.",
+      "description": "Nulla consequat culpa veniam sint velit Lorem veniam. Ipsum aute pariatur amet sunt magna aliquip pariatur tempor. Ea duis dolore cillum magna sunt id sit aute. Nulla aliquip incididunt irure labore amet aliquip proident aliqua ut et ad cillum et duis.",
+      "specification": {
+        "size": "1311.78 x 606.19 x 6.25",
+        "weight": "4408.6 g",
+        "battery": "3798 mAh",
+        "colors": [
+          "white",
+          "black"
+        ]
+      },
+      "features": [
+        {
+          "name": "Bunga",
+          "description": "Sint duis veniam irure eiusmod laboris consequat nisi id est voluptate. Culpa esse id do sit quis officia eiusmod sit et consectetur.",
+          "photo": "desktop3.jpg"
+        }
+      ],
+      "comments": []
+    },
+    {
+      "id": "5ea0860429790ae50c4ff1be",
+      "category": "DESKTOP",
+      "name": "Telpod",
+      "image": "desktop2.jpg",
+      "price": "$596",
+      "rate": 3.41,
+      "ratesNumber": 64,
+      "ratingOption": true,
+      "shortDescription": "Irure ut ea est non cupidatat.",
+      "description": "Pariatur do non enim veniam enim velit. Minim minim quis ut tempor ad tempor ipsum qui dolor in duis dolor ex. Sit aute ullamco nisi qui. Laborum reprehenderit laboris velit et enim commodo nisi quis.",
+      "specification": {
+        "size": "1358.19 x 901.35 x 37.14",
+        "weight": "2448.7 g",
+        "battery": "5223 mAh",
+        "colors": [
+          "white",
+          "black"
+        ]
+      },
+      "features": [
+        {
+          "name": "Talendula",
+          "description": "Culpa sit cillum labore voluptate occaecat adipisicing amet laborum qui. Tempor labore quis occaecat laborum reprehenderit consequat qui.",
+          "photo": "desktop2.jpg"
+        }
+      ],
+      "comments": []
+    },
+    {
+      "id": "5ea086044623f65e83a0fecc",
+      "category": "DESKTOP",
+      "name": "Zentility",
+      "image": "desktop2.jpg",
+      "price": "$980",
+      "rate": 2.14,
+      "ratesNumber": 104,
+      "ratingOption": true,
+      "shortDescription": "Sit officia cupidatat enim est elit officia.",
+      "description": "Lorem occaecat quis ad minim cupidatat. Aliquip irure consectetur ut ad laboris consectetur aliquip nisi. Labore consectetur ex pariatur eu veniam elit magna do laborum officia ea. Esse magna voluptate laboris sit adipisicing pariatur laboris eiusmod irure eiusmod sunt quis est.",
+      "specification": {
+        "size": "1534 x 889.84 x 7.98",
+        "weight": "1618.7 g",
+        "battery": "6250 mAh",
+        "colors": [
+          "white",
+          "black"
+        ]
+      },
+      "features": [
+        {
+          "name": "Applica",
+          "description": "Qui velit exercitation occaecat ut aute pariatur minim tempor exercitation dolor in aute mollit sit. Et esse nisi nulla in deserunt non quis adipisicing.",
+          "photo": "desktop3.jpg"
+        }
+      ],
+      "comments": [
+        {
+          "id": "5ea0860456179855638d1012",
+          "user": "Padilla",
+          "message": "Proident sunt consectetur dolor veniam aliquip."
+        },
+        {
+          "id": "5ea08604f038254052b1f0d8",
+          "user": "Ware",
+          "message": "Aute sit minim sunt dolore nisi."
+        },
+        {
+          "id": "5ea08604ab5a7656f9cda0a7",
+          "user": "King",
+          "message": "Deserunt ea ex exercitation consequat sit in voluptate in in aute magna ullamco sint elit."
+        }
+      ]
+    }
+  ]
 }

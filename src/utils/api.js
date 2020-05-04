@@ -20,6 +20,8 @@ const getPromotion = (promotionId) => get(`/promotions/${promotionId}`);
 
 const getProducts = () => get('/products');
 
+const getSimilarProducts = () => get('/similarProducts');
+
 const getProduct = (productId) => get(`/products/${productId}`);
 
 const getCurrentUser = () => get('/currentUser');
@@ -38,6 +40,7 @@ export {
   getPromotions,
   getPromotion,
   getProducts,
+  getSimilarProducts,
   getProduct,
   postUser,
   login,
