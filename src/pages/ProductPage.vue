@@ -36,6 +36,21 @@
         <h3>You may also like:</h3>
         <AppLoader />
       </section>
+      <section class="new-comment container card" v-if="product.ratingOption">
+        <template v-if="!newCommentSend">
+          <h3>What do you think about this product?</h3>
+          <p v-if="newCommentError">Something went wrong, please send again.</p>
+          <Rating :onEdit="newRate ? null : onRate" :rate="newRate" class="new-comment__rating" />
+          <textarea class="new-comment__textarea" v-model="newComment" />
+          <button @click="onNewCommentSend">Send</button>
+          <div class="new-comment__loader" v-show="newCommentLoading">
+            <AppLoader />
+          </div>
+        </template>
+        <template v-if="newCommentSend">
+          <h3>Thank you for your opinion :)</h3>
+        </template>
+      </section>
       <section class="comments container card">
         <h3>Comments:</h3>
         <h4 v-if="!product.comments.length">No comments</h4>
@@ -64,6 +79,18 @@ export default {
     Rating,
     AppLoader,
   },
+  data() {
+    return {
+      newRate: null,
+      newComment: '',
+      newCommentLoading: false,
+      newCommentSend: false,
+      newCommentError: true,
+    };
+  },
+  beforeCreate() {
+    this.$store.dispatch(actionTypes.FETCH_PRODUCT, this.$route.params.id);
+  },
   computed: {
     product() {
       return this.$store.getters[getterTypes.GET_PRODUCTS_BY_ID](this.$route.params.id) || {};
@@ -73,8 +100,25 @@ export default {
       return { background: `url(${require(`@/assets/${this.product.image}`)}) center center / contain no-repeat, #eee` };
     },
   },
-  beforeCreate() {
-    this.$store.dispatch(actionTypes.FETCH_PRODUCT, this.$route.params.id);
+  methods: {
+    onRate(newRate) {
+      this.newRate = newRate;
+    },
+    onNewCommentSend() {
+      this.newCommentLoading = true;
+      this.newCommentError = false;
+
+      this.$store.dispatch(
+        actionTypes.POST_RATING,
+        { rating: this.newRate, comment: this.newComment },
+      ).then(() => {
+        this.newCommentLoading = false;
+        this.newCommentSend = true;
+      }).catch(() => {
+        this.newCommentLoading = false;
+        this.newCommentError = true;
+      });
+    },
   },
 };
 </script>
@@ -97,31 +141,31 @@ export default {
   }
 
   .product {
-  &__left {
-    flex: 1 1 60%;
-  }
+    &__left {
+      flex: 1 1 60%;
+    }
 
-  &__right {
-    flex: 0 0 40%;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    padding: 0 $margin2;
+    &__right {
+      flex: 0 0 40%;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      padding: 0 $margin2;
 
-    > * {
-      margin: 0 0 $margin1 !important;
+      > * {
+        margin: 0 0 $margin1 !important;
+      }
+    }
+
+    &__rating {
+      height: 30px;
+    }
+
+    &__specification {
+      list-style: none;
+      padding-left: 0;
     }
   }
-
-  &__rating {
-    height: 30px;
-  }
-
-  &__specification {
-    list-style: none;
-    padding-left: 0;
-  }
-}
 
   .feature {
     .feature__image {
@@ -147,6 +191,38 @@ export default {
       position: static;
       transform: none;
       margin: $margin1 auto;
+    }
+  }
+
+  .new-comment {
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &__rating {
+      height: 46px;
+      padding: $margin1;
+      margin-bottom: $margin1;
+    }
+
+    &__textarea {
+      width: 500px;
+      height: 140px;
+      max-width: 100%;
+    }
+
+    &__loader {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.7);
+
+      svg {
+        width: 50%;
+        height: 50%;
+      }
     }
   }
 

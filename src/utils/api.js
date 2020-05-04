@@ -31,6 +31,8 @@ const login = () => get('/currentUser');
 
 const logout = () => get('/currentUser');
 
+const postRating = () => get('/currentUser');
+
 export {
   getCurrentUser,
   getPromotions,
@@ -40,4 +42,5 @@ export {
   postUser,
   login,
   logout,
+  postRating,
 };

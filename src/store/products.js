@@ -1,8 +1,7 @@
-import { getProducts, getProduct } from '@/utils/api';
+import { getProducts, getProduct, postRating } from '@/utils/api';
 import * as actionTypes from './action-types';
 import * as mutationTypes from './mutation-types';
 import * as getterTypes from './getter-types';
-
 
 const products = {
   state: {
@@ -56,6 +55,9 @@ const products = {
         .finally(() => {
           commit(mutationTypes.SET_PRODUCTS_LOADING, true);
         });
+    },
+    [actionTypes.POST_RATING](context, { rating, comment }) {
+      return postRating(rating, comment);
     },
   },
 };

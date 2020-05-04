@@ -35,6 +35,7 @@
       "price": "$652",
       "rate": 1.8,
       "ratesNumber": 101,
+      "ratingOption": true,
       "shortDescription": "Labore exercitation pariatur dolore laboris do elit eu.",
       "description": "Nulla consequat culpa veniam sint velit Lorem veniam. Ipsum aute pariatur amet sunt magna aliquip pariatur tempor. Ea duis dolore cillum magna sunt id sit aute. Nulla aliquip incididunt irure labore amet aliquip proident aliqua ut et ad cillum et duis.",
       "specification": {
@@ -63,6 +64,7 @@
       "price": "$596",
       "rate": 3.41,
       "ratesNumber": 64,
+      "ratingOption": true,
       "shortDescription": "Irure ut ea est non cupidatat.",
       "description": "Pariatur do non enim veniam enim velit. Minim minim quis ut tempor ad tempor ipsum qui dolor in duis dolor ex. Sit aute ullamco nisi qui. Laborum reprehenderit laboris velit et enim commodo nisi quis.",
       "specification": {
@@ -91,6 +93,7 @@
       "price": "$980",
       "rate": 2.14,
       "ratesNumber": 104,
+      "ratingOption": true,
       "shortDescription": "Sit officia cupidatat enim est elit officia.",
       "description": "Lorem occaecat quis ad minim cupidatat. Aliquip irure consectetur ut ad laboris consectetur aliquip nisi. Labore consectetur ex pariatur eu veniam elit magna do laborum officia ea. Esse magna voluptate laboris sit adipisicing pariatur laboris eiusmod irure eiusmod sunt quis est.",
       "specification": {
@@ -135,6 +138,7 @@
       "price": "$1,590",
       "rate": 2.79,
       "ratesNumber": 122,
+      "ratingOption": true,
       "shortDescription": "Ea aute aliquip reprehenderit nulla ipsum commodo sunt consectetur veniam.",
       "description": "Lorem occaecat non consectetur dolore amet. Enim in sint cillum officia velit do ex nulla velit. Sunt ex sint ad sunt fugiat. Irure commodo consectetur ea velit ut.",
       "specification": {
@@ -179,6 +183,7 @@
       "price": "$1,596",
       "rate": 1.9,
       "ratesNumber": 53,
+      "ratingOption": true,
       "shortDescription": "Commodo cupidatat amet esse dolore consequat amet eiusmod ea.",
       "description": "Elit tempor exercitation veniam Lorem veniam fugiat nisi quis tempor sit quis ad qui nostrud. Nulla dolor sit minim reprehenderit adipisicing veniam mollit reprehenderit est consectetur do incididunt cupidatat ex. Id cillum nulla voluptate Lorem dolor culpa. Nisi culpa Lorem ea eu.",
       "specification": {
@@ -228,6 +233,7 @@
       "price": "$1,666",
       "rate": 1.77,
       "ratesNumber": 52,
+      "ratingOption": true,
       "shortDescription": "Proident ex dolore do et nostrud ullamco irure sunt nisi incididunt ad sint cillum.",
       "description": "Quis non excepteur officia ea tempor quis ullamco. Lorem consequat laborum excepteur deserunt cillum deserunt nostrud dolore sint exercitation aute. Ea tempor officia non laborum consectetur cillum ipsum officia culpa ipsum incididunt nulla ipsum. Aute culpa velit ex non voluptate elit nisi in est velit ipsum ullamco quis.",
       "specification": {
@@ -277,6 +283,7 @@
       "price": "$602",
       "rate": 2.87,
       "ratesNumber": 104,
+      "ratingOption": true,
       "shortDescription": "Minim do nostrud dolore fugiat excepteur sint ad incididunt ut nostrud occaecat sit.",
       "description": "Eu aliquip quis mollit magna incididunt dolore in ea reprehenderit. Pariatur voluptate consectetur incididunt ipsum elit elit veniam. Lorem officia quis Lorem excepteur esse dolor sint enim est incididunt dolor. Ea velit cupidatat ea esse laborum minim mollit do ipsum irure nulla ipsum incididunt.",
       "specification": {
@@ -316,6 +323,7 @@
       "price": "$1,874",
       "rate": 2.69,
       "ratesNumber": 44,
+      "ratingOption": true,
       "shortDescription": "Nulla id Lorem anim reprehenderit id aute cupidatat dolore aliqua.",
       "description": "Cupidatat et id dolor irure officia cupidatat cillum nulla nisi. Reprehenderit do elit eiusmod consectetur exercitation non in adipisicing Lorem sit nisi nisi. Do tempor aute ea aliqua fugiat sunt eu do. Amet officia id laborum irure in adipisicing duis tempor Lorem officia et incididunt sit.",
       "specification": {
@@ -350,6 +358,7 @@
       "price": "$627",
       "rate": 2.74,
       "ratesNumber": 19,
+      "ratingOption": true,
       "shortDescription": "Nostrud magna qui commodo sunt do aute nisi.",
       "description": "Enim labore ipsum exercitation non sint sunt minim. Lorem tempor sint irure ut fugiat labore voluptate qui nostrud commodo labore cillum consectetur incididunt. Enim proident consectetur ex pariatur labore magna duis enim. Pariatur do excepteur mollit Lorem.",
       "specification": {
@@ -399,6 +408,7 @@
       "price": "$1,622",
       "rate": 3.55,
       "ratesNumber": 66,
+      "ratingOption": true,
       "shortDescription": "Laborum eu Lorem dolor exercitation culpa ipsum enim aliqua dolor aliquip ex quis nostrud irure.",
       "description": "Incididunt duis elit amet minim magna magna officia exercitation culpa qui irure aliqua deserunt. Tempor reprehenderit ea in nulla eiusmod velit nulla incididunt tempor. Nulla voluptate amet laboris nostrud pariatur ad. Deserunt velit et labore reprehenderit qui.",
       "specification": {
@@ -438,6 +448,7 @@
       "price": "$1,318",
       "rate": 4.56,
       "ratesNumber": 143,
+      "ratingOption": true,
       "shortDescription": "Officia velit nisi do anim eiusmod et consequat Lorem ad dolor fugiat nulla proident.",
       "description": "Reprehenderit cillum in in culpa sunt commodo. Aliqua fugiat labore magna ex ad deserunt cillum reprehenderit elit commodo. Sit exercitation officia do velit incididunt duis qui velit ipsum voluptate et in qui. Veniam elit magna sit duis est pariatur qui commodo minim laboris consequat pariatur sit elit.",
       "specification": {
@@ -492,6 +503,7 @@
       "price": "$1,964",
       "rate": 4.96,
       "ratesNumber": 38,
+      "ratingOption": true,
       "shortDescription": "Mollit ea adipisicing enim amet quis mollit eu consequat sint non tempor cupidatat.",
       "description": "Cillum duis id pariatur sit nostrud culpa labore aute consequat anim elit ullamco nisi amet. Exercitation veniam sint aute mollit esse cupidatat consequat labore velit proident laboris anim. Cillum quis nisi occaecat pariatur pariatur nostrud irure Lorem ex cillum cillum laborum dolor. Pariatur sint consectetur ut id et tempor tempor in cupidatat est elit.",
       "specification": {
@@ -546,6 +558,7 @@
       "price": "$1,477",
       "rate": 3.53,
       "ratesNumber": 133,
+      "ratingOption": true,
       "shortDescription": "Est cillum laboris duis ad in incididunt esse exercitation cillum id sunt sit ad.",
       "description": "Anim ad aliqua sunt qui fugiat dolore elit veniam ipsum quis in id commodo. Laborum eiusmod minim nostrud fugiat voluptate sit reprehenderit ad culpa. Duis mollit consectetur non pariatur ea ipsum dolor eu velit nisi veniam nisi laborum enim. Esse sint mollit proident quis tempor labore mollit dolor consequat.",
       "specification": {
