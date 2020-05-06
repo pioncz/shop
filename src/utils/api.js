@@ -18,7 +18,11 @@ const getPromotions = () => get('/promotions');
 
 const getPromotion = (promotionId) => get(`/promotions/${promotionId}`);
 
-const getProducts = () => get('/products');
+const getProducts = (options) => {
+  const parsedOptions = Object.entries(options).map((option) => `${option[0]}=${option[1]}`);
+
+  return get(`/products?${parsedOptions.join('&')}`);
+};
 
 const getSimilarProducts = () => get('/similarProducts');
 

@@ -1,9 +1,3 @@
-Product page:
-- Informacje takie jak na kaflu produktu
-- Mozliwosc oceny produktu (dodac info w db.json produktu)
-
-Search: appselect.vue
-
 Koszyk:
 - Dodawanie produktu do koszyka na kazdym widoku
 - Widok listy koszyka w navbarze
@@ -12,13 +6,11 @@ Koszyk:
 - Platnosc (zamockowana)
 
 Search:
-Zmiana urla podczas edycji searcha
 Wybór kategorii (kategorie z serwera)
+loader: czeka na products i categories
 Paginacja
-Sortowanie: oceny, cena, nazwa
-Zmiana na widok listy
-Ile kafli w 1 wierszu? teraz dla maxwidth zostaje miejsce z prawej
 Po kliknieciu w kafel przejscie do podstrony produktu
+search onChange z debouncem
 
 Store promotion: produkty pobierane i wrzucane do stora produktow. Test czy zadziala jak produkty beda w storze
 
@@ -30,6 +22,7 @@ Styles: mobile first
 
 Dodatkowo:
 - deployment https://vuejs.org/v2/guide/deployment.html
+- accessibility?
 - sprawdzanie typow
 - do opisow jakis rich text editor
 - popup newsletterowy

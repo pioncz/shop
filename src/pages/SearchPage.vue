@@ -1,30 +1,22 @@
 <template>
   <div class="page">
     <h1>Search</h1>
-    <form @submit.prevent="handleSubmit">
+    <form @submit.prevent="onSubmit">
       <input placeholder="Search by name" v-model="name" />
+      <AppSelect
+        label="Category:"
+        :options="categoriesOptions"
+        v-model="category"
+      />
+      <AppSelect
+        label="Sort by:"
+        :options="sortOptions"
+        v-model="sort"
+      />
       <button type="submit">Search</button>
-      <select>
-        <option>All</option>
-        <option>Phone</option>
-        <option>Laptop</option>
-        <option>Tablet</option>
-        <option>Desktop pc</option>
-      </select>
-      <div>
-        Sort by:
-        <select>
-          <option>Name</option>
-          <option>Price</option>
-          <option>Rate</option>
-        </select>
-      </div>
     </form>
-
-
     <p>{{loading}}</p>
-    <p>{{products}}</p>
-    <div class="products">
+    <div class="products container">
       <ProductTile
         v-for="product in products"
         :key="product.id"
@@ -36,6 +28,7 @@
 
 <script>
 import ProductTile from '@/components/ProductTile.vue';
+import AppSelect from '@/components/AppSelect.vue';
 import { mapGetters } from 'vuex';
 import * as getterTypes from '@/store/getter-types';
 import * as actionTypes from '@/store/action-types';
@@ -45,30 +38,69 @@ export default {
   data() {
     return {
       name: this.$route.query.name || '',
+      categories: ['DESKTOP', 'LAPTOP', 'TABLET', 'PHONE'],
+      category: this.$route.query.category || 'DESKTOP',
+      sortOptions: [
+        { label: 'Name asc', value: 'name_asc' },
+        { label: 'Name desc', value: 'name_desc' },
+        { label: 'Price asc', value: 'price_asc' },
+        { label: 'Price desc', value: 'price_desc' },
+        { label: 'Rate asc', value: 'rate_asc' },
+        { label: 'Rate desc', value: 'rate_desc' },
+      ],
+      sort: this.$route.query.sort || 'name_asc',
     };
   },
   components: {
     ProductTile,
+    AppSelect,
   },
   computed: {
     ...mapGetters({
       products: getterTypes.GET_PRODUCTS_LIST,
       loading: getterTypes.GET_PRODUCTS_LOADING,
     }),
+    categoriesOptions() {
+      return [
+        { label: 'All', value: 'ALL' },
+        ...this.categories.map((category) => ({
+          label: category.charAt(0) + category.slice(1).toLowerCase(),
+          value: category,
+        })),
+      ];
+    },
   },
-  beforeCreate() {
-    this.$store.dispatch(actionTypes.FETCH_PRODUCTS);
+  created() {
+    this.fetchProducts();
   },
   methods: {
-    handleSubmit() {
-      console.log('submit');
+    onSubmit() {
+      this.fetchProducts();
+      this.updateUrl();
+    },
+    fetchProducts() {
+      const [sortColumn, sortOrder] = this.sort.split('_');
+
+      const options = {
+        ...(this.name && { name: this.name }),
+        ...(this.category !== 'ALL' && { category: this.category }),
+        ...(this.sort && { _sort: sortColumn, _order: sortOrder }),
+        _limit: 10,
+      };
+
+      this.$store.dispatch(actionTypes.FETCH_PRODUCTS, options);
+    },
+    updateUrl() {
+      const options = {
+        ...(this.name && { name: this.name }),
+        ...(this.category !== 'ALL' && { category: this.category }),
+        ...(this.sort && { sort: this.sort }),
+      };
 
       this.$router.push({
         name: 'search',
-        query: {
-          name: this.name,
-        },
-      });
+        query: options,
+      }).catch(() => {});
     },
   },
 };
@@ -84,9 +116,10 @@ export default {
   flex-wrap: wrap;
 
   > div {
-    flex: 0 0 10%;
+    flex: 1 1 200px;
+    width: 200px;
     margin: $margin1;
-    width: 10%;
+    max-width: 360px;
   }
 }
 </style>

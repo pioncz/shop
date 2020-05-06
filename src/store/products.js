@@ -40,12 +40,10 @@ const products = {
         commit(mutationTypes.SET_PRODUCTS_LIST, [...state.productsList, newProduct]);
       });
     },
-    [actionTypes.FETCH_PRODUCTS]({ state, commit }) {
-      if (state.productsLoading || state.productsList.length) return;
-
+    [actionTypes.FETCH_PRODUCTS]({ commit }, options) {
       commit(mutationTypes.SET_PRODUCTS_LOADING, true);
 
-      getProducts()
+      getProducts(options)
         .then((data) => {
           commit(mutationTypes.SET_PRODUCTS_LIST, data);
         })

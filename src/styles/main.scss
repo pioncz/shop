@@ -78,9 +78,13 @@ h1 { font-size: $font5; }
 h2 { font-size: $font4; }
 h3 { font-size: $font3; }
 
-input {
-  padding: $margin1 $margin2;
-  margin: $margin0 0;
+label {
+  margin: $margin0;
+}
+
+select, input {
+  padding: $margin1 $margin1;
+  margin: $margin0;
   border-radius: $borderRadius;
   border: 1px solid $color3;
 }
@@ -91,7 +95,7 @@ button {
   color: $color;
   padding: $margin1 $margin2;
   border-radius: $borderRadius;
-  margin-top: $margin1;
+  margin: $margin0;
   font-size: $font1;
   transition: $transition2;
   cursor: pointer;
