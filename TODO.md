@@ -1,6 +1,6 @@
 Koszyk:
 - Dodawanie produktu do koszyka na kazdym widoku
-- Widok listy koszyka w navbarze
++ Widok listy koszyka w navbarze
 - Podstrona koszyka -> mozliwosc przejscia dalej
 - Formularz adresowy
 - Platnosc (zamockowana)
@@ -24,6 +24,7 @@ Dodatkowo:
 - przyklad wykorzystania gettera w vuex
 - pokazac drugi rodzaj loadera (ladujacy sie szkielet tresci https://github.com/zalog/placeholder-loading)
 - vue cli (jak ulatwic sobie zycie?)
+- spojne nazewnictwo? komponenty CamelCase a store nie-e
 
 Wstawki opisowe:
 - AppComponent, TheComponent, SuperComponent

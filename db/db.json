@@ -2100,5 +2100,18 @@
         }
       ]
     }
+  ],
+
+  "cart": {
+    "products": [
+      {
+        "id": "5ea086bff90b58490bbd699d",
+        "name": "Baluba",
+        "image": "tablet3.jpg",
+        "price": 820,
+        "rate": 2.74,
+        "shortDescription": "Eiusmod ut deserunt anim et laborum culpa commodo sunt sit pariatur officia enim non."
+      }
   ]
+  }
 }

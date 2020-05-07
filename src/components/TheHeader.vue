@@ -12,17 +12,32 @@
       <router-link to="/admin">admin</router-link>
       <router-link to="/ddd">Not found</router-link>
       <div class="header__actions">
-        <div v-show="loading">Loading</div>
-        <div v-show="!user && !loading">Login / register</div>
-        <div v-show="user && !loading">{{user && user.name}}</div>
-        <div v-if="user && !loading" class="header__action">
-          <button @click="toggle">0 items</button>
+        <div v-show="userLoading">Loading</div>
+        <div v-show="!user && !userLoading">Login / register</div>
+        <div v-show="user && !userLoading">{{user && user.name}}</div>
+        <div v-if="user && !cartLoading" class="header__action">
+          <button @click="toggle">{{cartProducts.length}} items</button>
           <div v-click-outside="hide" v-show="opened" class="header__action-dropdown">
-            <p>Pierwszy item</p>
-            <button>Checkout</button>
+            <template v-if="cartProducts.length">
+              <ul class="header__cart-products">
+                <li
+                  v-for="{ id, name, price } in cartProducts"
+                  :key="id"
+                >
+                  <div>{{name}}</div><div>{{price}}$</div>
+                </li>
+                <li>
+                  <div>Total:</div><div>{{cartTotalPrice}}$</div>
+                </li>
+              </ul>
+              <button>Checkout</button>
+            </template>
+            <template v-if="!cartProducts.length">
+              <p>If you add something to cart, you can see it here</p>
+            </template>
           </div>
         </div>
-        <button v-show="user && !loading" @click="logout">Logout</button>
+        <button v-show="user && !userLoading" @click="logout">Logout</button>
       </div>
     </div>
   </nav>
@@ -44,8 +59,13 @@ export default {
   computed: {
     ...mapGetters({
       user: getterTypes.GET_CURRENT_USER,
-      loading: getterTypes.GET_CURRENT_USER_LOADING,
+      userLoading: getterTypes.GET_CURRENT_USER_LOADING,
+      cartProducts: getterTypes.GET_CART_LIST,
+      cartLoading: getterTypes.GET_CART_LOADING,
     }),
+    cartTotalPrice() {
+      return this.cartProducts.length && this.cartProducts.reduce((price, product) => price + product.price, 0);
+    },
   },
   methods: {
     logout() {
@@ -125,7 +145,7 @@ export default {
     position: absolute;
     top: 100%;
     right: 0px;
-    margin-top: 40px;
+    margin-top: 24px;
     background: $background;
     box-shadow: 0px 4px 12px 3px rgba(0, 0, 0, 0.25);
     min-width: 200px;
@@ -140,6 +160,33 @@ export default {
       border-bottom: 10px solid $background;
       top:-10px;
       right: 20px;
+    }
+  }
+
+  &__cart-products {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      padding: $margin1 $margin0;
+
+      &:nth-child(odd) {
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      &:nth-child(even) {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    li:last-child {
+      margin-top: $margin0;
+      margin-bottom: $margin1;
+      border-top: 1px solid #fff;
+      background: none;
     }
   }
 }

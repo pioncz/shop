@@ -24,6 +24,7 @@ export default {
   },
   beforeCreate() {
     this.$store.dispatch(actionTypes.FETCH_CURRENT_USER);
+    this.$store.dispatch(actionTypes.FETCH_CART);
   },
 };
 </script>

@@ -38,6 +38,8 @@ const getCurrentUser = () => get('/currentUser');
 
 const getCategories = () => get('/categories');
 
+const getCart = () => get('/cart');
+
 // fake calls
 const postUser = () => get('/currentUser');
 
@@ -59,4 +61,5 @@ export {
   logout,
   postRating,
   getCategories,
+  getCart,
 };
