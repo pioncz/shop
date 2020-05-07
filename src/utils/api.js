@@ -6,8 +6,13 @@ const get = (url) => new Promise((resolve, reject) => {
   setTimeout(() => {
     axios.get(url)
       .then((response) => {
-        // console.log(response.headers['x-total-count']);
-        resolve(response.data);
+        const total = response.headers['x-total-count'];
+
+        if (total) {
+          resolve({ list: response.data, total: parseInt(total) });
+        } else {
+          resolve(response.data);
+        }
       })
       .catch((error) => {
         reject(error);

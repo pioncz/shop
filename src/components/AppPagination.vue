@@ -1,0 +1,46 @@
+<template>
+  <div class="pagination">
+    <button
+      v-for="page in pages"
+      :key="page"
+      :class="page === value ? 'active' : ''"
+      @click="() => onClick(page)"
+    >
+      {{page}}
+    </button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'AppPagination',
+  props: {
+    value: Number,
+    totalPages: Number,
+  },
+  computed: {
+    pages() {
+      return [...new Array(this.totalPages)].map((e, i) => (i + 1));
+    },
+  },
+  methods: {
+    onClick(whichPage) {
+      if (whichPage !== this.value) {
+        this.$emit('input', whichPage);
+      }
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+@import '@/styles/consts.scss';
+
+.pagination {
+  margin: $margin1 0;
+
+  button.active {
+    background: $color2;
+  }
+}
+</style>

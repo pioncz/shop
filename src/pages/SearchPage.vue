@@ -22,6 +22,10 @@
         :product="product"
       />
     </div>
+    <AppPagination
+      v-model="page"
+      :totalPages="totalPages"
+    />
     <AppLoader v-show="loading" background />
   </div>
 </template>
@@ -30,6 +34,7 @@
 import ProductTile from '@/components/ProductTile.vue';
 import AppSelect from '@/components/AppSelect.vue';
 import AppLoader from '@/components/AppLoader.vue';
+import AppPagination from '@/components/AppPagination.vue';
 import { mapGetters } from 'vuex';
 import * as getterTypes from '@/store/getter-types';
 import * as actionTypes from '@/store/action-types';
@@ -40,11 +45,12 @@ export default {
     ProductTile,
     AppSelect,
     AppLoader,
+    AppPagination,
   },
   data() {
     return {
       name: this.$route.query.name || '',
-      category: this.$route.query.category || 'ALL',
+      category: '', // this.$route.query.category || 'DESKTOP',
       sortOptions: [
         { label: 'Name asc', value: 'name_asc' },
         { label: 'Name desc', value: 'name_desc' },
@@ -54,18 +60,21 @@ export default {
         { label: 'Rate desc', value: 'rate_desc' },
       ],
       sort: this.$route.query.sort || 'name_asc',
+      page: 1,
+      limit: 10,
     };
   },
   computed: {
     ...mapGetters({
       products: getterTypes.GET_PRODUCTS_LIST,
+      productsTotal: getterTypes.GET_PRODUCTS_TOTAL,
       productsLoading: getterTypes.GET_PRODUCTS_LOADING,
       categories: getterTypes.GET_CATEGORIES_LIST,
       categoriesLoading: getterTypes.GET_CATEGORIES_LOADING,
     }),
     categoriesOptions() {
       return [
-        { label: 'All', value: 'ALL' },
+        ...(this.categories.length ? [{ label: 'All', value: 'ALL' }] : []),
         ...this.categories.map((category) => ({
           label: category.charAt(0) + category.slice(1).toLowerCase(),
           value: category,
@@ -75,12 +84,15 @@ export default {
     loading() {
       return this.productsLoading || this.categoriesLoading;
     },
+    totalPages() {
+      return Math.ceil(this.productsTotal / this.limit);
+    },
   },
   created() {
-    this.fetchProducts();
     this.$store.dispatch(actionTypes.FETCH_CATEGORIES)
       .then(() => {
-        // this.category = ;
+        this.category = this.$route.query.category || 'DESKTOP';
+        this.fetchProducts();
       });
   },
   methods: {
@@ -95,7 +107,7 @@ export default {
         ...(this.name && { name: this.name }),
         ...(this.category !== 'ALL' && { category: this.category }),
         ...(this.sort && { _sort: sortColumn, _order: sortOrder }),
-        _limit: 10,
+        _limit: this.limit,
       };
 
       this.$store.dispatch(actionTypes.FETCH_PRODUCTS, options);

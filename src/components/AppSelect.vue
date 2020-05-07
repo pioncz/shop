@@ -1,7 +1,8 @@
 <template>
   <div class="select">
     <label>{{label}}</label>
-    <select @change="onChange" :value="value">
+    <!-- <select v-model="value"> -->
+    <select :value="value" @change="onChange">
       <option
         v-for="{label, value} in options"
         :key="label+value"

@@ -6,12 +6,16 @@ import * as getterTypes from './getter-types';
 const products = {
   state: {
     productsList: [],
+    productsTotal: 0,
     productsLoading: false,
     productsError: null,
   },
   mutations: {
     [mutationTypes.SET_PRODUCTS_LIST](state, newList) {
       state.productsList = newList;
+    },
+    [mutationTypes.SET_PRODUCTS_TOTAL](state, newTotal) {
+      state.productsTotal = newTotal;
     },
     [mutationTypes.SET_PRODUCTS_LOADING](state, isLoading) {
       state.productsLoading = isLoading;
@@ -23,6 +27,9 @@ const products = {
   getters: {
     [getterTypes.GET_PRODUCTS_LIST](state) {
       return state.productsList;
+    },
+    [getterTypes.GET_PRODUCTS_TOTAL](state) {
+      return state.productsTotal;
     },
     [getterTypes.GET_PRODUCTS_LOADING](state) {
       return state.productsLoading;
@@ -44,8 +51,9 @@ const products = {
       commit(mutationTypes.SET_PRODUCTS_LOADING, true);
 
       getProducts(options)
-        .then((data) => {
-          commit(mutationTypes.SET_PRODUCTS_LIST, data);
+        .then(({ list, total }) => {
+          commit(mutationTypes.SET_PRODUCTS_TOTAL, total);
+          commit(mutationTypes.SET_PRODUCTS_LIST, list);
         })
         .catch(() => {
           commit(mutationTypes.SET_PRODUCTS_ERROR, 'Server error');
