@@ -42,6 +42,7 @@ const products = {
       commit(mutationTypes.SET_SIMILAR_PRODUCTS_PRODUCT_ID, productId);
       commit(mutationTypes.SET_SIMILAR_PRODUCTS_LOADING, true);
       commit(mutationTypes.SET_SIMILAR_PRODUCTS_ERROR, null);
+      commit(mutationTypes.SET_SIMILAR_PRODUCTS_LIST, []);
 
       getSimilarProducts(productId)
         .then((data) => {

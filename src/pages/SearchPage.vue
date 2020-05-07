@@ -1,6 +1,5 @@
 <template>
   <div class="page">
-    <h1>Search</h1>
     <form @submit.prevent="onSubmit">
       <input placeholder="Search by name" v-model="name" />
       <AppSelect
@@ -25,6 +24,7 @@
     <AppPagination
       v-model="page"
       :totalPages="totalPages"
+      @input="onSubmit"
     />
     <AppLoader v-show="loading" background />
   </div>
@@ -60,7 +60,7 @@ export default {
         { label: 'Rate desc', value: 'rate_desc' },
       ],
       sort: this.$route.query.sort || 'name_asc',
-      page: 1,
+      page: +this.$route.query.page || 1,
       limit: 10,
     };
   },
@@ -108,6 +108,7 @@ export default {
         ...(this.category !== 'ALL' && { category: this.category }),
         ...(this.sort && { _sort: sortColumn, _order: sortOrder }),
         _limit: this.limit,
+        _page: this.page,
       };
 
       this.$store.dispatch(actionTypes.FETCH_PRODUCTS, options);
@@ -117,6 +118,7 @@ export default {
         ...(this.name && { name: this.name }),
         ...(this.category !== 'ALL' && { category: this.category }),
         ...(this.sort && { sort: this.sort }),
+        page: this.page,
       };
 
       this.$router.push({
@@ -131,13 +133,17 @@ export default {
 <style scoped lang="scss">
 @import '@/styles/consts.scss';
 
+form {
+  margin: $margin2 0;
+}
+
 .products {
   display: flex;
   justify-content: flex-start;
   padding: $margin2 0;
   flex-wrap: wrap;
 
-  > div {
+  > a {
     flex: 1 1 200px;
     width: 200px;
     margin: $margin1;

@@ -1,11 +1,11 @@
 <template>
-  <div class="product-tile card">
+  <router-link class="product-tile card" :to="`/product/${product.id}`">
     <div class="product-tile__image" v-bind:style="imageStyle"></div>
     <h4 class="product-tile__title">{{product.name}}</h4>
     <Rating class="product-tile__rating" :rate="product.rate" :ratesNumber="product.ratesNumber" />
     <div class="product-tile__price">{{product.price}}$</div>
     <button class="product-tile__buy" v-if="onBuy" v-on:click="onBuy">Kup teraz</button>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -37,6 +37,7 @@ export default {
 @import '@/styles/consts.scss';
 
 .product-tile {
+  display: block;
   max-width: 200px;
   transition: $transition;
   box-shadow: 0px 2px 0px 0px rgba(0,0,0,0);

@@ -5,16 +5,10 @@ Koszyk:
 - Formularz adresowy
 - Platnosc (zamockowana)
 
-Search:
-+Wybór kategorii (kategorie z serwera)
-+loader: czeka na products i categories
-Paginacja
-Po kliknieciu w kafel przejscie do podstrony produktu
-search onChange z debouncem
-
 Store promotion: produkty pobierane i wrzucane do stora produktow. Test czy zadziala jak produkty beda w storze
 
 Admin panel
+search onChange z debouncem
 
 ###
 

@@ -99,9 +99,13 @@ export default {
       newCommentError: true,
     };
   },
-  beforeCreate() {
-    this.$store.dispatch(actionTypes.FETCH_PRODUCT, this.$route.params.id);
-    this.$store.dispatch(actionTypes.FETCH_SIMILAR_PRODUCTS, this.$route.params.id);
+  watch: {
+    $route() {
+      this.fetchData();
+    },
+  },
+  created() {
+    this.fetchData();
   },
   computed: {
     ...mapGetters({
@@ -135,6 +139,10 @@ export default {
         this.newCommentLoading = false;
         this.newCommentError = true;
       });
+    },
+    fetchData() {
+      this.$store.dispatch(actionTypes.FETCH_PRODUCT, this.$route.params.id);
+      this.$store.dispatch(actionTypes.FETCH_SIMILAR_PRODUCTS, this.$route.params.id);
     },
   },
 };
