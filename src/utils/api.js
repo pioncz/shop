@@ -6,6 +6,7 @@ const get = (url) => new Promise((resolve, reject) => {
   setTimeout(() => {
     axios.get(url)
       .then((response) => {
+        // console.log(response.headers['x-total-count']);
         resolve(response.data);
       })
       .catch((error) => {
@@ -30,6 +31,8 @@ const getProduct = (productId) => get(`/products/${productId}`);
 
 const getCurrentUser = () => get('/currentUser');
 
+const getCategories = () => get('/categories');
+
 // fake calls
 const postUser = () => get('/currentUser');
 
@@ -50,4 +53,5 @@ export {
   login,
   logout,
   postRating,
+  getCategories,
 };

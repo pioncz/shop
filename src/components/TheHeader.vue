@@ -16,7 +16,7 @@
         <div v-show="!user && !loading">Login / register</div>
         <div v-show="user && !loading">{{user && user.name}}</div>
         <div v-if="user && !loading" class="header__action">
-          <a href="#" @click="toggle">0 items</a>
+          <button @click="toggle">0 items</button>
           <div v-click-outside="hide" v-show="opened" class="header__action-dropdown">
             <p>Pierwszy item</p>
             <button>Checkout</button>

@@ -15,7 +15,6 @@
       />
       <button type="submit">Search</button>
     </form>
-    <p>{{loading}}</p>
     <div class="products container">
       <ProductTile
         v-for="product in products"
@@ -23,23 +22,29 @@
         :product="product"
       />
     </div>
+    <AppLoader v-show="loading" background />
   </div>
 </template>
 
 <script>
 import ProductTile from '@/components/ProductTile.vue';
 import AppSelect from '@/components/AppSelect.vue';
+import AppLoader from '@/components/AppLoader.vue';
 import { mapGetters } from 'vuex';
 import * as getterTypes from '@/store/getter-types';
 import * as actionTypes from '@/store/action-types';
 
 export default {
   name: 'Search',
+  components: {
+    ProductTile,
+    AppSelect,
+    AppLoader,
+  },
   data() {
     return {
       name: this.$route.query.name || '',
-      categories: ['DESKTOP', 'LAPTOP', 'TABLET', 'PHONE'],
-      category: this.$route.query.category || 'DESKTOP',
+      category: this.$route.query.category || 'ALL',
       sortOptions: [
         { label: 'Name asc', value: 'name_asc' },
         { label: 'Name desc', value: 'name_desc' },
@@ -51,14 +56,12 @@ export default {
       sort: this.$route.query.sort || 'name_asc',
     };
   },
-  components: {
-    ProductTile,
-    AppSelect,
-  },
   computed: {
     ...mapGetters({
       products: getterTypes.GET_PRODUCTS_LIST,
-      loading: getterTypes.GET_PRODUCTS_LOADING,
+      productsLoading: getterTypes.GET_PRODUCTS_LOADING,
+      categories: getterTypes.GET_CATEGORIES_LIST,
+      categoriesLoading: getterTypes.GET_CATEGORIES_LOADING,
     }),
     categoriesOptions() {
       return [
@@ -69,9 +72,16 @@ export default {
         })),
       ];
     },
+    loading() {
+      return this.productsLoading || this.categoriesLoading;
+    },
   },
   created() {
     this.fetchProducts();
+    this.$store.dispatch(actionTypes.FETCH_CATEGORIES)
+      .then(() => {
+        // this.category = ;
+      });
   },
   methods: {
     onSubmit() {

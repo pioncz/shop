@@ -51,7 +51,7 @@ const products = {
           commit(mutationTypes.SET_PRODUCTS_ERROR, 'Server error');
         })
         .finally(() => {
-          commit(mutationTypes.SET_PRODUCTS_LOADING, true);
+          commit(mutationTypes.SET_PRODUCTS_LOADING, false);
         });
     },
     [actionTypes.POST_RATING](context, { rating, comment }) {
