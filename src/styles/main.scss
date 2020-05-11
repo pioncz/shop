@@ -87,9 +87,14 @@ select, input {
   margin: $margin0;
   border-radius: $borderRadius;
   border: 1px solid $color3;
+
+  &.error {
+    border: 1px solid $color6;
+  }
 }
 
 button {
+  display: inline-block;
   background: $color1;
   border: none;
   color: $color;
@@ -99,8 +104,10 @@ button {
   font-size: $font1;
   transition: $transition2;
   cursor: pointer;
+  text-decoration: none;
   
   &:hover {
+    color: $color;
     background: $color2;
   }
 

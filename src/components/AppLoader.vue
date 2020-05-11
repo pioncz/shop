@@ -1,12 +1,12 @@
 <template>
-<div :class="{loader: true, background }">
+<div :class="{loader: true, background, small, header__loader: true }">
   <svg viewBox="0 0 60 60">
-    <circle cx="30" cy="30" r="20" stroke-width="2" fill="none" />
-    <circle cx="30" cy="30" r="17" stroke-width="2" fill="none" />
-    <circle cx="30" cy="30" r="14" stroke-width="2" fill="none" />
-    <circle cx="30" cy="30" r="11" stroke-width="2" fill="none" />
-    <circle cx="30" cy="30" r="8" stroke-width="1.8" fill="none" />
-    <circle cx="30" cy="30" r="5" stroke-width="1.6" fill="none" />
+    <circle cx="30" cy="30" r="20" :stroke-width="small ? 8 : 2" fill="none" />
+    <circle v-if="!small" cx="30" cy="30" r="17" stroke-width="2" fill="none" />
+    <circle v-if="!small" cx="30" cy="30" r="14" stroke-width="2" fill="none" />
+    <circle v-if="!small" cx="30" cy="30" r="11" stroke-width="2" fill="none" />
+    <circle v-if="!small" cx="30" cy="30" r="8" stroke-width="1.8" fill="none" />
+    <circle v-if="!small" cx="30" cy="30" r="5" stroke-width="1.6" fill="none" />
   </svg>
 </div>
 </template>
@@ -16,17 +16,20 @@ export default {
   name: 'AppLoader',
   props: {
     background: Boolean,
+    small: Boolean,
   },
 };
 </script>
 
 <style lang="scss" scoped>
-  $offset1: 130;
-  $offset2: 107;
-  $offset3: 88;
-  $offset4: 69;
-  $offset5: 50;
-  $offset6: 32;
+@import '@/styles/consts.scss';
+
+$offset1: 130;
+$offset2: 107;
+$offset3: 88;
+$offset4: 69;
+$offset5: 50;
+$offset6: 32;
 
 .loader {
   position: absolute;
@@ -39,6 +42,17 @@ export default {
   &.background {
     background: rgba(255, 255, 255, 0.8);
     border-radius: 50%;
+  }
+
+  &.small {
+    position: static;
+    width: 16px;
+    height: 16px;
+    transform: none;
+
+    circle:nth-child(1) {
+      stroke: $color1;
+    }
   }
 
   svg {
@@ -97,56 +111,56 @@ export default {
 }
 
 @keyframes dash1 {
-50% {
-stroke-dashoffset: 0;
-}
-100% {
-stroke-dashoffset: -$offset1;
-}
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -$offset1;
+  }
 }
 
 @keyframes dash2 {
-50% {
-stroke-dashoffset: 0;
-}
-100% {
-stroke-dashoffset: -$offset2;
-}
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -$offset2;
+  }
 }
 
 @keyframes dash3 {
-50% {
-stroke-dashoffset: 0;
-}
-100% {
-stroke-dashoffset: -$offset3;
-}
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -$offset3;
+  }
 }
 
 @keyframes dash4 {
-50% {
-stroke-dashoffset: 0;
-}
-100% {
-stroke-dashoffset: -$offset4;
-}
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -$offset4;
+  }
 }
 
 @keyframes dash5 {
-50% {
-stroke-dashoffset: 0;
-}
-100% {
-stroke-dashoffset: -$offset5;
-}
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -$offset5;
+  }
 }
 
 @keyframes dash6 {
-50% {
-stroke-dashoffset: 0;
-}
-100% {
-stroke-dashoffset: -$offset6;
-}
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -$offset6;
+  }
 }
 </style>

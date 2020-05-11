@@ -1,7 +1,7 @@
 <template>
   <nav class="footer">
     <div class="container">
-      footer
+      © 2020 Shop
     </div>
   </nav>
 </template>

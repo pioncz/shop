@@ -1,6 +1,5 @@
 <template>
   <div class="page product-page">
-    <AppLoader v-show="loading" background />
     <template v-if="!loading">
       <section class="product container card" v-if="!loading">
         <div class="product__left" :style="imageStyle">
@@ -16,8 +15,11 @@
             </li>
           </ul>
           <h3>Price:</h3>
-          <p class="product__price">{{product.price}}</p>
-          <button>Buy now</button>
+          <p class="product__price">{{product.price}}$</p>
+          <button @click="buyProduct" :disabled="cartLoading" class="product__buy-button">
+            <template v-if="cartLoading"><AppLoader small /></template>
+            <template v-if="!cartLoading">Buy now</template>
+          </button>
         </div>
       </section>
       <template v-if="product.features">
@@ -72,6 +74,7 @@
         </div>
       </section>
     </template>
+    <AppLoader v-show="loading" background />
   </div>
 </template>
 
@@ -99,19 +102,12 @@ export default {
       newCommentError: true,
     };
   },
-  watch: {
-    $route() {
-      this.fetchData();
-    },
-  },
-  created() {
-    this.fetchData();
-  },
   computed: {
     ...mapGetters({
       similarProducts: getterTypes.GET_SIMILAR_PRODUCTS_LIST,
       similarProductsLoading: getterTypes.GET_SIMILAR_PRODUCTS_LOADING,
       similarProductsError: getterTypes.GET_SIMILAR_PRODUCTS_ERROR,
+      cartLoading: getterTypes.GET_CART_LOADING,
     }),
     product() {
       return this.$store.getters[getterTypes.GET_PRODUCTS_BY_ID](this.$route.params.id) || {};
@@ -120,6 +116,14 @@ export default {
     imageStyle() {
       return { background: `url(${require(`@/assets/${this.product.image}`)}) center center / contain no-repeat, #eee` };
     },
+  },
+  watch: {
+    $route() {
+      this.fetchData();
+    },
+  },
+  created() {
+    this.fetchData();
   },
   methods: {
     onRate(newRate) {
@@ -143,6 +147,9 @@ export default {
     fetchData() {
       this.$store.dispatch(actionTypes.FETCH_PRODUCT, this.$route.params.id);
       this.$store.dispatch(actionTypes.FETCH_SIMILAR_PRODUCTS, this.$route.params.id);
+    },
+    buyProduct() {
+      this.$store.dispatch(actionTypes.POST_CART_PRODUCT, this.product);
     },
   },
 };
@@ -189,6 +196,10 @@ export default {
     &__specification {
       list-style: none;
       padding-left: 0;
+    }
+
+    &__buy-button > div {
+      margin: 0 auto;
     }
   }
 

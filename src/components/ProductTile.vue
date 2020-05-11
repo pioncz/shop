@@ -1,8 +1,8 @@
 <template>
   <router-link class="product-tile card" :to="`/product/${product.id}`">
-    <div class="product-tile__image" v-bind:style="imageStyle"></div>
+    <div class="product-tile__image" :style="imageStyle"></div>
     <h4 class="product-tile__title">{{product.name}}</h4>
-    <Rating class="product-tile__rating" :rate="product.rate" :ratesNumber="product.ratesNumber" />
+    <Rating :rate="product.rate" :ratesNumber="product.ratesNumber" />
     <div class="product-tile__price">{{product.price}}$</div>
     <button class="product-tile__buy" v-if="onBuy" v-on:click="onBuy">Kup teraz</button>
   </router-link>
@@ -55,10 +55,6 @@ export default {
   &__image {
     width: 100%;
     height: 120px;
-  }
-
-  &__rating {
-
   }
 
   &__rating-number {

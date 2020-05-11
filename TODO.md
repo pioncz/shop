@@ -1,9 +1,20 @@
++ który krok
++ akcje dalej / wstecz
++ listing produktow: obrazek, nazwa, cena
++ możliwość kasowania produktów z listy
+- formularz adresowy
+- platnosc: wielki guzik do 'zapłacenia'
+- podsumowanie zamówienia
+
 Koszyk:
-- Dodawanie produktu do koszyka na kazdym widoku
++ Dodawanie produktu do koszyka
 + Widok listy koszyka w navbarze
 - Podstrona koszyka -> mozliwosc przejscia dalej
 - Formularz adresowy
 - Platnosc (zamockowana)
+
+Problem z kategoria searcha:
+https://stackoverflow.com/questions/61653236/vue-select-doesnt-update-initial-value-after-delay
 
 Store promotion: produkty pobierane i wrzucane do stora produktow. Test czy zadziala jak produkty beda w storze
 

@@ -49,6 +49,10 @@ const logout = () => get('/currentUser');
 
 const postRating = () => get('/currentUser');
 
+const postCartProduct = () => get('/currentUser');
+
+const deleteCartProduct = () => get('/currentUser');
+
 export {
   getCurrentUser,
   getPromotions,
@@ -62,4 +66,6 @@ export {
   postRating,
   getCategories,
   getCart,
+  postCartProduct,
+  deleteCartProduct,
 };

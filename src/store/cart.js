@@ -1,4 +1,4 @@
-import { getCart } from '@/utils/api';
+import { getCart, postCartProduct, deleteCartProduct } from '@/utils/api';
 import * as actionTypes from './action-types';
 import * as mutationTypes from './mutation-types';
 import * as getterTypes from './getter-types';
@@ -24,6 +24,9 @@ const cart = {
     [getterTypes.GET_CART_LIST](state) {
       return state.cartList;
     },
+    [getterTypes.GET_CART_TOTAL_PRICE](state) {
+      return state.cartList.reduce((price, product) => price + product.price, 0);
+    },
     [getterTypes.GET_CART_LOADING](state) {
       return state.cartLoading;
     },
@@ -38,6 +41,38 @@ const cart = {
       getCart()
         .then((data) => {
           commit(mutationTypes.SET_CART_LIST, data.products);
+        })
+        .catch(() => {
+          commit(mutationTypes.SET_CART_ERROR, 'Server error');
+        })
+        .finally(() => {
+          commit(mutationTypes.SET_CART_LOADING, false);
+        });
+    },
+    [actionTypes.POST_CART_PRODUCT]({ state, commit }, product) {
+      commit(mutationTypes.SET_CART_LOADING, true);
+
+      postCartProduct(product)
+        .then(() => {
+          commit(mutationTypes.SET_CART_LIST, [...state.cartList, product]);
+        })
+        .catch(() => {
+          commit(mutationTypes.SET_CART_ERROR, 'Server error');
+        })
+        .finally(() => {
+          commit(mutationTypes.SET_CART_LOADING, false);
+        });
+    },
+    [actionTypes.DELETE_CART_PRODUCT]({ state, commit }, productId) {
+      commit(mutationTypes.SET_CART_LOADING, true);
+
+      deleteCartProduct(productId)
+        .then(() => {
+          const productIndex = state.cartList.findIndex(({ id }) => id === productId);
+
+          if (productIndex > -1) {
+            commit(mutationTypes.SET_CART_LIST, state.cartList.filter((_, index) => index !== productIndex));
+          }
         })
         .catch(() => {
           commit(mutationTypes.SET_CART_ERROR, 'Server error');

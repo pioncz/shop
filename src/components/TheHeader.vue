@@ -15,14 +15,17 @@
         <div v-show="userLoading">Loading</div>
         <div v-show="!user && !userLoading">Login / register</div>
         <div v-show="user && !userLoading">{{user && user.name}}</div>
-        <div v-if="user && !cartLoading" class="header__action">
-          <button @click="toggle">{{cartProducts.length}} items</button>
+        <div v-if="user" class="header__action">
+          <button @click="toggle" :disabled="cartLoading">
+            <AppLoader v-if="cartLoading" small />
+            <template v-if="!cartLoading">{{cartProducts.length}} items</template>
+          </button>
           <div v-click-outside="hide" v-show="opened" class="header__action-dropdown">
             <template v-if="cartProducts.length">
               <ul class="header__cart-products">
                 <li
-                  v-for="{ id, name, price } in cartProducts"
-                  :key="id"
+                  v-for="({ id, name, price }, index) in cartProducts"
+                  :key="`${id}${index}`"
                 >
                   <div>{{name}}</div><div>{{price}}$</div>
                 </li>
@@ -30,7 +33,7 @@
                   <div>Total:</div><div>{{cartTotalPrice}}$</div>
                 </li>
               </ul>
-              <button>Checkout</button>
+              <button @click="onCheckoutClick">Checkout</button>
             </template>
             <template v-if="!cartProducts.length">
               <p>If you add something to cart, you can see it here</p>
@@ -48,9 +51,13 @@ import ClickOutside from 'vue-click-outside';
 import * as actionTypes from '@/store/action-types';
 import * as getterTypes from '@/store/getter-types';
 import { mapGetters } from 'vuex';
+import AppLoader from '@/components/AppLoader.vue';
 
 export default {
   name: 'TheHeader',
+  components: {
+    AppLoader,
+  },
   data() {
     return {
       opened: false,
@@ -62,10 +69,8 @@ export default {
       userLoading: getterTypes.GET_CURRENT_USER_LOADING,
       cartProducts: getterTypes.GET_CART_LIST,
       cartLoading: getterTypes.GET_CART_LOADING,
+      cartTotalPrice: getterTypes.GET_CART_TOTAL_PRICE,
     }),
-    cartTotalPrice() {
-      return this.cartProducts.length && this.cartProducts.reduce((price, product) => price + product.price, 0);
-    },
   },
   methods: {
     logout() {
@@ -77,9 +82,12 @@ export default {
     toggle() {
       this.opened = true;
     },
-
     hide() {
       this.opened = false;
+    },
+    onCheckoutClick() {
+      this.$router.push('/cart');
+      this.hide();
     },
   },
   mounted() {
@@ -110,15 +118,19 @@ export default {
     display: flex;
     align-items: center;
 
-    a {
-      padding: 5px;
+    > a {
+      padding: 19px 10px;
       color: $color;
       line-height: 22px;
       text-decoration: none;
-    }
+      transition: background 0.2s ease-in-out;
 
-    .router-link-active {
-      border-bottom: 2px solid #fff;
+      &.router-link-active {
+        background: rgba(255, 255, 255, 0.3);
+      }
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
     }
   }
 
