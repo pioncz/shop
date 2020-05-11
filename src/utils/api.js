@@ -53,6 +53,8 @@ const postCartProduct = () => get('/currentUser');
 
 const deleteCartProduct = () => get('/currentUser');
 
+const postCartPayment = () => get('/currentUser');
+
 export {
   getCurrentUser,
   getPromotions,
@@ -68,4 +70,5 @@ export {
   getCart,
   postCartProduct,
   deleteCartProduct,
+  postCartPayment,
 };

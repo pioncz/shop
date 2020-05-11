@@ -24,14 +24,26 @@ body {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition-duration: 0.3s;
-  transition-property: opacity;
-  transition-timing-function: ease;
+  transition: opacity 0.3s ease;
 }
 
 .fade-enter,
 .fade-leave-active {
   opacity: 0
+}
+
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease-in;
+}
+
+.slide-fade-enter {
+  opacity: 0;
+  transform: translateY(-100px);
+}
+
+.slide-fade-leave-active {
+  transform: translateY(100px);
 }
 
 .page {

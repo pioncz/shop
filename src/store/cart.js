@@ -1,4 +1,6 @@
-import { getCart, postCartProduct, deleteCartProduct } from '@/utils/api';
+import {
+  getCart, postCartProduct, deleteCartProduct, postCartPayment,
+} from '@/utils/api';
 import * as actionTypes from './action-types';
 import * as mutationTypes from './mutation-types';
 import * as getterTypes from './getter-types';
@@ -73,6 +75,20 @@ const cart = {
           if (productIndex > -1) {
             commit(mutationTypes.SET_CART_LIST, state.cartList.filter((_, index) => index !== productIndex));
           }
+        })
+        .catch(() => {
+          commit(mutationTypes.SET_CART_ERROR, 'Server error');
+        })
+        .finally(() => {
+          commit(mutationTypes.SET_CART_LOADING, false);
+        });
+    },
+    [actionTypes.POST_CART_PAYMENT]({ commit }, details) {
+      commit(mutationTypes.SET_CART_LOADING, true);
+
+      return postCartPayment(details)
+        .then(() => {
+          commit(mutationTypes.SET_CART_LIST, []);
         })
         .catch(() => {
           commit(mutationTypes.SET_CART_ERROR, 'Server error');
