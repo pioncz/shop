@@ -1,6 +1,6 @@
 <template>
-  <div class="page">
-    <h1>Admin page</h1>
+  <div>
+    <h1>Admin product page</h1>
       <editor-menu-bar :editor="editor" v-slot="{ isActive }">
       <div class="menubar">
         <p>{{Object.keys(isActive)}}</p>
@@ -139,7 +139,7 @@
 import { Editor, EditorContent, EditorMenuBar } from 'tiptap';
 
 export default {
-  name: 'AdminPage',
+  name: 'AdminProductPage',
   components: {
     EditorContent,
     EditorMenuBar,

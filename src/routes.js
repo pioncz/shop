@@ -2,13 +2,13 @@ import HomePage from './pages/HomePage.vue';
 import ProductPage from './pages/ProductPage.vue';
 import NotFoundPage from './pages/NotFoundPage.vue';
 import CartPage from './pages/CartPage.vue';
-import CategoryPage from './pages/CategoryPage.vue';
-import ContactPage from './pages/ContactPage.vue';
 import LoginPage from './pages/LoginPage.vue';
 import RegisterPage from './pages/RegisterPage.vue';
 import SearchPage from './pages/SearchPage.vue';
 import PromotionPage from './pages/PromotionPage.vue';
-import AdminPage from './pages/AdminPage.vue';
+import AdminPage from './pages/admin/IndexPage.vue';
+import AdminProductPage from './pages/admin/AdminProductPage.vue';
+import AdminSearchPage from './pages/admin/AdminSearchPage.vue';
 
 // Routes
 const routes = [
@@ -56,22 +56,6 @@ const routes = [
     },
   },
   {
-    name: 'category',
-    path: '/category',
-    component: CategoryPage,
-    meta: {
-      title: 'Shop - Category',
-    },
-  },
-  {
-    name: 'contact',
-    path: '/contact',
-    component: ContactPage,
-    meta: {
-      title: 'Shop - Contact',
-    },
-  },
-  {
     name: 'login',
     path: '/login',
     component: LoginPage,
@@ -96,12 +80,22 @@ const routes = [
     },
   },
   {
-    name: 'admin',
     path: '/admin',
     component: AdminPage,
     meta: {
       title: 'Shop - Admin page',
     },
+    children: [
+      {
+        name: 'admin',
+        path: '',
+        component: AdminSearchPage,
+      },
+      {
+        path: ':id',
+        component: AdminProductPage,
+      },
+    ],
   },
   {
     path: '*',

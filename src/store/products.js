@@ -49,11 +49,17 @@ const products = {
     },
     [actionTypes.FETCH_PRODUCTS]({ commit }, options) {
       commit(mutationTypes.SET_PRODUCTS_LOADING, true);
+      commit(mutationTypes.SET_PRODUCTS_LIST, []);
 
       getProducts(options)
-        .then(({ list, total }) => {
-          commit(mutationTypes.SET_PRODUCTS_TOTAL, total);
-          commit(mutationTypes.SET_PRODUCTS_LIST, list);
+        .then((response) => {
+          if (!options || !Object.keys(options).length) {
+            commit(mutationTypes.SET_PRODUCTS_LIST, response);
+          } else {
+            const { list, total } = response;
+            commit(mutationTypes.SET_PRODUCTS_TOTAL, total);
+            commit(mutationTypes.SET_PRODUCTS_LIST, list);
+          }
         })
         .catch(() => {
           commit(mutationTypes.SET_PRODUCTS_ERROR, 'Server error');

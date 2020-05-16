@@ -36,14 +36,8 @@ const user = {
         });
     },
     [actionTypes.LOGOUT]({ commit }) {
-      commit(mutationTypes.SET_CURRENT_USER_LOADING, true);
-      return logout()
-        .then(() => {
-          commit(mutationTypes.SET_CURRENT_USER, null);
-        })
-        .finally(() => {
-          commit(mutationTypes.SET_CURRENT_USER_LOADING, false);
-        });
+      commit(mutationTypes.SET_CURRENT_USER, null);
+      return logout();
     },
     [actionTypes.FETCH_CURRENT_USER]: ({ commit, getters }) => {
       if (getters.GET_CURRENT_USER) {

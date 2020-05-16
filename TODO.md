@@ -1,24 +1,26 @@
 Problem z kategoria searcha:
 https://stackoverflow.com/questions/61653236/vue-select-doesnt-update-initial-value-after-delay
 
-Store promotion: produkty pobierane i wrzucane do stora produktow. Test czy zadziala jak produkty beda w storze
-
 Admin panel
+listing produktow
+loader
+edycja produktu (wysiwyg edytor)
 search onChange z debouncem
+dodac category select
+
+Przepisac story na vstore
+
+Spojne nazewnictwo event handlerow
 
 ###
 
 Dodatkowo:
-- płatność: adyen, stripe, paypal
+- info płatności: adyen, stripe, paypal
+- info accessibility to osobny rozdział
 - deployment https://vuejs.org/v2/guide/deployment.html
-- accessibility?
 - sprawdzanie typow
-- do opisow jakis rich text editor
-- popup newsletterowy
-- uzycie slota
+- uzycie slota klasa popup uzyta w registration i login?
 - globalny interceptor do bledow
-- walidacja formularza
-- przyklad wykorzystania gettera w vuex
 - pokazac drugi rodzaj loadera (ladujacy sie szkielet tresci https://github.com/zalog/placeholder-loading)
 - vue cli (jak ulatwic sobie zycie?)
 - spojne nazewnictwo? komponenty CamelCase a store nie-e

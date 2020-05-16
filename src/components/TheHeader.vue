@@ -2,19 +2,14 @@
   <nav class="header">
     <div class="header__items container">
       <router-link to="/" exact>Home</router-link>
-      <router-link to="/product/5ea086044623f65e83a0fecc">Product</router-link>
-      <router-link to="/cart">cart</router-link>
-      <router-link to="/category">category</router-link>
-      <router-link to="/contact">contact</router-link>
-      <router-link to="/login">login</router-link>
-      <router-link to="/register">register</router-link>
       <router-link to="/search">search</router-link>
       <router-link to="/admin">admin</router-link>
       <router-link to="/ddd">Not found</router-link>
       <div class="header__actions">
         <div v-show="userLoading">Loading</div>
-        <div v-show="!user && !userLoading">Login / register</div>
-        <div v-show="user && !userLoading">{{user && user.name}}</div>
+        <router-link v-show="!user && !userLoading" to="/login" tag="button">login</router-link>
+        <router-link v-show="!user && !userLoading" to="/register" tag="button">register</router-link>
+        <div v-show="user">{{user && user.name}}</div>
         <div v-if="user" class="header__action">
           <button @click="toggle" :disabled="cartLoading">
             <AppLoader v-if="cartLoading" small />
@@ -140,12 +135,8 @@ export default {
     justify-content: flex-end;
     align-items: center;
 
-    > div {
-      margin: 0 $margin2;
-    }
-
-    button {
-      margin: 0;
+    > * {
+      margin: 0 $margin1;
     }
   }
 
