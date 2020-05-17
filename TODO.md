@@ -1,16 +1,15 @@
 Problem z kategoria searcha:
 https://stackoverflow.com/questions/61653236/vue-select-doesnt-update-initial-value-after-delay
 
-Admin panel
-listing produktow
-loader
-edycja produktu (wysiwyg edytor)
-search onChange z debouncem
-dodac category select
-
 Przepisac story na vstore
 
-Spojne nazewnictwo event handlerow
+Spojne nazewnictwo event handlerow onEvent
+
+testowanie:
+- end to end
+- vuex store
+
+click-outside directive
 
 ###
 
@@ -24,6 +23,7 @@ Dodatkowo:
 - pokazac drugi rodzaj loadera (ladujacy sie szkielet tresci https://github.com/zalog/placeholder-loading)
 - vue cli (jak ulatwic sobie zycie?)
 - spojne nazewnictwo? komponenty CamelCase a store nie-e
+- unikac contenteditable - vue nie za dobrze sobie radzi z aktualizowaniem stanu
 
 Wstawki opisowe:
 - AppComponent, TheComponent, SuperComponent

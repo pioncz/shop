@@ -1,165 +1,75 @@
 <template>
-  <div>
-    <h1>Admin product page</h1>
-      <editor-menu-bar :editor="editor" v-slot="{ isActive }">
-      <div class="menubar">
-        <p>{{Object.keys(isActive)}}</p>
-        <!-- <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.bold() }"
-          @click="commands.bold"
-        >
-          <icon name="bold" />
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.italic() }"
-          @click="commands.italic"
-        >
-          <icon name="italic" />
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.strike() }"
-          @click="commands.strike"
-        >
-          <icon name="strike" />
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.underline() }"
-          @click="commands.underline"
-        >
-          <icon name="underline" />
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.code() }"
-          @click="commands.code"
-        >
-          <icon name="code" />
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.paragraph() }"
-          @click="commands.paragraph"
-        >
-          <icon name="paragraph" />
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.heading({ level: 1 }) }"
-          @click="commands.heading({ level: 1 })"
-        >
-          H1
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.heading({ level: 2 }) }"
-          @click="commands.heading({ level: 2 })"
-        >
-          H2
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.heading({ level: 3 }) }"
-          @click="commands.heading({ level: 3 })"
-        >
-          H3
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.bullet_list() }"
-          @click="commands.bullet_list"
-        >
-          <icon name="ul" />
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.ordered_list() }"
-          @click="commands.ordered_list"
-        >
-          <icon name="ol" />
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.blockquote() }"
-          @click="commands.blockquote"
-        >
-          <icon name="quote" />
-        </button>
-
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.code_block() }"
-          @click="commands.code_block"
-        >
-          <icon name="code" />
-        </button>
-
-        <button
-          class="menubar__button"
-          @click="commands.horizontal_rule"
-        >
-          <icon name="hr" />
-        </button>
-
-        <button
-          class="menubar__button"
-          @click="commands.undo"
-        >
-          <icon name="undo" />
-        </button>
-
-        <button
-          class="menubar__button"
-          @click="commands.redo"
-        >
-          <icon name="redo" />
-        </button> -->
-
-      </div>
-    </editor-menu-bar>
-    <editor-content :editor="editor" />
+  <div class="admin-product-page container">
+    <ProductBigTile
+      v-if="!loading"
+      :product="product"
+      editable
+      @change="onProductChange"
+      ref="product-big-tile"
+    />
+    <AppLoader v-if="loading" />
+    <div class="admin-product-page__toolbar">
+      <button @click="goBack">Delete</button>
+      <button @click="discardChanges">Discard</button>
+      <button @click="goBack">Save</button>
+    </div>
   </div>
 </template>
 
 <script>
-import { Editor, EditorContent, EditorMenuBar } from 'tiptap';
+import ProductBigTile from '@/components/ProductBigTile';
+import AppLoader from '@/components/AppLoader.vue';
+import * as actionTypes from '@/store/action-types';
+import * as getterTypes from '@/store/getter-types';
 
 export default {
   name: 'AdminProductPage',
   components: {
-    EditorContent,
-    EditorMenuBar,
+    ProductBigTile,
+    AppLoader,
   },
   data() {
     return {
       editor: null,
+      editedProduct: null,
     };
   },
-  mounted() {
-    this.editor = new Editor({
-      content: '<p>This is just a boring paragraph</p>',
-    });
+  computed: {
+    product() {
+      return this.$store.getters[getterTypes.GET_PRODUCTS_BY_ID](this.$route.params.id) || {};
+    },
+    loading() { return !this.product.name; },
   },
-  beforeDestroy() {
-    this.editor.destroy();
+  methods: {
+    goBack() {
+      this.$router.push('/admin');
+    },
+    onProductChange(product) {
+      console.log(product);
+    },
+    discardChanges() {
+      this.$refs['product-big-tile'].discardChanges();
+    },
+  },
+  created() {
+    this.$store.dispatch(actionTypes.FETCH_PRODUCT, this.$route.params.id);
   },
 };
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/consts.scss';
 
+.admin-product-page {
+  &__toolbar {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 4px 8px 1px #999;
+    border-radius: 2px;
+    background: #fff;
+    padding: $margin0 $margin2;
+  }
+}
 </style>

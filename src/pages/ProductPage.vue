@@ -2,25 +2,12 @@
   <div class="page product-page">
     <template v-if="!loading">
       <section class="product container card" v-if="!loading">
-        <div class="product__left" :style="imageStyle">
-        </div>
-        <div class="product__right">
-          <h2>{{product.name}}</h2>
-          <Rating class="product__rating" :rate="product.rate" :ratesNumber="product.ratesNumber" />
-          <p>{{product.description}}</p>
-          <h3>Specification:</h3>
-          <ul class="product__specification">
-            <li v-for="(item, key) in product.specification" :key="key">
-              <b>{{key}}</b>: {{item.join ? item.join(', ') : item}}
-            </li>
-          </ul>
-          <h3>Price:</h3>
-          <p class="product__price">{{product.price}}$</p>
-          <button @click="buyProduct" :disabled="cartLoading" class="product__buy-button">
-            <template v-if="cartLoading"><AppLoader small /></template>
-            <template v-if="!cartLoading">Buy now</template>
-          </button>
-        </div>
+        <ProductBigTile
+          :product="product"
+          @buyProduct="buyProduct"
+          buyVisible
+          :buyLoading="cartLoading"
+        />
       </section>
       <template v-if="product.features">
         <section
@@ -82,6 +69,7 @@
 import Rating from '@/components/Rating.vue';
 import AppLoader from '@/components/AppLoader.vue';
 import ProductTile from '@/components/ProductTile.vue';
+import ProductBigTile from '@/components/ProductBigTile.vue';
 import * as actionTypes from '@/store/action-types';
 import * as getterTypes from '@/store/getter-types';
 import { mapGetters } from 'vuex';
@@ -92,6 +80,7 @@ export default {
     Rating,
     AppLoader,
     ProductTile,
+    ProductBigTile,
   },
   data() {
     return {
@@ -113,9 +102,6 @@ export default {
       return this.$store.getters[getterTypes.GET_PRODUCTS_BY_ID](this.$route.params.id) || {};
     },
     loading() { return !this.product.name; },
-    imageStyle() {
-      return { background: `url(${require(`@/assets/${this.product.image}`)}) center center / contain no-repeat, #eee` };
-    },
   },
   watch: {
     $route() {
@@ -170,37 +156,6 @@ export default {
 
   h3 {
     margin: $margin0 0 $margin1;
-  }
-
-  .product {
-    &__left {
-      flex: 1 1 60%;
-    }
-
-    &__right {
-      flex: 0 0 40%;
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-      padding: 0 $margin2;
-
-      > * {
-        margin: 0 0 $margin1 !important;
-      }
-    }
-
-    &__rating {
-      height: 30px;
-    }
-
-    &__specification {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    &__buy-button > div {
-      margin: 0 auto;
-    }
   }
 
   .feature {

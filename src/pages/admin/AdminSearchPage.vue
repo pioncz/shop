@@ -124,7 +124,7 @@ export default {
     background: rgba(0,0,0,0.04);
   }
 
-  tr:hover {
+  tbody tr:hover {
     background: rgba(0,0,0,0.15);
     cursor: pointer;
   }
