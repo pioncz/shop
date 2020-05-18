@@ -18,11 +18,13 @@ const router = new VueRouter({
 
 router.beforeEach(async (to, from, next) => {
   // Authentications:
-  if (to.matched.some((record) => record.meta.secured)) {
+  const securedRoute = to.matched.find((record) => record.meta.secured);
+  if (securedRoute) {
     await store.dispatch(actionTypes.FETCH_CURRENT_USER).catch(() => {});
     const currentUser = store.getters[getterTypes.GET_CURRENT_USER];
+    const { requiredRole } = securedRoute.meta;
 
-    if (!currentUser) {
+    if (!currentUser || (requiredRole && currentUser.role !== requiredRole)) {
       return next({
         name: 'login',
         params: { nextUrl: to.fullPath },

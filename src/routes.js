@@ -84,6 +84,8 @@ const routes = [
     component: AdminPage,
     meta: {
       title: 'Shop - Admin page',
+      secured: true,
+      requiredRole: 'admin',
     },
     children: [
       {

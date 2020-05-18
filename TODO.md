@@ -1,5 +1,3 @@
-admin page requires role admin
-
 przyklad internacjonalizacji
 
 click-outside directive

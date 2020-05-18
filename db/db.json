@@ -1993,7 +1993,8 @@
  ],
 
   "currentUser": {
-     "name": "Peter"
+     "name": "Peter",
+     "role": "admin"
   },
 
   "similarProducts": [

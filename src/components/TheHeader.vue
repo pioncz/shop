@@ -2,8 +2,9 @@
   <nav class="header">
     <div class="header__items container">
       <router-link to="/" exact>Home</router-link>
-      <router-link to="/search">search</router-link>
-      <router-link to="/admin">admin</router-link>
+      <router-link to="/search">Search</router-link>
+      <router-link to="/cart">Cart</router-link>
+      <router-link to="/admin">Admin</router-link>
       <router-link to="/ddd">Not found</router-link>
       <div class="header__actions">
         <div v-show="userLoading">Loading</div>
