@@ -5,6 +5,8 @@ spojne nazewnictwo? komponenty CamelCase a store nie-e
 
 spojne nazewnictwo event handlerow onEvent
 
+przyklad internacjonalizacji
+
 click-outside directive
 
 deployment https://vuejs.org/v2/guide/deployment.html
@@ -21,6 +23,8 @@ testowanie:
 
 pokazac drugi rodzaj loadera (ladujacy sie szkielet tresci https://github.com/zalog/placeholder-loading)
 
+style dolaczyc jako import w main.scss, opisac jak robic style w komponencie
+
 ###
 
 Wstawki opisowe:
@@ -31,7 +35,9 @@ Wstawki opisowe:
 - AppComponent, TheComponent, SuperComponent
 - w idealnym swiecie serwer wystawi dobre api, ale czesto trzeba robic dodatkowe rzeczy
 - w zaleznosci od potrzeb nie trzeba za kazdym razem czyscic danych ktore juz pobralismy raz od serwera
-- info do eslinta: w pewnym momencie zacznie nam przeszkadzac w trakcie developmentu i lepiej go dodac do np jako githook i wykonywac lintera np przed commitem lub mergem do developa
+- Vue.config.productionTip = false;
+- eslint setup: vue.config.js  lintOnSave: false, a eslint dolaczyc do builda za pomoca github actions albo np pre-commit git hooks
 - vuex strict mode - do obserwowania niepozadanych zmian store'a
-- inne stylowanie: bootstrap, material
-- 
+- warte sprawdzenia biblioteki ui: 
+https://element.eleme.io/
+https://vuetifyjs.com
