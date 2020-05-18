@@ -3,6 +3,8 @@
     :is="component"
     @click="onClick"
     class="live-edit"
+    ref="component"
+
   >
     <template v-if="!editing">
       {{ value }}
@@ -13,6 +15,8 @@
         :value="inputComponent === 'input' ? value : null"
         @change="onChange"
         @blur="onBlur"
+        ref="input"
+        :style="style"
       >{{ inputComponent === 'textarea' ? value : ''}}</component>
     </template>
   </component>
@@ -33,6 +37,7 @@ export default {
   data() {
     return {
       editing: false,
+      style: {},
     };
   },
   computed: {
@@ -44,10 +49,17 @@ export default {
     onClick() {
       if (this.editable) {
         this.editing = true;
+        const { height } = this.$refs.component.getBoundingClientRect();
+        this.style = { height: `${height}px` };
+
+        this.$nextTick(() => {
+          this.$refs.input.focus();
+        });
       }
     },
     onBlur() {
       this.editing = false;
+      this.style = {};
     },
     onChange(e) {
       this.$emit('change', e.target.value);
@@ -59,9 +71,12 @@ export default {
 <style lang="scss" scoped>
 .live-edit {
   > * {
+    width: 100%;
     margin: 0;
     padding: inherit;
-    font-size: inherit;
+    // font-size: inherit;
+    font: inherit;
+    // font-family: inherit;
     line-height: inherit;
   }
 }

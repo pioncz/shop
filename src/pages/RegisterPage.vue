@@ -36,7 +36,7 @@
 
 <script>
 import { postUser } from '@/utils/api';
-import AppLoader from '@/components/AppLoader';
+import AppLoader from '@/components/AppLoader.vue';
 
 export default {
   name: 'RegisterPage',
@@ -76,7 +76,7 @@ export default {
           .then(() => {
             this.registered = true;
           })
-          .catch((error) => {
+          .catch(() => {
             // handle custom error or:
             this.error = 'Could not register user';
             this.loading = false;

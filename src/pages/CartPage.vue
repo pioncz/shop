@@ -89,8 +89,8 @@
           </div>
         </div>
         <div>
-          <button @click="previousStep" :disabled="cartLoading || step <= 1">Wstecz</button>
-          <button @click="nextStep" :disabled="cartLoading || step >= 3 || !cartProducts.length" type="submit">Next</button>
+          <button @click="previousStep" :disabled="previousDisabled">Wstecz</button>
+          <button @click="nextStep" :disabled="nextDisabled" type="submit">Next</button>
         </div>
         <AppLoader v-show="cartLoading" />
       </div>
@@ -135,6 +135,12 @@ export default {
     }),
     left() {
       return `${-(this.step - 1) * 100}%`;
+    },
+    previousDisabled() {
+      return this.cartLoading || this.step <= 1;
+    },
+    nextDisabled() {
+      return this.cartLoading || this.step >= 3 || !this.cartProducts.length;
     },
   },
   methods: {

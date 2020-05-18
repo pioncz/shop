@@ -7,8 +7,20 @@
       <router-link to="/ddd">Not found</router-link>
       <div class="header__actions">
         <div v-show="userLoading">Loading</div>
-        <router-link v-show="!user && !userLoading" to="/login" tag="button">login</router-link>
-        <router-link v-show="!user && !userLoading" to="/register" tag="button">register</router-link>
+        <router-link
+          v-show="!user && !userLoading"
+          to="/login"
+          tag="button"
+        >
+          login
+        </router-link>
+        <router-link
+        v-show="!user && !userLoading"
+        to="/register"
+        tag="button"
+        >
+          register
+        </router-link>
         <div v-show="user">{{user && user.name}}</div>
         <div v-if="user" class="header__action">
           <button @click="toggle" :disabled="cartLoading">

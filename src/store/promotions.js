@@ -24,7 +24,11 @@ const promotions = {
     [getterTypes.GET_PROMOTIONS_LIST](state) {
       return state.promotionsList;
     },
-    [getterTypes.GET_PROMOTIONS_BY_ID]: (state) => (promotionId) => state.promotionsList.find((promotion) => promotion.id === promotionId),
+    [getterTypes.GET_PROMOTIONS_BY_ID]: (state) => {
+      return (promotionId) => {
+        return state.promotionsList.find((promotion) => promotion.id === promotionId);
+      };
+    },
     [getterTypes.GET_PROMOTIONS_LOADING](state) {
       return state.promotionsLoading;
     },

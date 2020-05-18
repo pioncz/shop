@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import ProductBigTile from '@/components/ProductBigTile';
+import ProductBigTile from '@/components/ProductBigTile.vue';
 import AppLoader from '@/components/AppLoader.vue';
 import * as actionTypes from '@/store/action-types';
 import * as getterTypes from '@/store/getter-types';

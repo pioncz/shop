@@ -14,7 +14,10 @@
         v-for="feature in product.features"
         :key="feature.name"
         class="feature container card">
-          <img class="feature__image" :src="product.image && require('@/assets/' + product.image)" />
+          <img
+            class="feature__image"
+            :src="product.image && require('@/assets/' + product.image)"
+          />
           <div>
             <h3>{{feature.name}}</h3>
             <p>{{feature.description}}</p>

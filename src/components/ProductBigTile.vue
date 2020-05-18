@@ -9,7 +9,11 @@
         @change="onInput('name', $event)"
         editable
       />
-      <Rating class="product-big-tile__rating" :rate="editedProduct.rate" :ratesNumber="editedProduct.ratesNumber" />
+      <Rating
+        class="product-big-tile__rating"
+        :rate="editedProduct.rate"
+        :ratesNumber="editedProduct.ratesNumber"
+      />
       <LiveEdit
         component="p"
         :value="editedProduct.description"

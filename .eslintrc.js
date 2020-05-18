@@ -15,6 +15,8 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'global-require': 'off',
     'import/no-dynamic-require': 'off',
-    "indent": ["error", 2]
+    'consistent-return': 'off',
+    'arrow-body-style': 'off',
+    indent: ['error', 2],
   },
 };

@@ -9,7 +9,7 @@ const get = (url) => new Promise((resolve, reject) => {
         const total = response.headers['x-total-count'];
 
         if (total) {
-          resolve({ list: response.data, total: parseInt(total) });
+          resolve({ list: response.data, total: parseInt(total, 10) });
         } else {
           resolve(response.data);
         }

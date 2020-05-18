@@ -37,7 +37,10 @@ const products = {
     [getterTypes.GET_PRODUCTS_ERROR](state) {
       return state.productsError;
     },
-    [getterTypes.GET_PRODUCTS_BY_ID]: (state) => (productId) => state.productsList.find((product) => product.id === productId),
+    [getterTypes.GET_PRODUCTS_BY_ID]: (state) => {
+      return (productId) => state.productsList
+        .find((product) => product.id === productId);
+    },
   },
   actions: {
     [actionTypes.FETCH_PRODUCT]({ state, commit, getters }, productId) {

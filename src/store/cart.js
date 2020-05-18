@@ -73,7 +73,10 @@ const cart = {
           const productIndex = state.cartList.findIndex(({ id }) => id === productId);
 
           if (productIndex > -1) {
-            commit(mutationTypes.SET_CART_LIST, state.cartList.filter((_, index) => index !== productIndex));
+            commit(
+              mutationTypes.SET_CART_LIST,
+              state.cartList.filter((_, index) => index !== productIndex),
+            );
           }
         })
         .catch(() => {
