@@ -1,11 +1,12 @@
 <template>
   <div class="page">
-    <form @submit.prevent="onSubmit">
+    <form @submit.prevent="onSubmit" v-if="categoriesOptions.length">
       <input placeholder="Search by name" v-model="name" />
       <AppSelect
         label="Category:"
         :options="categoriesOptions"
-        v-model="category"
+        :value="category"
+        @input="category = $event"
       />
       <AppSelect
         label="Sort by:"

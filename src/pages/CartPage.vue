@@ -19,7 +19,7 @@
                   >
                     <div
                       class="products-list__image"
-                      :style="imageStyle(image)"
+                      :style="getImageStyle(image)"
                     ></div>
                     <h3
                       class="products-list__name"
@@ -30,7 +30,7 @@
                       class="products-list__price"
                     >{{price}}$</h3>
                     <button
-                      @click="() => removeCartProduct(id)"
+                      @click="() => onRemoveCartProductClick(id)"
                       :disabled="cartLoading"
                     >Remove</button>
                   </li>
@@ -89,8 +89,8 @@
           </div>
         </div>
         <div>
-          <button @click="previousStep" :disabled="previousDisabled">Wstecz</button>
-          <button @click="nextStep" :disabled="nextDisabled" type="submit">Next</button>
+          <button @click="onPpreviousStepClick" :disabled="previousDisabled">Wstecz</button>
+          <button @click="onNextStepClick" :disabled="nextDisabled" type="submit">Next</button>
         </div>
         <AppLoader v-show="cartLoading" />
       </div>
@@ -144,12 +144,12 @@ export default {
     },
   },
   methods: {
-    previousStep() {
+    onPpreviousStepClick() {
       if (this.step <= 1) return;
 
       this.step -= 1;
     },
-    nextStep() {
+    onNextStepClick() {
       if (this.step >= 3) return;
 
       if (this.step === 2) {
@@ -160,10 +160,10 @@ export default {
         this.step += 1;
       }
     },
-    imageStyle(image) {
+    getImageStyle(image) {
       return { background: `url(${require(`@/assets/${image}`)}) center center / contain no-repeat, #eee` };
     },
-    removeCartProduct(productId) {
+    onRemoveCartProductClick(productId) {
       this.$store.dispatch(actionTypes.DELETE_CART_PRODUCT, productId);
     },
     validateForm() {

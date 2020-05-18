@@ -31,7 +31,7 @@
       <p class="product-big-tile__price">{{editedProduct.price}}$</p>
       <button
         v-if="buyVisible"
-        @click="$emit('buyProduct')"
+        @click="onBuyClick"
         :disabled="buyLoading"
         class="product-big-tile__buy-button"
       >
@@ -77,6 +77,9 @@ export default {
     },
     discardChanges() {
       this.editedProduct = { ...this.product };
+    },
+    onBuyClick() {
+      this.$emit('buy-product');
     },
   },
 };

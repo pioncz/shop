@@ -4,7 +4,7 @@
       <section class="product container card" v-if="!loading">
         <ProductBigTile
           :product="product"
-          @buyProduct="buyProduct"
+          @buy-product="onBuyProductClick"
           buyVisible
           :buyLoading="cartLoading"
         />
@@ -137,7 +137,7 @@ export default {
       this.$store.dispatch(actionTypes.FETCH_PRODUCT, this.$route.params.id);
       this.$store.dispatch(actionTypes.FETCH_SIMILAR_PRODUCTS, this.$route.params.id);
     },
-    buyProduct() {
+    onBuyProductClick() {
       this.$store.dispatch(actionTypes.POST_CART_PRODUCT, this.product);
     },
   },

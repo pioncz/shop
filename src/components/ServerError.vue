@@ -1,5 +1,5 @@
 <template>
-  <div class="server-serror" @click="handleClick">
+  <div class="server-serror" @click="onClick">
     Server error. Click here to refresh.
   </div>
 </template>
@@ -13,8 +13,8 @@ export default {
   components: {
   },
   methods: {
-    handleClick() {
-      this.$emit('onRefresh');
+    onClick() {
+      this.$emit('refresh');
     },
   },
 };

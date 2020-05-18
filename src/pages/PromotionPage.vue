@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <ServerError v-show="errorVisible" @onRefresh="fetchPromotion" />
+    <ServerError v-show="errorVisible" @refresh="fetchPromotion" />
     <AppLoader v-show="loading" />
     <div v-show="promotionVisible">
       <PromotionTile class="promotion" :promotion="promotion" />

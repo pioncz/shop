@@ -1,5 +1,5 @@
 <template>
-  <div class="select" v-if="options.length">
+  <div class="select">
     <label>{{label}}</label>
     <select :value="value" @change="onChange">
       <option

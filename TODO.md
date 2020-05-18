@@ -1,4 +1,4 @@
-spojne nazewnictwo event handlerow onEvent
+admin page requires role admin
 
 przyklad internacjonalizacji
 

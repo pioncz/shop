@@ -6,7 +6,7 @@
         <h1>Thank you</h1>
         <p>Comfirmation email has been send. Please confirm email with provided link</p>
       </div>
-      <form @submit.prevent="handleSubmit" v-show="!registered">
+      <form @submit.prevent="onSubmit" v-show="!registered">
         <h1 class="modal__title">Register</h1>
         <div
           class="modal__error"
@@ -62,7 +62,7 @@ export default {
     },
   },
   methods: {
-    handleSubmit() {
+    onSubmit() {
       if (this.password !== this.repeatPassword) {
         this.error = 'Password are not the same';
       } else if (this.email.length < 6) {

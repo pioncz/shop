@@ -2,7 +2,7 @@
   <div class="page login-page">
     <AppLoader background v-show="loading" />
     <div class="modal">
-      <form @submit.prevent="handleSubmit">
+      <form @submit.prevent="onSubmit">
         <h1 class="modal__title">Log in</h1>
         <div
           class="modal__error"
@@ -48,7 +48,7 @@ export default {
     },
   },
   methods: {
-    handleSubmit() {
+    onSubmit() {
       if (this.email.length < 6) {
         this.error = 'Email must have at least 6 characters';
       } else if (this.password.length < 6) {

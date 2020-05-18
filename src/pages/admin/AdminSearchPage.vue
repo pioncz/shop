@@ -18,7 +18,7 @@
         <tr
           v-for="{id, name, price } in filteredProducts"
           :key="id"
-          @click="productClick(id)"
+          @click="onProductClick(id)"
         >
           <td>{{id}}</td>
           <td>{{name}}</td>
@@ -85,7 +85,7 @@ export default {
     },
   },
   methods: {
-    productClick(id) {
+    onProductClick(id) {
       this.$router.push(`/admin/${id}`);
     },
   },

@@ -1,6 +1,6 @@
 <template>
   <div class="page home-page">
-    <ServerError v-show="errorVisible" @onRefresh="fetchPromotions" />
+    <ServerError v-show="errorVisible" @refresh="fetchPromotions" />
     <AppLoader v-show="loading" />
     <div v-show="listVisible">
       <router-link

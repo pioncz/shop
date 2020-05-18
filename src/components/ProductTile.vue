@@ -4,7 +4,6 @@
     <h4 class="product-tile__title">{{product.name}}</h4>
     <Rating :rate="product.rate" :ratesNumber="product.ratesNumber" />
     <div class="product-tile__price">{{product.price}}$</div>
-    <button class="product-tile__buy" v-if="onBuy" v-on:click="onBuy">Kup teraz</button>
   </router-link>
 </template>
 
@@ -15,7 +14,6 @@ export default {
   name: 'ProductTile',
   props: {
     product: Object,
-    onBuy: Function,
   },
   components: {
     Rating,
@@ -67,10 +65,6 @@ export default {
     text-align: right;
     font-size: $font2;
     margin-top: $margin1;
-  }
-
-  &__buy {
-    width: 100%;
   }
 }
 </style>
