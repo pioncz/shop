@@ -1,7 +1,6 @@
 <template>
-  <div class="select">
+  <div class="select" v-if="options.length">
     <label>{{label}}</label>
-    <!-- <select v-model="value"> -->
     <select :value="value" @change="onChange">
       <option
         v-for="{label, value} in options"

@@ -1,8 +1,3 @@
-Problem z kategoria searcha:
-https://stackoverflow.com/questions/61653236/vue-select-doesnt-update-initial-value-after-delay
-
-spojne nazewnictwo? komponenty CamelCase a store nie-e
-
 spojne nazewnictwo event handlerow onEvent
 
 przyklad internacjonalizacji

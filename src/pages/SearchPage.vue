@@ -50,7 +50,7 @@ export default {
   data() {
     return {
       name: this.$route.query.name || '',
-      category: '', // this.$route.query.category || 'DESKTOP',
+      category: this.$route.query.category || 'DESKTOP',
       sortOptions: [
         { label: 'Name asc', value: 'name_asc' },
         { label: 'Name desc', value: 'name_desc' },
@@ -91,7 +91,6 @@ export default {
   created() {
     this.$store.dispatch(actionTypes.FETCH_CATEGORIES)
       .then(() => {
-        this.category = this.$route.query.category || 'DESKTOP';
         this.fetchProducts();
       });
   },
