@@ -2,22 +2,21 @@ deployment https://vuejs.org/v2/guide/deployment.html
 
 PopupButton vs AppPopupButton?
 
-
-sprawdzanie typow
-
 testowanie:
 - end to end
 - vuex store
 
-pokazac drugi rodzaj loadera (ladujacy sie szkielet tresci https://github.com/zalog/placeholder-loading)
-
 style dolaczyc jako import w main.scss, opisac jak robic style w komponencie
+
+pisac komponenty z vstore2 - do przemyslenia
 
 ###
 
 Wstawki opisowe:
+- korzystam ze skroconych wersji bindow v-on: => @ oraz v-bind: :
+- propsy: w razie potrzeby mozna uzyc sprawdzanie po typie klasy / uzyc wlasnego walidatora
 - click-outside docelowo lepiej skorzystac z gotowca: vue-click-outside ktory jest lepszy
-- pisac komponenty z vstore2
+- pokazac drugi rodzaj loadera
 - info płatności: adyen, stripe, paypal
 - info accessibility to osobny rozdział
 - unikac contenteditable - vue nie za dobrze sobie radzi z aktualizowaniem stanu

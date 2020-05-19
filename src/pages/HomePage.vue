@@ -2,6 +2,9 @@
   <div class="page home-page">
     <ServerError v-show="errorVisible" @refresh="fetchPromotions" />
     <AppLoader v-show="loading" />
+    <div class="promotion ph-item" v-if="loading">
+      <div class="ph-picture"></div>
+    </div>
     <div v-show="listVisible">
       <router-link
         :to="`/promotion/${promotion.id}`"
@@ -67,5 +70,14 @@ export default {
   margin: $margin4;
   text-decoration: none;
   display: block;
+
+  &.ph-item {
+    padding: 0;
+
+    & > div {
+      margin: 0;
+      height: 160px;
+    }
+  }
 }
 </style>
