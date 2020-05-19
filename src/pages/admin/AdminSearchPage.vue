@@ -10,8 +10,8 @@
       <thead>
         <tr>
           <th>Id</th>
-          <th>Nazwa</th>
-          <th>Cena</th>
+          <th>Name</th>
+          <th>Price</th>
         </tr>
       </thead>
       <tbody>

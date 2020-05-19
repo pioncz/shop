@@ -1,5 +1,3 @@
-przyklad internacjonalizacji
-
 click-outside directive
 
 deployment https://vuejs.org/v2/guide/deployment.html

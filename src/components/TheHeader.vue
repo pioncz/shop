@@ -6,6 +6,10 @@
       <router-link to="/cart">Cart</router-link>
       <router-link to="/admin">Admin</router-link>
       <router-link to="/ddd">Not found</router-link>
+      <AppSelect
+        v-model="$i18n.locale"
+        :options="$i18n.availableLocales.map(locale => ({label: $t(`commons.${locale}`), value: locale}))"
+      />
       <div class="header__actions">
         <div v-show="userLoading">Loading</div>
         <router-link
@@ -16,9 +20,9 @@
           login
         </router-link>
         <router-link
-        v-show="!user && !userLoading"
-        to="/register"
-        tag="button"
+          v-show="!user && !userLoading"
+          to="/register"
+          tag="button"
         >
           register
         </router-link>
@@ -60,11 +64,13 @@ import * as actionTypes from '@/store/action-types';
 import * as getterTypes from '@/store/getter-types';
 import { mapGetters } from 'vuex';
 import AppLoader from '@/components/AppLoader.vue';
+import AppSelect from '@/components/AppSelect.vue';
 
 export default {
   name: 'TheHeader',
   components: {
     AppLoader,
+    AppSelect,
   },
   data() {
     return {

@@ -1,0 +1,14 @@
+{ 
+  "commons": {
+    "send": "Wyślij",
+    "pl": "Polski",
+    "en": "Angielski"
+  },
+  "product": {
+    "newComment": {
+      "header": "Co myślisz o <i>{product}?</i>",
+      "error": "Coś poszło nie tak, proszę wyślij ponownie.",
+      "thanks": "Dziękujemy za Twoją opinię :)"
+    }
+  }
+}

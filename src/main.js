@@ -1,10 +1,23 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import VueI18n from 'vue-i18n';
 import App from './App.vue';
 import routes from './routes';
 import store from './store/store';
 import * as getterTypes from './store/getter-types';
 import * as actionTypes from './store/action-types';
+import pl from './i18n/pl.json';
+import en from './i18n/en.json';
+
+Vue.use(VueI18n);
+
+const i18n = new VueI18n({
+  locale: 'pl', // set locale
+  messages: {
+    pl,
+    en,
+  },
+});
 
 Vue.use(VueRouter);
 Vue.config.productionTip = false;
@@ -71,6 +84,7 @@ const app = new Vue({
   },
   router,
   store,
+  i18n,
   render: (h) => h(App),
 });
 

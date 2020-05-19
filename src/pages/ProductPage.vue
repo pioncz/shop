@@ -38,17 +38,17 @@
       </section>
       <section class="new-comment container card" v-if="product.ratingOption">
         <template v-if="!newCommentSend">
-          <h3>What do you think about this product?</h3>
-          <p v-if="newCommentError">Something went wrong, please send again.</p>
+          <h3 v-html="$t('product.newComment.header', {product: product.name})" />
+          <p v-if="newCommentError">{{ $t('product.newComment.error') }}</p>
           <Rating :onEdit="newRate ? null : onRate" :rate="newRate" class="new-comment__rating" />
           <textarea class="new-comment__textarea" v-model="newComment" />
-          <button @click="onNewCommentSend">Send</button>
+          <button @click="onNewCommentSend">{{ $t('commons.send') }}</button>
           <div class="new-comment__loader" v-show="newCommentLoading">
             <AppLoader />
           </div>
         </template>
         <template v-if="newCommentSend">
-          <h3>Thank you for your opinion :)</h3>
+          <h3>{{ $t('product.newComment.thanks') }}</h3>
         </template>
       </section>
       <section class="comments container card">
