@@ -28,29 +28,35 @@
         </router-link>
         <div v-show="user">{{user && user.name}}</div>
         <div v-if="user" class="header__action">
-          <button @click="toggle" :disabled="cartLoading">
-            <AppLoader v-if="cartLoading" small />
-            <template v-if="!cartLoading">{{cartProducts.length}} items</template>
-          </button>
-          <div v-click-outside="hide" v-show="opened" class="header__action-dropdown">
-            <template v-if="cartProducts.length">
-              <ul class="header__cart-products">
-                <li
-                  v-for="({ id, name, price }, index) in cartProducts"
-                  :key="`${id}${index}`"
-                >
-                  <div>{{name}}</div><div>{{price}}$</div>
-                </li>
-                <li>
-                  <div>Total:</div><div>{{cartTotalPrice}}$</div>
-                </li>
-              </ul>
-              <button @click="onCheckoutClick">Checkout</button>
+          <PopupButton :disabled="cartLoading">
+            <template v-slot:button>
+              <button :disabled="cartLoading">
+                <AppLoader v-if="cartLoading" small />
+                <template v-if="!cartLoading">{{cartProducts.length}} items</template>
+              </button>
             </template>
-            <template v-if="!cartProducts.length">
-              <p>If you add something to cart, you can see it here</p>
+            <template v-slot:popup>
+              <div class="header__action-dropdown">
+                <template v-if="cartProducts.length">
+                  <ul class="header__cart-products">
+                    <li
+                      v-for="({ id, name, price }, index) in cartProducts"
+                      :key="`${id}${index}`"
+                    >
+                      <div>{{name}}</div><div>{{price}}$</div>
+                    </li>
+                    <li>
+                      <div>Total:</div><div>{{cartTotalPrice}}$</div>
+                    </li>
+                  </ul>
+                  <button @click="onCheckoutClick">Checkout</button>
+                </template>
+                <template v-if="!cartProducts.length">
+                  <p>If you add something to cart, you can see it here</p>
+                </template>
+              </div>
             </template>
-          </div>
+          </PopupButton>
         </div>
         <button v-show="user && !userLoading" @click="logout">Logout</button>
       </div>
@@ -59,7 +65,8 @@
 </template>
 
 <script>
-import ClickOutside from 'vue-click-outside';
+import PopupButton from '@/components/PopupButton.vue';
+import ClickOutside from '@/directives/ClickOutside';
 import * as actionTypes from '@/store/action-types';
 import * as getterTypes from '@/store/getter-types';
 import { mapGetters } from 'vuex';
@@ -71,6 +78,7 @@ export default {
   components: {
     AppLoader,
     AppSelect,
+    PopupButton,
   },
   data() {
     return {
@@ -93,19 +101,13 @@ export default {
           this.$router.push('/login');
         });
     },
-    toggle() {
-      this.opened = true;
-    },
-    hide() {
-      this.opened = false;
-    },
     onCheckoutClick() {
       this.$router.push('/cart');
       this.hide();
     },
   },
   mounted() {
-    this.popupItem = this.$el;
+    this.popupItem = this.$refs.popup;
   },
   directives: {
     ClickOutside,

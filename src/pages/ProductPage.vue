@@ -91,7 +91,7 @@ export default {
       newComment: '',
       newCommentLoading: false,
       newCommentSend: false,
-      newCommentError: true,
+      newCommentError: false,
     };
   },
   computed: {

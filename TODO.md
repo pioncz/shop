@@ -1,8 +1,6 @@
-click-outside directive
-
 deployment https://vuejs.org/v2/guide/deployment.html
 
-uzycie slota klasa popup uzyta w registration i login?
+PopupButton vs AppPopupButton?
 
 globalny interceptor do bledow
 
@@ -19,6 +17,7 @@ style dolaczyc jako import w main.scss, opisac jak robic style w komponencie
 ###
 
 Wstawki opisowe:
+- click-outside docelowo lepiej skorzystac z gotowca: vue-click-outside ktory jest lepszy
 - pisac komponenty z vstore2
 - info płatności: adyen, stripe, paypal
 - info accessibility to osobny rozdział
