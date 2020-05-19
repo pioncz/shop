@@ -2,7 +2,6 @@ deployment https://vuejs.org/v2/guide/deployment.html
 
 PopupButton vs AppPopupButton?
 
-globalny interceptor do bledow
 
 sprawdzanie typow
 

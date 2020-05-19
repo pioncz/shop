@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueI18n from 'vue-i18n';
+import axios from 'axios';
 import App from './App.vue';
 import routes from './routes';
 import store from './store/store';
@@ -27,6 +28,18 @@ const router = new VueRouter({
   routes,
   // mode: 'hash',
   mode: 'history',
+});
+
+// Add a response interceptor
+axios.interceptors.response.use((response) => {
+  return response;
+}, (error) => {
+  if (error.response.status === 401) {
+    store.dispatch(actionTypes.LOGOUT);
+    router.push('/login');
+  }
+
+  return Promise.reject(error);
 });
 
 router.beforeEach(async (to, from, next) => {

@@ -66,7 +66,6 @@
 
 <script>
 import PopupButton from '@/components/PopupButton.vue';
-import ClickOutside from '@/directives/ClickOutside';
 import * as actionTypes from '@/store/action-types';
 import * as getterTypes from '@/store/getter-types';
 import { mapGetters } from 'vuex';
@@ -79,11 +78,6 @@ export default {
     AppLoader,
     AppSelect,
     PopupButton,
-  },
-  data() {
-    return {
-      opened: false,
-    };
   },
   computed: {
     ...mapGetters({
@@ -105,12 +99,6 @@ export default {
       this.$router.push('/cart');
       this.hide();
     },
-  },
-  mounted() {
-    this.popupItem = this.$refs.popup;
-  },
-  directives: {
-    ClickOutside,
   },
 };
 </script>
