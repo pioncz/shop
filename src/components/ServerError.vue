@@ -21,18 +21,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/consts.scss';
-
-.server-serror {
-    background: $color4;
-    border: 1px solid $color5;
-    border-radius: $borderRadius;
-    padding: $margin1 $margin2;
-    margin: $margin3;
-    font-size: $font3;
-    font-weight: bold;
-    text-align: center;
-    color: $color6;
-    cursor: pointer;
-}
 </style>

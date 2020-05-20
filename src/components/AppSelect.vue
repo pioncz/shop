@@ -1,5 +1,5 @@
 <template>
-  <div class="select">
+  <div class="app-select">
     <label v-if="label">{{label}}</label>
     <select :value="value" @change="onChange">
       <option
@@ -30,12 +30,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.select {
-  display: inline-block;
-  text-align: left;
-
-  select {
-    display: block;
-  }
-}
 </style>

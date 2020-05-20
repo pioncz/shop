@@ -60,24 +60,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/consts.scss';
-
-.home-page {
-  height: 100%;
-}
-
-.promotion {
-  margin: $margin4;
-  text-decoration: none;
-  display: block;
-
-  &.ph-item {
-    padding: 0;
-
-    & > div {
-      margin: 0;
-      height: 160px;
-    }
-  }
-}
 </style>

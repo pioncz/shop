@@ -61,10 +61,11 @@ export default {
       productsLoading: getterTypes.GET_PRODUCTS_LOADING,
     }),
     filteredProducts() {
+      const query = this.query.toLowerCase();
       const products = this.products.filter(
-        ({ id, name, price }) => id.indexOf(this.query) > -1
-          || name.indexOf(this.query) > -1
-          || price.toString().indexOf(this.query) > -1,
+        ({ id, name, price }) => id.indexOf(query) > -1
+          || name.toLowerCase().indexOf(query) > -1
+          || price.toString().indexOf(query) > -1,
       );
       const [column, order] = this.sort.split('_');
 

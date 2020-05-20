@@ -1,5 +1,5 @@
 <template>
-  <div class="pagination">
+  <div class="app-pagination">
     <button
       v-for="page in pages"
       :key="page"
@@ -34,13 +34,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/consts.scss';
-
-.pagination {
-  margin: $margin1 0;
-
-  button.active {
-    background: $color2;
-  }
-}
 </style>

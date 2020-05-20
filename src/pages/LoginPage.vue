@@ -73,39 +73,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$blur: 5px;
-$from: rgba(235,237,243,0.8) 0%;
-$to: rgba(121,133,148,0.9) 60%;
-
-.login-page {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &::before {
-    content: '';
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    overflow: hidden;
-    left: 0;
-    display: block;
-    background: linear-gradient(to bottom, $from, $to), url('../assets/background-auth.jpg');
-    background-size: cover;
-    background-position-y: center;
-    transform: scale(1.15);
-    z-index: -1;
-    filter: blur($blur);
-  }
-}
 </style>

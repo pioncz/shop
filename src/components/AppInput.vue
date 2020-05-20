@@ -1,5 +1,5 @@
 <template>
-  <div class="input">
+  <div class="app-input">
     <label>{{label}}</label>
     <input
       :class="{ error }"
@@ -8,7 +8,7 @@
       :type="type"
       @change="onChange"
     />
-    <span class="input__error" v-show="error">{{error}}</span>
+    <span class="app-input__error" v-show="error">{{error}}</span>
   </div>
 </template>
 
@@ -40,20 +40,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/consts.scss';
-
-.input {
-  position: relative;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 23px;
-
-  &__error {
-    position: absolute;
-    bottom: $margin0;
-    margin: 0 $margin0;
-    color: $color6;
-  }
-}
 </style>

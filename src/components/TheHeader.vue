@@ -1,6 +1,6 @@
 <template>
-  <nav class="header">
-    <div class="header__items container">
+  <nav class="the-header">
+    <div class="the-header__items container">
       <router-link to="/" exact>Home</router-link>
       <router-link to="/search">Search</router-link>
       <router-link to="/cart">Cart</router-link>
@@ -10,7 +10,7 @@
         v-model="$i18n.locale"
         :options="availableLocales"
       />
-      <div class="header__actions">
+      <div class="the-header__actions">
         <div v-show="userLoading">Loading</div>
         <router-link
           v-show="!user && !userLoading"
@@ -27,7 +27,7 @@
           register
         </router-link>
         <div v-show="user">{{user && user.name}}</div>
-        <div v-if="user" class="header__action">
+        <div v-if="user" class="the-header__action">
           <PopupButton :disabled="cartLoading">
             <template v-slot:button>
               <button :disabled="cartLoading">
@@ -36,9 +36,9 @@
               </button>
             </template>
             <template v-slot:popup>
-              <div class="header__action-dropdown">
+              <div class="the-header__action-dropdown">
                 <template v-if="cartProducts.length">
-                  <ul class="header__cart-products">
+                  <ul class="the-header__cart-products">
                     <li
                       v-for="({ id, name, price }, index) in cartProducts"
                       :key="`${id}${index}`"
@@ -107,102 +107,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/consts.scss';
-
-.header {
-  background: $background;
-  color: $color;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9000;
-  height: 60px;
-  box-sizing: border-box;
-
-  &__items {
-    height: 60px;
-    display: flex;
-    align-items: center;
-
-    > a {
-      padding: 19px 10px;
-      color: $color;
-      line-height: 22px;
-      text-decoration: none;
-      transition: background 0.2s ease-in-out;
-
-      &.router-link-active {
-        background: rgba(255, 255, 255, 0.3);
-      }
-      &:hover {
-        background: rgba(255, 255, 255, 0.2);
-      }
-    }
-  }
-
-  &__actions {
-    flex: 1 1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-
-    > * {
-      margin: 0 $margin1;
-    }
-  }
-
-  &__action {
-    position: relative;
-  }
-
-  &__action-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0px;
-    margin-top: 24px;
-    background: $background;
-    box-shadow: 0px 4px 12px 3px rgba(0, 0, 0, 0.25);
-    min-width: 200px;
-    padding: $margin2;
-    border-radius: $borderRadius;
-
-    &::after {
-      content: '';
-      position: absolute;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      border-bottom: 10px solid $background;
-      top:-10px;
-      right: 20px;
-    }
-  }
-
-  &__cart-products {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-
-    li {
-      display: flex;
-      justify-content: space-between;
-      padding: $margin1 $margin0;
-
-      &:nth-child(odd) {
-        background: rgba(255, 255, 255, 0.4);
-      }
-
-      &:nth-child(even) {
-        background: rgba(255, 255, 255, 0.2);
-      }
-    }
-
-    li:last-child {
-      margin-top: $margin0;
-      margin-bottom: $margin1;
-      border-top: 1px solid #fff;
-      background: none;
-    }
-  }
-}
 </style>

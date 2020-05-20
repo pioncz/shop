@@ -69,15 +69,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.live-edit {
-  > * {
-    width: 100%;
-    margin: 0;
-    padding: inherit;
-    // font-size: inherit;
-    font: inherit;
-    // font-family: inherit;
-    line-height: inherit;
-  }
-}
 </style>

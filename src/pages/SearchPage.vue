@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="page search-page">
     <form @submit.prevent="onSubmit" v-if="categoriesOptions.length">
       <input placeholder="Search by name" v-model="name" />
       <AppSelect
@@ -131,23 +131,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/styles/consts.scss';
-
-form {
-  margin: $margin2 0;
-}
-
-.products {
-  display: flex;
-  justify-content: flex-start;
-  padding: $margin2 0;
-  flex-wrap: wrap;
-
-  > a {
-    flex: 1 1 200px;
-    width: 200px;
-    margin: $margin1;
-    max-width: 360px;
-  }
-}
 </style>

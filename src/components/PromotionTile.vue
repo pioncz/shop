@@ -1,5 +1,5 @@
 <template>
-  <div :style="containerStyle">
+  <div :style="containerStyle" class="promotion-tile">
     <h3>{{ promotion.header }}</h3>
     <p>{{ promotion.description }}</p>
   </div>
@@ -32,21 +32,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/consts.scss';
-
-h3 {
-  margin: 0;
-  color: #fff;
-  font-size: 38px;
-  text-decoration: underline;
-  padding: $margin3 0 $margin1;
-}
-
-p {
-  margin: 0;
-  padding: 0 0 40px;
-  color: #fff;
-  font-size: 22px;
-}
-
 </style>

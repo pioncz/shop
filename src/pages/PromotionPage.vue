@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="page promotion-page">
     <ServerError v-show="errorVisible" @refresh="fetchPromotion" />
     <AppLoader v-show="loading" />
     <div v-show="promotionVisible">
@@ -65,35 +65,4 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '@/styles/consts.scss';
-
-.promotion {
-  padding-top: 60px;
-}
-
-.description {
-  margin: $margin4 $margin2;
-
-  text-align: left;
-}
-
-.finish {
-  background: $background-light;
-  margin: $margin1;
-  padding: $margin1 $margin3;
-  font-size: $font2;
-  font-weight: bold;
-  border-radius: $borderRadius;
-  text-align: right;
-}
-
-.products {
-  display: flex;
-  justify-content: space-around;
-  padding: $margin2 0;
-
-  > div {
-    flex: 1 1;
-  }
-}
 </style>

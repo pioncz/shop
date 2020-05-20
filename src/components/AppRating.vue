@@ -61,31 +61,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/consts.scss';
-
-.app-rating {
-  display: flex;
-  height: 18px;
-  justify-content: flex-start;
-  align-items: center;
-  background: #e3e3e3;
-  padding: $margin0;
-  border-radius: $borderRadius;
-
-  svg {
-    height: 100%;
-    width: auto;
-    fill: #333;
-
-    &.shiny {
-      fill: yellow;
-    }
-  }
-
-  &__rates-number {
-    margin-left: $margin0;
-    font-size: $font0;
-    font-weight: bold;
-  }
-}
 </style>

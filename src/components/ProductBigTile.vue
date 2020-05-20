@@ -86,39 +86,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/consts.scss';
-
-.product-big-tile {
-  display: flex;
-  margin: $margin2 auto;
-
-  &__left {
-    flex: 1 1 60%;
-  }
-
-  &__right {
-    flex: 0 0 40%;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    padding: 0 $margin2;
-
-    > * {
-      margin: 0 0 $margin1 !important;
-    }
-  }
-
-  &__app-rating {
-    height: 30px;
-  }
-
-  &__specification {
-    list-style: none;
-    padding-left: 0;
-  }
-
-  &__buy-button > div {
-    margin: 0 auto;
-  }
-}
 </style>
