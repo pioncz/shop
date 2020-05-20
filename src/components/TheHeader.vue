@@ -8,7 +8,7 @@
       <router-link to="/ddd">Not found</router-link>
       <AppSelect
         v-model="$i18n.locale"
-        :options="$i18n.availableLocales.map(locale => ({label: $t(`commons.${locale}`), value: locale}))"
+        :options="availableLocales"
       />
       <div class="header__actions">
         <div v-show="userLoading">Loading</div>
@@ -87,6 +87,9 @@ export default {
       cartLoading: getterTypes.GET_CART_LOADING,
       cartTotalPrice: getterTypes.GET_CART_TOTAL_PRICE,
     }),
+    availableLocales() {
+      return this.$i18n.availableLocales.map((locale) => ({ label: this.$t(`commons.${locale}`), value: locale }));
+    },
   },
   methods: {
     logout() {

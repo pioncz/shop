@@ -3,8 +3,9 @@ deployment https://vuejs.org/v2/guide/deployment.html
 PopupButton vs AppPopupButton?
 
 testowanie:
-- end to end
 - vuex store
+- komponenty
+- end to end
 
 style dolaczyc jako import w main.scss, opisac jak robic style w komponencie
 

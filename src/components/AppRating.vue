@@ -1,11 +1,11 @@
 <template>
-  <div class="rating" @click="onClick">
+  <div class="app-rating" @click="onClick">
     <Star :class="classNames[0]" @mouseover="() => onMouseOver(1)" @mouseleave="onMouseLeave" />
     <Star :class="classNames[1]" @mouseover="() => onMouseOver(2)" @mouseleave="onMouseLeave"  />
     <Star :class="classNames[2]" @mouseover="() => onMouseOver(3)" @mouseleave="onMouseLeave" />
     <Star :class="classNames[3]" @mouseover="() => onMouseOver(4)" @mouseleave="onMouseLeave" />
     <Star :class="classNames[4]" @mouseover="() => onMouseOver(5)" @mouseleave="onMouseLeave" />
-    <div class="rating__rates-number" v-if="ratesNumber">
+    <div class="app-rating__rates-number" v-if="ratesNumber">
       ({{ratesNumber}})
     </div>
   </div>
@@ -15,7 +15,7 @@
 import Star from '@/assets/star.svg';
 
 export default {
-  name: 'Rating',
+  name: 'AppRating',
   props: {
     rate: Number,
     ratesNumber: Number,
@@ -63,7 +63,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/styles/consts.scss';
 
-.rating {
+.app-rating {
   display: flex;
   height: 18px;
   justify-content: flex-start;

@@ -40,7 +40,11 @@
         <template v-if="!newCommentSend">
           <h3 v-html="$t('product.newComment.header', {product: product.name})" />
           <p v-if="newCommentError">{{ $t('product.newComment.error') }}</p>
-          <Rating :onEdit="newRate ? null : onRate" :rate="newRate" class="new-comment__rating" />
+          <AppRating
+            :onEdit="newRate ? null : onRate"
+            :rate="newRate"
+            class="new-comment__app-rating"
+          />
           <textarea class="new-comment__textarea" v-model="newComment" />
           <button @click="onNewCommentSend">{{ $t('commons.send') }}</button>
           <div class="new-comment__loader" v-show="newCommentLoading">
@@ -69,7 +73,7 @@
 </template>
 
 <script>
-import Rating from '@/components/Rating.vue';
+import AppRating from '@/components/AppRating.vue';
 import AppLoader from '@/components/AppLoader.vue';
 import ProductTile from '@/components/ProductTile.vue';
 import ProductBigTile from '@/components/ProductBigTile.vue';
@@ -80,7 +84,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'ProductPage',
   components: {
-    Rating,
+    AppRating,
     AppLoader,
     ProductTile,
     ProductBigTile,
@@ -203,7 +207,7 @@ export default {
     flex-direction: column;
     align-items: flex-start;
 
-    &__rating {
+    &__app-rating {
       height: 46px;
       padding: $margin1;
       margin-bottom: $margin1;

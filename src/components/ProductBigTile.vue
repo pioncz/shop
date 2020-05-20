@@ -9,8 +9,8 @@
         @change="onInput('name', $event)"
         editable
       />
-      <Rating
-        class="product-big-tile__rating"
+      <AppRating
+        class="product-big-tile__app-rating"
         :rate="editedProduct.rate"
         :ratesNumber="editedProduct.ratesNumber"
       />
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import Rating from '@/components/Rating.vue';
+import AppRating from '@/components/AppRating.vue';
 import AppLoader from '@/components/AppLoader.vue';
 import LiveEdit from '@/components/LiveEdit.vue';
 
@@ -56,7 +56,7 @@ export default {
     editable: Boolean,
   },
   components: {
-    Rating,
+    AppRating,
     AppLoader,
     LiveEdit,
   },
@@ -108,7 +108,7 @@ export default {
     }
   }
 
-  &__rating {
+  &__app-rating {
     height: 30px;
   }
 
