@@ -32,14 +32,17 @@ zakupu (jeśli jakąś już powinien mieć)?
 
 1. Wstęp
  1. O kursie
- 2. Wykorzystywane narzędzia: vscode (vue snippets), npm / yarn, przeglądarka (wtyczka)
+ 2. Wykorzystywane narzędzia: vscode (vue snippets), npm / yarn, przeglądarka (wtyczka), vue-cli (npm install -g @vue/cli), cmder (opcjonalnie zamiast systemowego terminala)
+    powiedziec w jakich wersjach mam te narzedzia
  3. Omówienie stacka technologicznego: vue, vuex, sass, json-server
  4. Omówienie architektury aplikacji (katalogi, struktura komponentów, podział na cssy)
 
 2. Programowanie widoków
- 1. Szkielet projektu (vue create), ustawienie eslinta
- 2. Routing aplikacji i komponent Header, Footer i Loader
- 3. Strona kontakt, 404
+ 1. Szkielet projektu (vue create), ustawienie eslinta (omowienie regul ktore dodaje)
+  vue create z opcjami: babel, router, vuex, css preprocessor sass/scss node-sass, linter eslint + airbnb config
+  lint and fix on commit, configs in dedicated files
+ 2. Routing aplikacji i komponent Header, Footer i Loader (jak stylować?)
+ 3. 404
  4. Komponent Produktu
  5. Strona home i promocji
  6. Strona wyszukiwarki produktów: kategorie, search, filtrowanie i sortowanie

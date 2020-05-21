@@ -7,7 +7,7 @@
         component="h2"
         :value="editedProduct.name"
         @change="onInput('name', $event)"
-        editable
+        :editable="editable"
       />
       <AppRating
         class="product-big-tile__app-rating"
@@ -18,7 +18,7 @@
         component="p"
         :value="editedProduct.description"
         @change="onInput('description', $event)"
-        editable
+        :editable="editable"
         type="textarea"
       />
       <h3>Specification:</h3>

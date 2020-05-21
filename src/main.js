@@ -31,9 +31,7 @@ const router = new VueRouter({
 });
 
 // Add a response interceptor
-axios.interceptors.response.use((response) => {
-  return response;
-}, (error) => {
+axios.interceptors.response.use((response) => response, (error) => {
   if (error.response.status === 401) {
     store.dispatch(actionTypes.LOGOUT);
     router.push('/login');
@@ -42,6 +40,7 @@ axios.interceptors.response.use((response) => {
   return Promise.reject(error);
 });
 
+// eslint-disable-next-line
 router.beforeEach(async (to, from, next) => {
   // Authentications:
   const securedRoute = to.matched.find((record) => record.meta.secured);
